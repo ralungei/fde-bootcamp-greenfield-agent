@@ -4,7 +4,7 @@ def place_new_order(plan_id: str, lob: str = "tv", cirn: str = "") -> dict:
         return {
             "status": "error",
             "error": "AUTH_REQUIRED",
-            "agent_action": "Call send_authentication_otp immediately so the system sends the 6-digit OTP and returns verbatim_to_say (stating valid 6-digit codes start with 48) before asking the caller for the code.",
+            "agent_action": "Authenticate the caller first using EITHER (a) a 6-digit OTP by calling send_authentication_otp (never ask for an OTP without calling send_authentication_otp first) OR (b) their 4-digit PIN on the keypad via validate_authentication_pin.",
         }
     return {
         "status": "success",
