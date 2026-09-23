@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Telco Voice Central · FDE Certification Test 3 Deck</title>
+<title>Gemini Enterprise for Customer Experience · Telco Voice Central</title>
 <style>
   @font-face {
     font-family: 'Roboto Flex Embedded';
@@ -1820,104 +1820,98 @@
 </style>
 
 <style>
-  /* Prevent any unclassed SVG from blowing up */
-  svg { max-width: 100%; }
-  .ficon svg { width: 20px; height: 20px; }
-  .spark { width: 16px; height: 16px; }
-
-  /* ADHD-Friendly Low-Cognitive-Load Enhancements */
-  .bento.grid-4 {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-auto-rows: minmax(170px, auto);
-    gap: 0.85rem;
+  /* Keep exact demo-deck card proportions & add visual diagram widgets */
+  .art-hub {
+    right: 0.9rem;
+    bottom: 0.65rem;
+    width: 11.5rem;
+    height: 6.2rem;
   }
-  .pill-row {
+  .art-hub svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .art-wave {
+    right: 0.9rem;
+    bottom: 0.85rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-    margin-top: 0.65rem;
-  }
-  .v-pill {
-    display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.26rem 0.7rem;
-    border-radius: 999px;
-    font-size: 0.76rem;
-    font-weight: 550;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
+    gap: 4px;
+    height: 2.2rem;
   }
-  .v-pill.green  { background: #e6f4ea; color: #137333; border: 1px solid rgba(19,115,51,0.18); }
-  .v-pill.blue   { background: #e8f0fe; color: #174ea6; border: 1px solid rgba(23,78,166,0.18); }
-  .v-pill.amber  { background: #fef7e0; color: #b06000; border: 1px solid rgba(176,96,0,0.22); }
-  .v-pill.purple { background: #f3e8fd; color: #681da8; border: 1px solid rgba(104,29,168,0.18); }
-  .v-pill.red    { background: #fce8e6; color: #c5221f; border: 1px solid rgba(197,34,31,0.2); }
-
-  .tile.v-full .v-pill {
-    background: rgba(255,255,255,0.18);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.32);
+  .art-wave i {
+    display: block;
+    width: 4px;
+    border-radius: 99px;
+    background: var(--b-600);
   }
-
-  .short-list {
-    list-style: none;
-    padding: 0;
-    margin: 0.55rem 0 0 0;
+  .v-gemini .art-wave i, .v-solid .art-wave i, .v-deep .art-wave i {
+    background: rgba(255,255,255,0.85);
+  }
+  .art-bars {
+    right: 0.9rem;
+    bottom: 0.8rem;
+    width: 7.4rem;
     display: flex;
     flex-direction: column;
-    gap: 0.38rem;
+    gap: 0.28rem;
   }
-  .short-list li {
-    font-size: 0.88rem;
-    line-height: 1.38;
-    color: var(--ink-2);
+  .art-bars .b-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.62rem;
+    font-weight: 500;
+    color: var(--b-800);
   }
-  .tile.v-full .short-list li {
-    color: rgba(255,255,255,0.92);
+  .art-bars .b-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(26,115,232,0.14);
+    border-radius: 99px;
+    overflow: hidden;
   }
-  .short-list li b {
-    color: var(--ink);
-    font-weight: 600;
+  .art-bars .b-fill {
+    display: block;
+    height: 100%;
+    background: var(--b-600);
+    border-radius: 99px;
   }
-  .tile.v-full .short-list li b {
-    color: #fff;
+  .art-loop {
+    right: 0.85rem;
+    bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.28rem;
   }
-
-  .click-hint {
-    display: inline-block;
-    margin-top: 0.65rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--b-700);
-    opacity: 0.85;
-  }
-  .tile.v-full .click-hint {
-    color: #fff;
-    opacity: 0.95;
-  }
-
-  /* Modal code & flow blocks */
-  .code-box {
-    background: #0f172a;
-    color: #e2e8f0;
+  .art-loop span {
     font-family: var(--mono);
-    font-size: 0.78rem;
-    line-height: 1.58;
-    padding: 0.9rem 1.1rem;
-    border-radius: 14px;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    margin: 0.6rem 0;
+    font-size: 0.64rem;
+    font-weight: 600;
+    padding: 0.22rem 0.45rem;
+    border-radius: 7px;
+    background: #fff;
+    color: var(--b-800);
+    box-shadow: 0 2px 8px rgba(32,33,36,0.12);
   }
-  .code-box .ok { color: #4ade80; font-weight: 600; }
-  .code-box .bad { color: #f87171; text-decoration: line-through; }
-  .code-box .kw { color: #60a5fa; }
-  .code-box .cm { color: #94a3b8; }
+  .art-loop span.hi {
+    background: var(--b-600);
+    color: #fff;
+  }
+  .art-loop em {
+    font-style: normal;
+    font-size: 0.7rem;
+    color: var(--b-600);
+    font-weight: 700;
+  }
+  .v-gemini .art-loop em, .v-solid .art-loop em {
+    color: #fff;
+  }
 
-  /* ADHD-friendly Presenter Notes Drawer */
+  /* ADHD-friendly Presenter Notes Drawer (Only visible when Notes [N] is ON) */
   .notes {
-    max-height: 34vh;
+    max-height: 30vh;
     overflow-y: auto;
     background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(16px);
@@ -1925,9 +1919,9 @@
   .note-card {
     background: #f8fafc;
     border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 14px;
-    padding: 0.65rem 0.9rem;
-    margin-bottom: 0.5rem;
+    border-radius: 12px;
+    padding: 0.55rem 0.8rem;
+    margin-bottom: 0.4rem;
   }
   .note-card.analogy { background: #fefce8; border-color: rgba(202, 138, 4, 0.25); }
   .note-card.script  { background: #eff6ff; border-color: rgba(37, 99, 235, 0.22); }
@@ -1935,26 +1929,26 @@
 
   .note-tag {
     display: inline-block;
-    font-size: 0.66rem;
+    font-size: 0.62rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    padding: 0.15rem 0.45rem;
-    border-radius: 6px;
-    margin-bottom: 0.3rem;
+    padding: 0.12rem 0.4rem;
+    border-radius: 5px;
+    margin-bottom: 0.22rem;
   }
   .note-card.analogy .note-tag { background: #fef08a; color: #854d0e; }
   .note-card.script .note-tag  { background: #dbeafe; color: #1e40af; }
   .note-card.tech .note-tag    { background: #dcfce7; color: #166534; }
   .note-card p, .note-card li {
-    font-size: 0.83rem !important;
-    line-height: 1.46 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.42 !important;
     color: #1e293b !important;
-    margin: 0.2rem 0 !important;
+    margin: 0.15rem 0 !important;
   }
   .note-card ul {
-    padding-left: 1.1rem;
-    margin: 0.2rem 0;
+    padding-left: 1rem;
+    margin: 0.15rem 0;
   }
 </style>
 
@@ -2007,120 +2001,179 @@
 
 <div class="topbar">
   <button class="toggle" id="notesToggle" aria-pressed="true">
-    Guion / Speaker Notes <span class="kbd" aria-hidden="true">N</span>
+    Presenter notes <span class="kbd" aria-hidden="true">N</span>
   </button>
 </div>
 
 <main class="stage" id="stage">
 
-  <!-- ================= SLIDE 0: COVER ================= -->
-  <section class="slide hero active" data-name="0 · Portada">
+  <!-- ================= SLIDE 0: TITLE ================= -->
+  <section class="slide hero active" data-name="Portada">
     <div class="canvas">
       <div class="inner">
-        <span class="kicker"><svg class="spark" width="16" height="16" aria-hidden="true"><use href="#i-spark"/></svg> FDE Certification Test 3 · Production Readiness Review</span>
-        <h1><span class="grad">Telco Voice Central</span><br>Enterprise Voice AI en CES</h1>
-        <p class="hero-lede">6 Agentes Hub-and-Spoke · 32 Tools Deterministas en Python · 12 Callbacks · Bilingüe (EN / FR-CA / ES-US)</p>
+        <span class="kicker"><svg class="spark" aria-hidden="true"><use href="#i-spark"/></svg> CX Agent Studio · Voice Architecture</span>
+        <h1><span class="grad">Gemini Enterprise</span> for Customer Experience</h1>
+        <p class="hero-lede">Transformación de atención telefónica trilingüe para Telco Voice Central con resolución transaccional de extremo a extremo.</p>
+        <div class="cobrand">
+          <span style="font-size:1.35rem; font-weight:600; letter-spacing:-0.03em; color:var(--b-800);">Telco Voice Central</span>
+          <span class="bar" aria-hidden="true"></span>
+          <svg class="lg-google" viewBox="0 0 272 92" role="img" aria-label="Google"><use href="#logo-google"/></svg>
+        </div>
       </div>
     </div>
     <footer class="notes"><div class="notes-inner">
       <div class="note-card analogy">
-        <span class="note-tag">🎯 Cómo usar esta presentación (Pulsa N para ocultar/mostrar notas)</span>
-        <p><b>Cero carga visual:</b> En pantalla solo tienes 3–4 tarjetas limpias por diapositiva. Si el tribunal te pide ver código, una traza o un diagrama, <b>haz clic encima de cualquier tarjeta</b> y se abrirá un modal interactivo.</p>
-        <p><b>Tu idea ancla:</b> Hemos construido una centralita de voz donde <b>Gemini conversa natural, pero Python manda en la seguridad</b>.</p>
+        <span class="note-tag">💡 Para ti (Pulsa N para ocultar las notas si quieres pantalla completa)</span>
+        <p><b>Diseño 100% Cliente:</b> En las diapositivas ya no hay ni una sola palabra interna del bootcamp. Todo lo que se ve en pantalla es una presentación ejecutiva real para el cliente de <b>Telco Voice Central</b>.</p>
+        <p><b>Haz clic en cualquier tarjeta</b> cuando quieras enseñar el diagrama de flujo, las tablas o el código en vivo.</p>
       </div>
       <div class="note-card script">
-        <span class="note-tag">🗣️ Guion literal de apertura (20 seg)</span>
-        <p>“Buenos días. Hoy os presento la puesta en producción de <b>Telco Voice Central</b> sobre Google Cloud Customer Engagement Suite (<b>gemini-3.1-flash-live</b>). Vamos a ver los 5 bloques: el problema e impacto de negocio, la demo en vivo con nuestros casos reales de autenticación e interrupción de voz, la arquitectura Hub-and-Spoke, el roadmap y nuestra historia real de <b>hill-climbing</b> desde las trazas de fallo hasta el 100% sin regresiones.”</p>
+        <span class="note-tag">🗣️ Guion de apertura (0:00 – 0:45)</span>
+        <p>“Buenos días. Hoy presentamos la arquitectura en producción de <b>Telco Voice Central</b> sobre Google Cloud CX Agent Studio. Vamos a ver cómo hemos transformado un IVR tradicional fragmentado en un sistema de voz trilingüe capaz de resolver pagos, reactivaciones de línea, soporte técnico y ventas en una única llamada segura.”</p>
       </div>
     </div></footer>
   </section>
 
-  <!-- ================= SLIDE 1: 2.1 CUSTOMER PROBLEM & BUSINESS IMPACT ================= -->
-  <section class="slide" data-name="2.1 · Problema e Impacto">
+  <!-- ================= STEP 1: BUSINESS IMPACT & FRAMING (2.1) ================= -->
+  <section class="slide" data-name="1 · Impacto de Negocio">
     <div class="canvas">
       <div class="inner">
-        <div class="head">
-          <div>
-            <span class="eyebrow"><span class="step-num">1</span> Sección 2.1 · Customer Problem & Business Impact</span>
-            <h2>¿Qué problema resolvemos y cómo medimos el éxito?</h2>
-          </div>
-          <div class="stats">
-            <div class="stat"><b>70+</b><span>Escenarios CUJ</span></div>
-            <div class="stat"><b>&gt;78%</b><span>Contención E2E</span></div>
-            <div class="stat"><b>&lt;95s</b><span>Tiempo Medio (AHT)</span></div>
-            <div class="stat"><b>0</b><span>Fugas sin Auth</span></div>
+        <div class="step-head">
+          <span class="step-num-big s1">1</span>
+          <div class="head">
+            <h2>De menús rígidos a resolución en la primera llamada</h2>
+            <p class="tagline">Contención transaccional en 6 dominios operativos con seguridad financiera y cumplimiento normativo garantizado.</p>
           </div>
         </div>
 
-        <div class="bento grid-4">
+        <div class="bento cols8">
 
-          <!-- Card 1 -->
-          <div class="tile sp3 v-white">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-mic"/></svg></span>
+          <!-- Tile 1: Hero Gemini Metric (Rows 1-2, Cols 1-3) -->
+          <button class="tile has-art sp2 rw2 v-gemini" style="grid-area: 1 / 1 / 3 / 4" type="button">
+            <span class="ficon"><svg><use href="#i-spark"/></svg></span>
+            <div class="art art-stack light" aria-hidden="true"><span></span><span></span><span></span></div>
             <div>
-              <span class="v-pill blue">El Problema del Cliente</span>
-              <h3 style="margin-top:6px;">IVR Rígido, Fricción Bilingüe y Fuga de Ingresos</h3>
-              <ul class="short-list">
-                <li><b>Colas saturadas:</b> Facturación (32%), Reactivación/Bajas (24%) y Cortes (20%).</li>
-                <li><b>Abandono por idioma:</b> Clientes EN / FR-CA / ES-US atrapados en menús DTMF.</li>
-                <li><b>Riesgo financiero:</b> Líneas reactivadas sin cobrar deuda o créditos &gt;$25.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver el desglose de volumen M1–M7</span>
+              <h3>Contención End-to-End</h3>
+              <span class="bignum">78%</span>
+              <p>de las llamadas resueltas sin transferencia humana</p>
+              <span class="chip light">&lt; 95s tiempo medio (AHT)</span>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Desglose de Volumen de Llamadas por Dominio Operativo (M1–M7)</p>
-              <div class="code-box">
-• M1 · Hub de Identificación, Auth y Seguridad (100% llamadas): Saludo legal BR-TV-001 + PIN/OTP.
-• M3 · Facturación y Pagos (~32% volumen): Pago con tarjeta, cobros duplicados ($22.50) y disputas.
-• M7 · Gestión de Cuenta y Retención (~24% volumen): Reactivar líneas suspendidas, bajas ETF y MFA.
-• M4 · Soporte Técnico (~20% volumen): Cortes de zona (Outages), reinicio remoto y garantías.
-• M5 & M6 · Ventas, Upgrades y Citas (~24% volumen): Upgrade internet teletrabajo (WFH) y técnicos.
+            <div class="detail">
+              <div class="flow">
+                <div class="node"><span class="k">Antes (IVR DTMF)</span><span class="v">7.5 min AHT<br>2+ transferencias</span></div>
+                <span class="arrow-i"><svg aria-hidden="true"><use href="#i-right"/></svg></span>
+                <div class="node"><span class="k">Orquestación CES</span><span class="v">Estado compartido<br>en 6 dominios</span></div>
+                <span class="arrow-i"><svg aria-hidden="true"><use href="#i-right"/></svg></span>
+                <div class="node strong"><span class="k">Resultado</span><span class="v">&lt; 95 seg AHT<br>78% contención</span></div>
+              </div>
+              <p>Los clientes ya no abandonan en menús numéricos ni repiten su número de cuenta al pasar de Facturación a Gestión de Cuenta.</p>
+              <div class="rows">
+                <div class="maprow"><span class="from"><b>Reactivación + Pago</b> · antes 11 min</span><span class="ar">&#8594;</span><span class="to">resuelto en 1 llamada (&lt;90s)</span></div>
+                <div class="maprow"><span class="from"><b>Cobro duplicado ($22.50)</b> · antes ticket manual</span><span class="ar">&#8594;</span><span class="to">reembolso automático en ledger</span></div>
+                <div class="maprow"><span class="from"><b>Escalada especialista</b> · fraude / B2B / &gt;$25</span><span class="ar">&#8594;</span><span class="to">transferencia en &lt;3s con contexto</span></div>
               </div>
             </div>
-          </div>
+          </button>
 
-          <!-- Card 2 -->
-          <div class="tile sp3 v-gem2">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-spark"/></svg></span>
+          <!-- Tile 2: Volume Breakdown by Domain (Row 1, Cols 4-8) -->
+          <button class="tile has-art wide-art sp3 v-outline" style="grid-area: 1 / 4 / 2 / 9" type="button">
+            <span class="ficon"><svg><use href="#i-data"/></svg></span>
+            <div class="art art-bars" aria-hidden="true">
+              <div class="b-row"><span>Billing</span><div class="b-track"><i class="b-fill" style="width:82%"></i></div><b>32%</b></div>
+              <div class="b-row"><span>Account</span><div class="b-track"><i class="b-fill" style="width:64%"></i></div><b>24%</b></div>
+              <div class="b-row"><span>Tech</span><div class="b-track"><i class="b-fill" style="width:52%"></i></div><b>20%</b></div>
+              <div class="b-row"><span>Sales</span><div class="b-track"><i class="b-fill" style="width:42%"></i></div><b>14%</b></div>
+            </div>
             <div>
-              <span class="v-pill green">Impacto de Negocio</span>
-              <h3 style="margin-top:6px;">Resolución Transaccional Completa sin Repetir Datos</h3>
-              <ul class="short-list">
-                <li><b>AHT de 7.5 min a &lt;95 seg:</b> Flujos cruzados resueltos en la misma llamada.</li>
-                <li><b>Protección de Caja:</b> Python exige <code>balance_cleared</code> antes de reactivar.</li>
-                <li><b>Deflexión Inteligente:</b> Handoff en &lt;3s en Fraude, B2B o Disputas &gt;$25.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver el impacto financiero</span>
+              <h3>Cobertura completa del volumen entrante</h3>
+              <p>Facturación, retención, soporte de red, ventas y citas técnicas.</p>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Impacto Financiero y Operativo Medible</p>
-              <p>Antes, un cliente con la línea suspendida por impago sufría 2 transferencias humanas (11 minutos). Ahora, el bucle automático <code>M7 → M1 → M3 → M1 → M7</code> cobra los <code>$85.50</code> pendientes y reactiva el servicio en menos de 90 segundos con cero pérdida de contexto.</p>
+            <div class="detail">
+              <p>Distribución operativa de los más de 70 flujos de usuario (CUJs) automatizados en la plataforma:</p>
+              <table class="matrix">
+                <tr><th>Dominio</th><th>Volumen</th><th>Operaciones automatizadas</th><th></th></tr>
+                <tr><td>Facturación y Pagos (M3)</td><td>32%</td><td>Pago con tarjeta, reembolso de duplicados, disputas &le;$25</td><td><span class="mark yes">✓</span></td></tr>
+                <tr><td>Gestión de Cuenta (M7)</td><td>24%</td><td>Reactivación de líneas suspendidas, bajas ETF, control MFA</td><td><span class="mark yes">✓</span></td></tr>
+                <tr><td>Soporte Técnico (M4)</td><td>20%</td><td>Detección de averías de zona, reinicio remoto, garantías</td><td><span class="mark yes">✓</span></td></tr>
+                <tr><td>Ventas y Citas (M5 · M6)</td><td>24%</td><td>Upgrades de fibra (teletrabajo), compra de equipos y técnicos</td><td><span class="mark yes">✓</span></td></tr>
+              </table>
             </div>
-          </div>
+          </button>
 
-          <!-- Card 3 -->
-          <div class="tile sp6 v-gemini v-full">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-key"/></svg></span>
+          <!-- Tile 3: Multilingual Voice Experience (Row 2, Cols 4-6) -->
+          <button class="tile lift has-art sp2 v-cyan" style="grid-area: 2 / 4 / 3 / 7" type="button">
+            <span class="ficon"><svg><use href="#i-mic"/></svg></span>
+            <div class="art art-chips" aria-hidden="true">
+              <span class="on">EN-US</span>
+              <span class="on">FR-CA</span>
+              <span class="on">ES-US</span>
+            </div>
             <div>
-              <h3>Nuestro “Definition of Done” para Producción (4 Candados Innegociables)</h3>
-              <div class="pill-row">
-                <span class="v-pill">1. Aviso Legal 100% (Incluso tras Barge-In)</span>
-                <span class="v-pill">2. Auth Gate Estricto en Python (0 Bypass)</span>
-                <span class="v-pill">3. Cero Cuelgues en Silencio (CLOSING_STATES)</span>
-                <span class="v-pill">4. 100% Core Sims + Hallucination Metric ENABLED</span>
-              </div>
-              <span class="click-hint">＋ Clic para ver la matriz de aceptación técnica</span>
+              <h3>Voz trilingüe con detección natural</h3>
+              <p>Inglés, francés canadiense y español sin reiniciar sesión.</p>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Engineering Definition of Done (Criterio de Go-Live)</p>
-              <div class="code-box">
-1. [COMPLIANCE]  100% de llamadas pronuncian "This call may be recorded..." (re-emitido si hay Barge-In).
-2. [SECURITY]    0 ejecuciones de las 7 tools sensibles sin auth_status == "Pass" o step_up_status == "Pass".
-3. [RELIABILITY] 0 cuelgues mudos: before_model + after_model garantizan 1 única frase oficial + end_session.
-4. [QUALITY]     cxas lint = 0 errors / 0 warnings | goldenHallucinationMetricBehavior = ENABLED.
+            <div class="detail">
+              <p>El motor de voz detecta el idioma del cliente de forma dinámica y adapta todas las locuciones normativas en tiempo real:</p>
+              <div class="rows">
+                <div class="maprow"><span class="from"><b>Filtro anti-ruido (&ge;3 palabras)</b></span><span class="ar">&#8594;</span><span class="to">evita cambios por interjecciones sueltas</span></div>
+                <div class="maprow"><span class="from"><b>Barge-In inteligente</b></span><span class="ar">&#8594;</span><span class="to">repite el aviso legal si se interrumpe</span></div>
               </div>
             </div>
-          </div>
+          </button>
+
+          <!-- Tile 4: Zero Revenue Leakage (Row 3, Cols 1-2) -->
+          <button class="tile has-art sp2 v-tint" style="grid-area: 3 / 1 / 4 / 3" type="button">
+            <span class="ficon"><svg><use href="#i-key"/></svg></span>
+            <div class="art art-nav" aria-hidden="true">
+              <span>Deuda $85.50</span>
+              <span class="hi">Cobro previo</span>
+            </div>
+            <div>
+              <h3>Protección de ingresos</h3>
+              <p>Cero reactivaciones sin saldo saldado.</p>
+            </div>
+            <div class="detail">
+              <p>Las reglas financieras se ejecutan en el backend Python, nunca dependen únicamente de la interpretación del modelo:</p>
+              <div class="sift">
+                <div class="sift-row keep"><span class="mark">✓</span><span>Línea con saldo $0.00 o recién pagado</span><span class="route">Reactivación inmediata</span></div>
+                <div class="sift-row drop"><span class="mark">✗</span><span>Línea suspendida por impago sin abonar</span><span class="route">Bloqueado · Ruta a Pagos</span></div>
+              </div>
+            </div>
+          </button>
+
+          <!-- Tile 5: Definition of Done / Production SLA (Row 3, Cols 3-6) -->
+          <button class="tile has-art sp3 v-solid" style="grid-area: 3 / 3 / 4 / 7" type="button">
+            <span class="ficon"><svg><use href="#i-panel"/></svg></span>
+            <div class="art art-step" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+            <div>
+              <h3>Estándar de Producción (Definition of Done)</h3>
+              <p>4 garantías técnicas verificadas antes del lanzamiento.</p>
+            </div>
+            <div class="detail">
+              <p>Criterios de aceptación firmados para la entrada en producción de Telco Voice Central:</p>
+              <div class="rows">
+                <div class="maprow"><span class="from"><b>1. Cumplimiento Legal 100%</b></span><span class="ar">&#8594;</span><span class="to">Aviso de grabación garantizado incluso con interrupción</span></div>
+                <div class="maprow"><span class="from"><b>2. Seguridad Transaccional</b></span><span class="ar">&#8594;</span><span class="to">0 operaciones sensibles sin PIN u OTP validado</span></div>
+                <div class="maprow"><span class="from"><b>3. Despedida y Transferencia Limpia</b></span><span class="ar">&#8594;</span><span class="to">Locución oficial exacta sin cortes mudos</span></div>
+                <div class="maprow"><span class="from"><b>4. Precisión Verificada</b></span><span class="ar">&#8594;</span><span class="to">100% en flujos principales con control anti-alucinación activo</span></div>
+              </div>
+            </div>
+          </button>
+
+          <!-- Tile 6: Compliance & ETF (Row 2-3, Cols 7-8) -->
+          <button class="tile has-art sp2 rw2 v-tone1" style="grid-area: 2 / 7 / 4 / 9" type="button">
+            <span class="ficon"><svg><use href="#i-history"/></svg></span>
+            <div class="art art-receipt" aria-hidden="true">
+              <i></i><i class="s"></i><i></i><b>ETF &le; $25</b>
+            </div>
+            <div>
+              <h3>Control normativo</h3>
+              <p>Aviso de grabación, penalizaciones ETF y tope de crédito de $25.</p>
+            </div>
+            <div class="detail">
+              <p>Toda cancelación con permanencia informa automáticamente del cargo por baja anticipada (ETF) y solicita confirmación explícita antes de proceder.</p>
+            </div>
+          </button>
 
         </div>
       </div>
@@ -2128,153 +2181,163 @@
     <footer class="notes"><div class="notes-inner">
       <div>
         <div class="note-card analogy">
-          <span class="note-tag">💡 Ejemplo cotidiano (El recepción de hospital)</span>
-          <p>Antes era como un hospital donde hacías cola en altas y te decían: <i>“Tienes un recibo sin pagar, baja a caja en la planta 0, paga y vuelve a hacer cola”</i>. Nuestro agente es un <b>conserje trilingüe con datáfono propio</b>: te cobra el recibo pendiente en Facturación (`M3`) y te da el alta en Cuenta (`M7`) en el acto sin volver a pedirte el DNI.</p>
+          <span class="note-tag">💡 Ejemplo sencillo (Sección 2.1 Framing · 0:00 a 1:30)</span>
+          <p>Explícalo como <b>el conserje de un hospital privado</b>: antes el cliente hacía cola en altas y le decían <i>“baje usted a caja a pagar el recibo pendiente y vuelva a subir”</i>. Ahora el mismo sistema te lleva a caja, cobra los $85.50 y te reactiva la línea al instante sin hacerte repetir tu identificación.</p>
         </div>
         <div class="note-card tech">
-          <span class="note-tag">🔧 Dato clave para el tribunal</span>
-          <p>Subraya nuestro <b>Definition of Done</b>: en banca y telco no basta con que el modelo hable bien; necesita <b>cumplimiento legal al 100%</b> (aviso de grabación aunque le interrumpan) y <b>candados en Python</b> para que nunca regale saldo ni salte el PIN.</p>
+          <span class="note-tag">🔧 Qué evalúan aquí (Rubric 2.1)</span>
+          <p>El evaluador busca 3 cosas claras: <b>1) El problema</b> (colas y fugas en 6 dominios), <b>2) El impacto</b> (78% contención y bajada de AHT a &lt;95s), y <b>3) Tu Definition of Done</b> (haz clic en la tarjeta azul central si quieres mostrar las 4 garantías).</p>
         </div>
       </div>
       <div class="note-card script">
-        <span class="note-tag">🗣️ Guion paso a paso (2.1 Framing)</span>
+        <span class="note-tag">🗣️ Guion para decir al cliente</span>
         <ul>
-          <li><b>1. El Problema:</b> “Telco Voice Central gestionaba llamadas en inglés, francés y español en 6 dominios. El IVR antiguo provocaba abandonos por idioma y fugas de ingresos cuando se reactivaban líneas con deuda o se pedían créditos mayores de 25 dólares.”</li>
-          <li><b>2. El Impacto:</b> “Automatizamos más del <b>78% de los CUJs</b> bajando el tiempo medio de 7,5 minutos a menos de 95 segundos, y transfiriendo en menos de 3 segundos cuando hay fraude o disputas superiores a 25$.”</li>
-          <li><b>3. Definition of Done:</b> “Nuestro criterio de paso a producción exige 4 garantías: aviso de grabación incluso con interrupción de voz, bloqueo en Python sin autenticación, cero cuelgues en silencio y 100% en las simulaciones con la métrica de alucinación activada.”</li>
+          <li><b>El Reto:</b> “En Telco Voice Central teníamos el tráfico dividido en 6 áreas (con un 32% en facturación y un 24% en gestión de cuenta). Los clientes bilingües sufrían abandonos en el IVR y las transferencias manuales disparaban el tiempo medio a más de 7 minutos.”</li>
+          <li><b>El Resultado:</b> “Con esta arquitectura alcanzamos un <b>78% de contención end-to-end</b> en menos de 95 segundos, asegurando por código que ninguna línea con deuda se reactive sin cobro previo y cumpliendo nuestro <i>Definition of Done</i> de cero operaciones sin autenticar.”</li>
         </ul>
       </div>
     </div></footer>
   </section>
 
-  <!-- ================= SLIDE 2: 2.2 PRODUCTION AGENT DEMO ================= -->
-  <section class="slide" data-name="2.2 · Demo & Casos Reales">
+  <!-- ================= STEP 2: ARCHITECTURE & DESIGN (2.3) ================= -->
+  <section class="slide" data-name="2 · Arquitectura Hub & Spoke">
     <div class="canvas">
       <div class="inner">
-        <div class="head">
-          <div>
-            <span class="eyebrow"><span class="step-num">2</span> Sección 2.2 · Production Agent Demo (Tus Casos Reales)</span>
-            <h2>2 Happy Paths Multi-Agente + 2 Edge Cases de Voz y Seguridad</h2>
-          </div>
-          <div class="stats">
-            <div class="stat"><b>M7⇄M3</b><span>Bucle Reactivación</span></div>
-            <div class="stat"><b>$22.50</b><span>Reembolso Duplicado</span></div>
-            <div class="stat"><b>≥3 Pal.</b><span>Filtro Idioma Voz</span></div>
-            <div class="stat"><b>7 Tools</b><span>Candado Auth Python</span></div>
+        <div class="step-head">
+          <span class="step-num-big s2">2</span>
+          <div class="head">
+            <h2>Arquitectura Hub-and-Spoke y seguridad determinista</h2>
+            <p class="tagline">Un concentrador central de estado y 5 especialistas aislados con controles de seguridad ejecutados en Python.</p>
           </div>
         </div>
 
-        <div class="bento grid-4">
+        <div class="bento cols8">
 
-          <!-- Happy Path 1 -->
-          <div class="tile sp3 v-white">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-nav"/></svg></span>
-            <div>
-              <span class="v-pill blue">Happy Path 1 · Multi-Agente (`todo.md` Bug #2)</span>
-              <h3 style="margin-top:6px;">Reactivar Línea Suspendida (M7 → M1 → M3 → M1 → M7)</h3>
-              <ul class="short-list">
-                <li><b>Intento en `M7`:</b> Llama a <code>execute_suspend_restore(action="restore")</code>.</li>
-                <li><b>Bloqueo Python:</b> Devuelve <code>BALANCE_OWED</code> + <code>balance_owed_redirect</code>.</li>
-                <li><b>Pago y Vuelta:</b> Paga en <code>M3</code> (<code>balance_cleared</code>) y vuelve a <code>M7</code> a activar.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver la traza exacta turno a turno</span>
+          <!-- Tile 1: Visual Hub & Spoke Topology (Rows 1-2, Cols 1-4) -->
+          <button class="tile has-art sp3 rw2 v-deep" style="grid-area: 1 / 1 / 3 / 5" type="button">
+            <span class="ficon"><svg><use href="#i-nav"/></svg></span>
+            <div class="art art-hub" aria-hidden="true">
+              <svg viewBox="0 0 220 115">
+                <path d="M110 26 L26 88 M110 26 L68 88 M110 26 L110 88 M110 26 L152 88 M110 26 L194 88" stroke="rgba(255,255,255,0.38)" stroke-width="1.8" fill="none"/>
+                <rect x="68" y="6" width="84" height="26" rx="13" fill="#fff"/>
+                <text x="110" y="23" text-anchor="middle" fill="#0d3c78" font-size="10" font-weight="700">M1 · Root Hub</text>
+                <rect x="6" y="84" width="38" height="22" rx="6" fill="rgba(255,255,255,0.2)" stroke="#8ab4f8"/>
+                <text x="25" y="98" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="600">M3 Bill</text>
+                <rect x="49" y="84" width="38" height="22" rx="6" fill="rgba(255,255,255,0.2)" stroke="#8ab4f8"/>
+                <text x="68" y="98" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="600">M4 Tech</text>
+                <rect x="91" y="84" width="38" height="22" rx="6" fill="rgba(255,255,255,0.2)" stroke="#8ab4f8"/>
+                <text x="110" y="98" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="600">M5 Sale</text>
+                <rect x="133" y="84" width="38" height="22" rx="6" fill="rgba(255,255,255,0.2)" stroke="#8ab4f8"/>
+                <text x="152" y="98" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="600">M6 Appt</text>
+                <rect x="175" y="84" width="38" height="22" rx="6" fill="rgba(255,255,255,0.2)" stroke="#8ab4f8"/>
+                <text x="194" y="98" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="600">M7 Acct</text>
+              </svg>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Happy Path 1: Cómo evitamos que reactive líneas gratis (`trace a837b382`)</p>
-              <div class="code-box">
-Turno 1 [M1 Root_agent]: Saludo legal + fetch_customer_profile + verify_account_pin (auth_status = "Pass")
-Turno 2 [M7 Account Mgmt]: Llama a execute_suspend_restore(action="restore").
-        → Python ve deuda pendiente y devuelve: {"status": "BALANCE_OWED", "flag_val": "balance_owed_redirect"}
-Turno 3 [M1 → M3 Billing]: transferRule determinista envía al cliente a M3.
-        → process_payment cobra los $85.50 y escribe en sesión: flag_val = "balance_cleared"
-Turno 4 [M1 → M7 Account Mgmt]: Regresa automáticamente a M7.
-        → execute_suspend_restore(action="restore") verifica flag_val == "balance_cleared" y activa la línea!
+            <div>
+              <h3>Topología Hub-and-Spoke sin ciclos</h3>
+              <p>1 Hub de enrutamiento y 5 especialistas con herramientas aisladas para eliminar la degradación de instrucciones.</p>
+              <span class="chip light">32 Tools Python · 0 Ciclos</span>
+            </div>
+            <div class="detail">
+              <div class="flow">
+                <div class="node"><span class="k">M7 Account Mgmt</span><span class="v">Detecta deuda<br>flag: balance_owed</span></div>
+                <span class="arrow-i"><svg aria-hidden="true"><use href="#i-right"/></svg></span>
+                <div class="node strong"><span class="k">M1 Root Hub</span><span class="v">Conmutador central<br>conserva sesión</span></div>
+                <span class="arrow-i"><svg aria-hidden="true"><use href="#i-right"/></svg></span>
+                <div class="node"><span class="k">M3 Billing</span><span class="v">Cobra $85.50<br>flag: balance_cleared</span></div>
               </div>
+              <p><b>¿Por qué dividimos en 5 especialistas en lugar de un único agente?</b></p>
+              <div class="rows">
+                <div class="maprow"><span class="from"><b>Aislamiento de herramientas</b></span><span class="ar">&#8594;</span><span class="to">Cada especialista ve solo sus 5–6 funciones (evita Instruction Rot)</span></div>
+                <div class="maprow"><span class="from"><b>Jerarquía estricta en árbol</b></span><span class="ar">&#8594;</span><span class="to">Los especialistas tienen childAgents: [] (imposible entrar en bucles infinitos)</span></div>
+                <div class="maprow"><span class="from"><b>Memoria persistente</b></span><span class="ar">&#8594;</span><span class="to">El estado de autenticación y perfil viaja en context.state entre saltos</span></div>
+              </div>
+            </div>
+          </button>
+
+          <!-- Tile 2: 2-Tier Security Gate (Row 1, Cols 5-8) -->
+          <button class="tile has-art wide-art sp3 v-gemini" style="grid-area: 1 / 5 / 2 / 9" type="button">
+            <span class="ficon"><svg><use href="#i-key"/></svg></span>
+            <div class="art art-loop" aria-hidden="true">
+              <span>ID</span><em>&rsaquo;</em><span>PIN / OTP</span><em>&rsaquo;</em><span class="hi">Step-Up MFA</span>
+            </div>
+            <div>
+              <h3>Autenticación escalonada en 2 niveles</h3>
+              <p>Verificación determinista en Python antes de cualquier acción sobre la cuenta.</p>
+            </div>
+            <div class="detail">
+              <p>Cada función crítica verifica directamente en código Python el estado de seguridad de la sesión antes de ejecutarse:</p>
+              <div class="code">if context.state.get("auth_status") != "Pass":
+    <mark>return {"status": "AUTH_REQUIRED", "action": "Call send_authentication_otp first"}</mark></div>
+              <table class="matrix">
+                <tr><th>Nivel de Seguridad</th><th>Variable de Estado</th><th>Operaciones Permitidas</th><th></th></tr>
+                <tr><td>Nivel 0 · Identificación</td><td><code>identification_status = Pass</code></td><td>Consulta de averías de zona y catálogo comercial</td><td><span class="mark yes">✓</span></td></tr>
+                <tr><td>Nivel 1 · Autenticación</td><td><code>auth_status = Pass</code> (PIN u OTP)</td><td>Pagos, reembolsos, contratación de planes, citas y bajas</td><td><span class="mark yes">✓</span></td></tr>
+                <tr><td>Nivel 2 · Step-Up MFA</td><td><code>step_up_status = Pass</code> (PIN + OTP)</td><td>Desactivación de MFA y cambios críticos de seguridad</td><td><span class="mark yes">✓</span></td></tr>
+              </table>
+            </div>
+          </button>
+
+          <!-- Tile 3: Dual-Gate Callbacks (Row 2, Cols 5-7) -->
+          <button class="tile lift has-art sp2 v-indigo" style="grid-area: 2 / 5 / 3 / 7" type="button">
+            <span class="ficon"><svg><use href="#i-dial"/></svg></span>
+            <div class="art art-nav" aria-hidden="true">
+              <span>before_model</span>
+              <span class="hi">after_model</span>
+            </div>
+            <div>
+              <h3>Doble barrera de Callbacks</h3>
+              <p>Control a la entrada y a la salida del modelo.</p>
+            </div>
+            <div class="detail">
+              <p>Combinamos <code>before_model_callback</code> y <code>after_model_callback</code> con un registro unificado (<code>CLOSING_STATES</code>) para garantizar cierres y transferencias exactas:</p>
+              <div class="rows">
+                <div class="maprow"><span class="from"><b>after_model (Salida en el mismo turno)</b></span><span class="ar">&#8594;</span><span class="to">Sustituye cualquier improvisación por la frase legal exacta y ejecuta end_session</span></div>
+                <div class="maprow"><span class="from"><b>before_model (Entrada en turnos extra)</b></span><span class="ar">&#8594;</span><span class="to">Cortocircuita la sesión sin volver a invocar al LLM</span></div>
+              </div>
+            </div>
+          </button>
+
+          <!-- Tile 4: Model Spec Card (Row 2, Cols 7-9) -->
+          <div class="tile static sp2 v-spec" style="grid-area: 2 / 7 / 3 / 9">
+            <span class="ficon"><svg><use href="#i-spark"/></svg></span>
+            <div>
+              <h3>Motor de voz en tiempo real</h3>
+              <span class="spec-name">gemini-3.1-flash-live</span>
+              <p style="font-size:0.78rem; margin-top:4px;">temperature: 0.1 · Barge-In ON</p>
             </div>
           </div>
 
-          <!-- Happy Path 2 -->
-          <div class="tile sp3 v-white">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-key"/></svg></span>
+          <!-- Tile 5: PCI-DSS & PII Redaction (Row 3, Cols 1-4) -->
+          <button class="tile has-art sp3 v-tint2" style="grid-area: 3 / 1 / 4 / 5" type="button">
+            <span class="ficon"><svg><use href="#i-filter"/></svg></span>
+            <div class="art art-chips" aria-hidden="true">
+              <span class="on">TOK-4242</span>
+              <span class="on">PII Redacted</span>
+            </div>
             <div>
-              <span class="v-pill green">Happy Path 2 · Tu Caso de Autenticación OTP</span>
-              <h3 style="margin-top:6px;">Cobro Duplicado ($22.50) + Envío Obligatorio de OTP en Ventas</h3>
-              <ul class="short-list">
-                <li><b>Ledger Unificado:</b> Detecta <code>PMT-77301</code> y <code>PMT-77318</code> ($22.50 × 2).</li>
-                <li><b>Tu fix de OTP en Ventas:</b> Prohibido pedir OTP sin llamar a <code>send_authentication_otp</code>.</li>
-                <li><b>Guardarraíl en `place_new_order`:</b> Rechaza si <code>auth_status != "Pass"</code>.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver el código de tu fix de OTP</span>
+              <h3>Privacidad PCI-DSS y tokenización</h3>
+              <p>Los dígitos de tarjeta viajan como tokens DTMF aislados de la transcripción.</p>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Tu Caso Real: El Bug de OTP en Ventas/Upgrades (`sim__upgrade_internet_wfh`)</p>
-              <p>Cuando quitamos los parámetros pre-inyectados (<code>session_parameters: {}</code>), vimos que el modelo pedía el OTP de palabra pero olvidaba llamar antes a <code>send_authentication_otp</code>. Lo blindamos en 3 sitios:</p>
-              <div class="code-box">
-<span class="cm"># En place_new_order/python_function/python_code.py:</span>
-<span class="kw">if</span> context.state.get("auth_status") != "Pass":
-    <span class="kw">return</span> {
-        "status": "AUTH_REQUIRED",
-        "message": "Customer is not authenticated. You MUST call send_authentication_otp first, then validate_authentication_otp before placing an order."
-    }
-              </div>
+            <div class="detail">
+              <p>Las herramientas de pago (<code>process_payment</code>) operan exclusivamente sobre tokens (<code>dtmf_payment_token</code>), evitando almacenar numeración PAN o CVV en los logs de conversación.</p>
             </div>
-          </div>
+          </button>
 
-          <!-- Edge Case 1 -->
-          <div class="tile sp3 v-gem2">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-mic"/></svg></span>
+          <!-- Tile 6: Modular Codebase & CI/CD (Row 3, Cols 5-9) -->
+          <button class="tile has-art sp3 v-tone1" style="grid-area: 3 / 5 / 4 / 9" type="button">
+            <span class="ficon"><svg><use href="#i-cards"/></svg></span>
+            <div class="art art-loop" aria-hidden="true">
+              <span>cxas_app/</span><em>&rsaquo;</em><span>cxas lint</span><em>&rsaquo;</em><span class="hi">0 warnings</span>
+            </div>
             <div>
-              <span class="v-pill amber">Edge Case 1 · Tu Prueba en Vivo (“Excusez-moi”)</span>
-              <h3 style="margin-top:6px;">Barge-In en el Saludo + Regla de Mínimo 3 Palabras</h3>
-              <ul class="short-list">
-                <li><b>`bargeInAwareness: true`:</b> Detecta el corte de voz en tiempo real.</li>
-                <li><b>Regla de 3 palabras:</b> <i>“Excusez-moi”</i> o <i>“Hola”</i> NO cambia el idioma por error.</li>
-                <li><b>Re-emisión Legal:</b> Repite el aviso de grabación que quedó cortado.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver cómo funciona en el simulador de voz</span>
+              <h3>Estructura declarativa verificada</h3>
+              <p>155 archivos validados con 0 errores estructurales y versiones inmutables.</p>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Tu Prueba Real en el Simulador de Audio: Interrupción con “Excusez-moi”</p>
-              <div class="code-box">
-1. Usuario corta el saludo inicial diciendo solo: "Excusez-moi." (1 palabra).
-2. Gracias a la Regla de Mínimo 3 Palabras en global_instruction.txt:
-   → El agente NO cambia toda la sesión a francés por una simple interjección corta.
-3. Gracias a "bargeInConfig": {"bargeInAwareness": true} en app.json:
-   → El sistema sabe que la frase legal se truncó y vuelve a pronunciar:
-     "This call may be recorded for quality and training purposes..."
-              </div>
+            <div class="detail">
+              <p>Toda la configuración del agente, esquemas JSON de herramientas y callbacks están sincronizados con nuestro documento de diseño técnico (<code>tdd.md</code>) y validados con <code>cxas lint</code>.</p>
             </div>
-          </div>
-
-          <!-- Edge Case 2 -->
-          <div class="tile sp3 v-gemini v-full">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-filter"/></svg></span>
-            <div>
-              <span class="v-pill">Edge Case 2 · El Bug del `and` + Cierre sin Doble Frase</span>
-              <h3 style="margin-top:6px;">Candado `auth_status` + `before_model` & `after_model`</h3>
-              <ul class="short-list">
-                <li><b>Fix `and` → estricto:</b> Las 7 tools exigen <code>auth_status == "Pass"</code>.</li>
-                <li><b>Step-Up MFA:</b> Desactivar MFA exige PIN + OTP (<code>step_up_status</code>).</li>
-                <li><b>`CLOSING_STATES`:</b> Cuelga con 1 sola frase oficial sin inventar texto.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver por qué usamos before_model y after_model</span>
-            </div>
-            <div class="detail" hidden>
-              <p class="lead">Tus 2 Explicaciones Estrella: El Bug del `and` y `before_model` + `after_model`</p>
-              <div class="code-box">
-<span class="cm"># 1. El bug del "and" que descubrimos en las 7 tools sensibles (trace 712b675a):</span>
-<span class="bad">if auth_status != "Pass" and identification_status != "Pass":</span> <span class="cm"># ¡Daba False en cuanto se identificaba!</span>
-<span class="ok">if auth_status != "Pass": return {"status": "AUTH_REQUIRED"}</span> <span class="cm"># Ahora jamás pasa sin PIN/OTP.</span>
-
-<span class="cm"># 2. ¿Por qué usamos TANTO before_model COMO after_model para cerrar la llamada?</span>
-• after_model_callback (Portero de SALIDA): En el mismo turno en que el LLM llama a report_malicious_utterance
-  o execute_live_agent_handover, el LLM intenta inventarse una despedida ("I've called a representative...").
-  after_model le pisa esa frase inventada, pone la frase oficial verbatim y ejecuta end_session().
-• before_model_callback (Portero de ENTRADA): Si la plataforma envía un turno extra después,
-  before_model ve CLOSING_STATES activo y cortocircuita sin gastar ni una llamada más al LLM.
-              </div>
-            </div>
-          </div>
+          </button>
 
         </div>
       </div>
@@ -2282,125 +2345,244 @@ Turno 4 [M1 → M7 Account Mgmt]: Regresa automáticamente a M7.
     <footer class="notes"><div class="notes-inner">
       <div>
         <div class="note-card analogy">
-          <span class="note-tag">💡 Ejemplo cotidiano (Los 2 porteros: before_model y after_model)</span>
-          <p>Si te preguntan por qué pusimos el cierre en <b>ambos callbacks</b>: imagina un teatro. Si el espectador entra ya expulsado en el Turno 2, el <b>portero de la entrada (`before_model`)</b> ni siquiera abre la puerta del escenario (no llama al LLM). Pero si el espectador insulta en mitad del Turno 1 cuando el actor (`LLM`) ya está en el escenario y empieza a improvisar otra frase, el <b>director de salida (`after_model`)</b> le silencia el micro al actor, lanza la locución oficial grabada y baja el telón (`end_session`).</p>
-        </div>
-        <div class="note-card tech">
-          <span class="note-tag">🔧 Tu caso que te sabes al dedillo: Autenticación</span>
-          <p>Cuenta los <b>2 arreglos de autenticación</b>: 1) En Ventas (`place_new_order`), obligar a llamar primero a `send_authentication_otp` antes de pedir el código por voz; y 2) En las 7 tools sensibles, quitar el `and identification_status != "Pass"` para que identificar el teléfono nunca baste sin haber validado el PIN o el OTP (`auth_status == "Pass"`).</p>
+          <span class="note-tag">💡 Ejemplo sencillo (Sección 2.3 Arquitectura · 1:30 a 6:30)</span>
+          <p><b>1) Hub & Spoke:</b> En vez de un empleado con 32 botones que se confunde (<i>Instruction Rot</i>), tenemos un <b>Director de Recepción (`M1`)</b> y <b>5 especialistas</b> con solo 5 botones cada uno.
+          <br><b>2) Los 2 Porteros (`before_model` + `after_model`):</b> Si alguien insulta mientras el actor (`LLM`) ya está en el escenario, el <b>portero de salida (`after_model`)</b> le quita el micro en ese mismo turno, pone la frase oficial y cierra el telón (`end_session`). Y si intenta volver a entrar, el <b>portero de entrada (`before_model`)</b> ya no le abre.</p>
         </div>
       </div>
       <div class="note-card script">
-        <span class="note-tag">🗣️ Guion paso a paso para la Demo (2.2)</span>
+        <span class="note-tag">🗣️ Guion para decir al cliente (Haz clic en las tarjetas 1 y 2 al hablar)</span>
         <ul>
-          <li><b>1. Happy Path 1 (Reactivación M7→M3→M7):</b> “Cuando el cliente pide reactivar su línea suspendida por impago en <code>M7</code>, Python devuelve <code>BALANCE_OWED</code>. El Hub <code>M1</code> lo lleva a Facturación (<code>M3</code>), cobra la deuda poniendo <code>flag_val = 'balance_cleared'</code> y vuelve automáticamente a <code>M7</code> para encender la línea.”</li>
-          <li><b>2. Happy Path 2 (Duplicado y OTP):</b> “En el ledger unificado detectamos los dos cargos de 22,50$, reembolsamos el duplicado y, al contratar un upgrade, obligamos por código a enviar <code>send_authentication_otp</code> antes de validar el código.”</li>
-          <li><b>3. Edge Cases (Barge-In y Cierre):</b> “Con <code>bargeInAwareness: true</code> y la regla de 3 palabras, si interrumpimos el saludo diciendo <i>‘Excusez-moi’</i>, no cambia el idioma por accidente y repite el aviso legal de grabación.”</li>
+          <li><b>Topología Hub-and-Spoke:</b> “Diseñamos una arquitectura en estrella donde el Hub <code>M1</code> centraliza la identificación y el estado, y delega en 5 especialistas sin hijos (<code>childAgents: []</code>). Como en CES los sub-agentes no heredan el prompt del Root, compartimos las reglas críticas mediante <code>global_instruction.txt</code> y variables de sesión.”</li>
+          <li><b>Seguridad de 2 Niveles en Python:</b> “Separamos la identificación básica de la autenticación con PIN/OTP (<code>auth_status</code>) y del doble factor (<code>step_up_status</code>). El código Python de cada herramienta verifica este estado antes de ejecutarse.”</li>
         </ul>
       </div>
     </div></footer>
   </section>
 
-  <!-- ================= SLIDE 3: 2.3 ARCHITECTURE & DESIGN DOCS ================= -->
-  <section class="slide" data-name="2.3 · Arquitectura y Diseño">
+  <!-- ================= STEP 3: LIVE DEMO SCENARIOS (2.2) ================= -->
+  <section class="slide" data-name="3 · Flujos en Vivo (Demo)">
     <div class="canvas">
       <div class="inner">
-        <div class="head">
-          <div>
-            <span class="eyebrow"><span class="step-num">3</span> Sección 2.3 · Architecture & Design Docs (`tdd.md`)</span>
-            <h2>Topología Hub-and-Spoke, Estado Compartido y Seguridad 2 Niveles</h2>
-          </div>
-          <div class="stats">
-            <div class="stat"><b>1 + 5</b><span>Hub + Especialistas</span></div>
-            <div class="stat"><b>32</b><span>Tools en Python</span></div>
-            <div class="stat"><b>2 Tiers</b><span>Auth vs Step-Up</span></div>
-            <div class="stat"><b>0 Ciclos</b><span>Regla Lint S004</span></div>
+        <div class="step-head">
+          <span class="step-num-big s3">3</span>
+          <div class="head">
+            <h2>Recorridos de usuario en producción (Live Demo)</h2>
+            <p class="tagline">Resolución transaccional entre múltiples especialistas y manejo determinista de casos límite en voz.</p>
           </div>
         </div>
 
-        <div class="bento grid-4">
+        <div class="bento cols8">
 
-          <!-- Topology -->
-          <div class="tile sp3 v-white">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-panel"/></svg></span>
+          <!-- Journey 1: Cross-Agent Restore Loop (Rows 1-2, Cols 1-5) -->
+          <button class="tile has-art sp3 rw2 v-gemini" style="grid-area: 1 / 1 / 3 / 5" type="button">
+            <span class="ficon"><svg><use href="#i-nav"/></svg></span>
+            <div class="art art-loop" aria-hidden="true">
+              <span>M7</span><em>&rsaquo;</em><span>M1</span><em>&rsaquo;</em><span class="hi">M3 Pago</span><em>&rsaquo;</em><span>M1</span><em>&rsaquo;</em><span class="hi">M7 Activa</span>
+            </div>
             <div>
-              <span class="v-pill blue">Descomposición de Agentes</span>
-              <h3 style="margin-top:6px;">Por qué Hub-and-Spoke evita el “Instruction Rot”</h3>
-              <ul class="short-list">
-                <li><b>`Root_agent (M1)`:</b> Único concentrador con permisos de enrutamiento.</li>
-                <li><b>5 Especialistas (`M3–M7`):</b> Tienen <code>childAgents: []</code> (árbol sin ciclos).</li>
-                <li><b>Foco cognitivo:</b> Cada agente ve solo 5–6 tools de su dominio.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver el diagrama Hub-and-Spoke</span>
+              <h3>Flujo 1 · Reactivación de línea con cobro previo</h3>
+              <p>Orquestación automática entre Gestión de Cuenta y Facturación conservando el cliente autenticado.</p>
+              <span class="chip light">Persistencia de estado en 4 saltos</span>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Diagrama Hub-and-Spoke (`tdd.md`)</p>
-              <div class="code-box">
-                      ┌──────────────────────────┐
-                      │   Root_agent (M1 Hub)    │
-                      │ Identification, Auth,    │
-                      │ Triage & Cross-Routing   │
-                      └────────────┬─────────────┘
-        ┌──────────────────┬───────┴───────┬──────────────────┬────────────────────┐
-        ▼                  ▼               ▼                  ▼                    ▼
-┌───────────────┐ ┌─────────────────┐ ┌──────────────┐ ┌────────────────┐ ┌────────────────────┐
-│  M3: billing  │ │ M4: tech_support│ │  M5: sales   │ │M6: appointment │ │ M7: account_mgmt   │
-│  _specialist  │ │   _specialist   │ │ _equipment   │ │  _specialist   │ │   _specialist      │
-└───────────────┘ └─────────────────┘ └──────────────┘ └────────────────┘ └────────────────────┘
+            <div class="detail">
+              <div class="flow">
+                <div class="node"><span class="k">1 · M7 Cuenta</span><span class="v">Intenta restaurar<br>→ BALANCE_OWED</span></div>
+                <span class="arrow-i"><svg aria-hidden="true"><use href="#i-right"/></svg></span>
+                <div class="node"><span class="k">2 · M3 Facturación</span><span class="v">process_payment<br>→ balance_cleared</span></div>
+                <span class="arrow-i"><svg aria-hidden="true"><use href="#i-right"/></svg></span>
+                <div class="node strong"><span class="k">3 · M7 Cuenta</span><span class="v">execute_suspend_restore<br>→ Línea activa</span></div>
               </div>
-              <p><b>Importante en CES:</b> Los sub-agentes <b>NO heredan</b> el <code>instruction.txt</code> del <code>Root_agent</code>; solo comparten <code>global_instruction.txt</code> y el diccionario <code>context.state</code>.</p>
+              <p>El cliente pide reactivar su línea suspendida por falta de pago. El sistema impide activarla gratis, procesa el abono en Facturación y regresa automáticamente a Gestión de Cuenta para encender el servicio sin volver a pedir el PIN.</p>
             </div>
-          </div>
+          </button>
 
-          <!-- Two-Tier Security -->
-          <div class="tile sp3 v-gem2">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-key"/></svg></span>
+          <!-- Journey 2: Duplicate Payment & OTP Upgrade (Row 1, Cols 5-9) -->
+          <button class="tile has-art wide-art sp3 v-outline" style="grid-area: 1 / 5 / 2 / 9" type="button">
+            <span class="ficon"><svg><use href="#i-cart"/></svg></span>
+            <div class="art art-loop" aria-hidden="true">
+              <span>$22.50 × 2</span><em>&rsaquo;</em><span class="hi">Refund</span>
+            </div>
             <div>
-              <span class="v-pill amber">Modelo de Seguridad en Python</span>
-              <h3 style="margin-top:6px;">3 Niveles de Confianza (`id` → `auth` → `step_up`)</h3>
-              <ul class="short-list">
-                <li><b>Nivel 0 (`identification_status`):</b> Consultas generales y cortes de fibra.</li>
-                <li><b>Nivel 1 (`auth_status = Pass`):</b> PIN u OTP → Pagos, Pedidos, Cancelación.</li>
-                <li><b>Nivel 2 (`step_up_status = Pass`):</b> PIN + OTP → Desactivar MFA (`manage_mfa`).</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver la matriz de protección por Tool</span>
+              <h3>Flujo 2 · Reembolso duplicado y contratación con OTP</h3>
+              <p>Conciliación en el ledger de pagos y envío obligatorio de código OTP antes de contratar.</p>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Matriz de Guardarraíles Deterministas en Python</p>
-              <div class="code-box">
-• Nivel 0 (Sin PIN):       check_area_outage, get_plan_catalog, evaluate_routing_rules
-• Nivel 1 (auth_status):   process_payment, place_new_order, cancel_or_port_service,
-                           execute_suspend_restore, commit_appointment_reschedule
-• Nivel 2 (step_up_status): manage_mfa(action="disable") -> Exige PIN + OTP verificados!
-              </div>
+            <div class="detail">
+              <p><b>Caso A (Reembolso):</b> El agente consulta <code>list_recent_payments</code>, identifica dos cargos idénticos de <code>$22.50</code> (<code>PMT-77301</code> y <code>PMT-77318</code>) y ejecuta <code>refund_duplicate_payment</code>.</p>
+              <p><b>Caso B (Upgrade con OTP):</b> Antes de invocar <code>place_new_order</code> para subir la velocidad de fibra, el sistema exige disparar primero <code>send_authentication_otp</code> y validar el código con <code>validate_authentication_otp</code>.</p>
             </div>
-          </div>
+          </button>
 
-          <!-- CLOSING_STATES -->
-          <div class="tile sp6 v-gemini v-full">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-dial"/></svg></span>
+          <!-- Edge Case 1: Voice Barge-In & 3-Word Language Lock (Row 2, Cols 5-9) -->
+          <button class="tile lift has-art wide-art sp3 v-cyan" style="grid-area: 2 / 5 / 3 / 9" type="button">
+            <span class="ficon"><svg><use href="#i-mic"/></svg></span>
+            <div class="art art-wave" aria-hidden="true">
+              <i style="height:35%"></i><i style="height:85%"></i><i style="height:55%"></i><i style="height:100%"></i><i style="height:45%"></i><i style="height:75%"></i><i style="height:30%"></i>
+            </div>
             <div>
-              <h3>Diccionario Unificado `CLOSING_STATES` en los 6 Agentes</h3>
-              <div class="pill-row">
-                <span class="v-pill">`handover_completed` → `handoff_str`</span>
-                <span class="v-pill">`malicious_terminated` → `malicious_str`</span>
-                <span class="v-pill">Traducción Dinámica EN / FR-CA / ES-US</span>
-                <span class="v-pill">Tokens DTMF para Tarjetas (PCI-DSS)</span>
-              </div>
-              <span class="click-hint">＋ Clic para ver el código refactorizado de CLOSING_STATES</span>
+              <h3>Caso Límite 1 · Interrupción de voz (Barge-In) y bloqueo de idioma</h3>
+              <p>Si el usuario corta el saludo con una interjección (“Excusez-moi”), mantiene el idioma y repite el aviso legal.</p>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Refactor de `CLOSING_STATES` en `before_model` y `after_model`</p>
-              <div class="code-box">
-CLOSING_STATES = {
-    "handover_completed": "handoff_str",
-    "malicious_terminated": "malicious_str",
-}
-<span class="cm"># Revisamos que los 6 agentes usen exactamente las mismas claves.</span>
-<span class="cm"># Así ningún nombre antiguo ("malicious_input") puede desincronizar el cierre.</span>
+            <div class="detail">
+              <p>Cuando el cliente interrumpe el saludo inicial con una sola palabra (por ejemplo, <i>“Excusez-moi”</i> o <i>“What?”</i>):</p>
+              <div class="rows">
+                <div class="maprow"><span class="from"><b>bargeInAwareness: true</b></span><span class="ar">&#8594;</span><span class="to">Detecta que el aviso de grabación fue cortado y lo re-emite completo</span></div>
+                <div class="maprow"><span class="from"><b>Umbral mínimo de 3 palabras</b></span><span class="ar">&#8594;</span><span class="to">Impide cambiar toda la llamada de idioma por una interjección corta</span></div>
               </div>
             </div>
+          </button>
+
+          <!-- Edge Case 2: Card Decline & Retry (Row 3, Cols 1-4) -->
+          <button class="tile has-art sp3 v-tint" style="grid-area: 3 / 1 / 4 / 5" type="button">
+            <span class="ficon"><svg><use href="#i-clock"/></svg></span>
+            <div class="art art-loop" aria-hidden="true">
+              <span>Declined</span><em>&rsaquo;</em><span class="hi">Retry Approved</span>
+            </div>
+            <div>
+              <h3>Caso Límite 2 · Tarjeta rechazada y reintento en llamada</h3>
+              <p>Recuperación elegante ante fallo de pasarela con segunda tarjeta sin perder el flujo.</p>
+            </div>
+            <div class="detail">
+              <p>Si el primer token de pago devuelve <code>PAYMENT_DECLINED</code>, <code>billing_specialist</code> informa el motivo, solicita un método alternativo y completa el cobro en el segundo intento.</p>
+            </div>
+          </button>
+
+          <!-- Edge Case 3: Step-Up MFA & Deflection (Row 3, Cols 5-9) -->
+          <button class="tile has-art sp3 v-solid" style="grid-area: 3 / 5 / 4 / 9" type="button">
+            <span class="ficon"><svg><use href="#i-key"/></svg></span>
+            <div class="art art-loop" aria-hidden="true">
+              <span>PIN + OTP</span><em>&rsaquo;</em><span class="hi">MFA Off / Handoff</span>
+            </div>
+            <div>
+              <h3>Caso Límite 3 · Doble factor MFA y escalada inmediata</h3>
+              <p>Exigencia de segundo factor para desactivar MFA y transferencia inmediata ante fraude o disputas &gt;$25.</p>
+            </div>
+            <div class="detail">
+              <p>Para desactivar el MFA (<code>manage_mfa(action="disable")</code>), haber entrado con el PIN no es suficiente: el código exige completar también el desafío OTP (<code>step_up_status == "Pass"</code>).</p>
+            </div>
+          </button>
+
+        </div>
+      </div>
+    </div>
+    <footer class="notes"><div class="notes-inner">
+      <div>
+        <div class="note-card tech">
+          <span class="note-tag">🔧 Tus casos reales para brillar en la Demo (Sección 2.2 · 6:30 a 11:00)</span>
+          <p>Aquí están exactamente los casos que hemos trabajado juntos:
+          <br>• <b>Tarjeta 1:</b> El bucle <code>M7 → M1 → M3 → M1 → M7</code> para que no reactive gratis.
+          <br>• <b>Tarjeta 2:</b> Tu caso de <code>send_authentication_otp</code> obligatorio antes de pedir el código en Ventas + los dos cobros de $22.50.
+          <br>• <b>Tarjeta 3:</b> Tu prueba real diciendo <i>“Excusez-moi”</i> en el saludo (Barge-In + regla de 3 palabras).</p>
+        </div>
+      </div>
+      <div class="note-card script">
+        <span class="note-tag">🗣️ Guion mientras muestras la Demo en Vivo</span>
+        <ul>
+          <li><b>Antes de lanzar la llamada:</b> “Ejecutamos contra perfiles deterministas en memoria para aislar la demostración de dependencias externas.”</li>
+          <li><b>En el Happy Path:</b> “Fijaos cómo al pedir reactivar la línea suspendida, el agente recuerda que ya estamos autenticados al saltar de Gestión de Cuenta a Facturación y de vuelta.”</li>
+          <li><b>En el Edge Case de Voz / Auth:</b> “Y si interrumpimos el saludo diciendo solo <i>‘Excusez-moi’</i>, el sistema aplica la regla de mínimo 3 palabras para no cambiar el idioma por error y vuelve a pronunciar el aviso obligatorio de grabación.”</li>
+        </ul>
+      </div>
+    </div></footer>
+  </section>
+
+  <!-- ================= STEP 4: QUALITY & CONTINUOUS OPTIMIZATION (2.5) ================= -->
+  <section class="slide" data-name="4 · Calidad y Fiabilidad">
+    <div class="canvas">
+      <div class="inner">
+        <div class="step-head">
+          <span class="step-num-big s1">4</span>
+          <div class="head">
+            <h2>Calidad verificada con datos y mejora continua</h2>
+            <p class="tagline">Evaluación automatizada sin estados pre-inyectados, auditoría de trazas y monitorización en tiempo real.</p>
           </div>
+        </div>
+
+        <div class="bento cols8">
+
+          <!-- Tile 1: 100% Core Pass Rate (Rows 1-2, Cols 1-3) -->
+          <button class="tile has-art sp2 rw2 v-gemini" style="grid-area: 1 / 1 / 3 / 4" type="button">
+            <span class="ficon"><svg><use href="#i-spark"/></svg></span>
+            <div class="art art-stack light" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div>
+              <h3>Validación End-to-End</h3>
+              <span class="bignum">100%</span>
+              <p>de aprobación en la suite principal de simulaciones</p>
+              <span class="chip light">90% en escenarios ciegos (18/20)</span>
+            </div>
+            <div class="detail">
+              <p>Todas las simulaciones se ejecutan desde un estado inicial limpio (<code>session_parameters: {}</code>), obligando al agente a ganar cada variable de sesión mediante llamadas reales a las herramientas:</p>
+              <table class="matrix">
+                <tr><th>Fase de Ingeniería</th><th>Resultado</th><th>Hito Técnico</th><th></th></tr>
+                <tr><td>Baseline Multilingüe (v1.3)</td><td>63 / 90</td><td>Detección dinámica EN / FR-CA / ES-US</td><td><span class="mark yes">✓</span></td></tr>
+                <tr><td>Orquestación Multi-Agente (v2.0)</td><td>71 / 90 (18/20 ciegos)</td><td>Bucle completo M7 ⇄ M3 + Reglas Globales</td><td><span class="mark yes">✓</span></td></tr>
+                <tr><td>Blindaje por Trazas (v2.1 Actual)</td><td>100% Core Suite</td><td>Candado estricto Auth + Cierre Determinista</td><td><span class="mark yes">✓</span></td></tr>
+              </table>
+            </div>
+          </button>
+
+          <!-- Tile 2: Continuous Optimization Cycle / Hill-Climbing (Rows 1-2, Cols 4-9) -->
+          <button class="tile has-art wide-art sp3 rw2 v-outline" style="grid-area: 1 / 4 / 3 / 9" type="button">
+            <span class="ficon"><svg><use href="#i-history"/></svg></span>
+            <div class="art art-loop" aria-hidden="true">
+              <span>1 · Traza</span><em>&rsaquo;</em><span>2 · Guardarraíl</span><em>&rsaquo;</em><span class="hi">3 · Cero Regresión</span>
+            </div>
+            <div>
+              <h3>Metodología de optimización guiada por trazas</h3>
+              <p>Caso real de corrección en autenticación OTP y cierre determinista de llamadas verificando cero regresiones en los demás dominios.</p>
+            </div>
+            <div class="detail">
+              <div class="flow">
+                <div class="node"><span class="k">1 · Detección en Traza</span><span class="v">Petición de OTP sin envío<br>y condición booleana débil</span></div>
+                <span class="arrow-i"><svg aria-hidden="true"><use href="#i-right"/></svg></span>
+                <div class="node"><span class="k">2 · Corrección Estructural</span><span class="v">Regla send_authentication_otp<br>+ candado auth_status != Pass</span></div>
+                <span class="arrow-i"><svg aria-hidden="true"><use href="#i-right"/></svg></span>
+                <div class="node strong"><span class="k">3 · Verificación Global</span><span class="v">100% Pass en los 9 flujos<br>0 regresiones en Pagos/Citas</span></div>
+              </div>
+              <p><b>Caso de Estudio 1 (Autenticación en Ventas y MFA):</b></p>
+              <div class="code"><span class="cm"># Antes (permitía paso tras identificar el teléfono sin PIN/OTP):</span>
+if auth_status != "Pass" and identification_status != "Pass": ...
+
+<span class="cm"># Después (exige PIN u OTP verificado + envío previo de send_authentication_otp):</span>
+<mark>if context.state.get("auth_status") != "Pass": return {"status": "AUTH_REQUIRED"}</mark></div>
+              <p><b>Caso de Estudio 2 (Locución Única al Cerrar o Transferir):</b> Unificamos el mapa de estados de cierre (<code>CLOSING_STATES</code>) entre <code>after_model_callback</code> y <code>before_model_callback</code> para evitar que el modelo improvise una segunda despedida.</p>
+            </div>
+          </button>
+
+          <!-- Tile 3: Hallucination & Safety Controls (Row 3, Cols 1-4) -->
+          <button class="tile has-art sp3 v-cyan" style="grid-area: 3 / 1 / 4 / 5" type="button">
+            <span class="ficon"><svg><use href="#i-filter"/></svg></span>
+            <div class="art art-chips" aria-hidden="true">
+              <span class="on">Hallucination: ENABLED</span>
+              <span class="on">Gate 6: PASS</span>
+            </div>
+            <div>
+              <h3>Control anti-alucinación y seguridad</h3>
+              <p>Métrica de fidelidad activa y bloqueo inmediato ante entradas maliciosas.</p>
+            </div>
+            <div class="detail">
+              <p>Configuración verificada en producción (<code>app.json</code>):</p>
+              <div class="rows">
+                <div class="maprow"><span class="from"><b>goldenHallucinationMetricBehavior</b></span><span class="ar">&#8594;</span><span class="to">ENABLED (verificación estricta contra datos de herramientas)</span></div>
+                <div class="maprow"><span class="from"><b>Defensa ante Prompt Injection</b></span><span class="ar">&#8594;</span><span class="to">report_malicious_utterance + cierre determinista de sesión</span></div>
+              </div>
+            </div>
+          </button>
+
+          <!-- Tile 4: CCAI Insights Observability (Row 3, Cols 5-9) -->
+          <button class="tile has-art sp3 v-solid" style="grid-area: 3 / 5 / 4 / 9" type="button">
+            <span class="ficon"><svg><use href="#i-eye"/></svg></span>
+            <div class="art art-loop" aria-hidden="true">
+              <span>CCAI Insights</span><em>&rsaquo;</em><span class="hi">Auto-Labeling</span>
+            </div>
+            <div>
+              <h3>Observabilidad continua en CCAI Insights</h3>
+              <p>Etiquetado automático de cumplimiento legal, sentimiento y contención.</p>
+            </div>
+            <div class="detail">
+              <p>Scorecards configurados en Contact Center AI Insights para auditar el 100% de las llamadas en producción y alertar si una conversación supera los 8 turnos.</p>
+            </div>
+          </button>
 
         </div>
       </div>
@@ -2408,103 +2590,73 @@ CLOSING_STATES = {
     <footer class="notes"><div class="notes-inner">
       <div>
         <div class="note-card analogy">
-          <span class="note-tag">💡 Ejemplo cotidiano (El Director y los 5 Especialistas)</span>
-          <p>En vez de tener un solo operador con 32 botones en la mesa que se lía entre cobrar una factura y cancelar una línea (<i>Instruction Rot</i>), tenemos un <b>Director de Recepción (`Root_agent`)</b> y <b>5 mesas de especialistas</b> con solo 5 botones cada una y una tarjeta magnética (`context.state`) donde viaja si el cliente ya puso su PIN.</p>
-        </div>
-        <div class="note-card tech">
-          <span class="note-tag">🔧 Detalle que impresiona al evaluador</span>
-          <p>Explica que en Google Cloud CES los sub-agentes <b>no leen el prompt del `Root_agent`</b>. Por eso pusimos las reglas universales (idioma de 3 palabras, OTP obligatorio y cierre verbatim) en `global_instruction.txt` y en los callbacks de los 6 agentes.</p>
+          <span class="note-tag">💡 Para ti (Sección 2.5 Quality & Hill-Climbing · 11:00 a 17:00)</span>
+          <p>Fíjate que en la pantalla el cliente ve un título súper ejecutivo (<b>“Metodología de optimización guiada por trazas”</b>), pero al hacer clic en la <b>Tarjeta 2</b> tienes exactamente tu historia de <b>Hill-Climbing</b> (`Failure → Fix → No Regression`) con el caso de `send_authentication_otp` y el `and` de `auth_status`.</p>
         </div>
       </div>
       <div class="note-card script">
-        <span class="note-tag">🗣️ Guion paso a paso (2.3 Arquitectura)</span>
+        <span class="note-tag">🗣️ Cómo contar tu historia de Hill-Climbing al tribunal</span>
         <ul>
-          <li><b>1. Hub-and-Spoke:</b> “Separamos el sistema en 1 Hub (<code>Root_agent</code>) y 5 especialistas con <code>childAgents: []</code>. Esto garantiza cero ciclos en el grafo (regla <code>S004</code>) y evita el <i>Instruction Rot</i> al limitar cada especialista a sus herramientas.”</li>
-          <li><b>2. Seguridad en 2 Niveles:</b> “Las funciones Python distinguen entre identificación básica, autenticación de nivel 1 (<code>auth_status</code> con PIN u OTP) y nivel 2 (<code>step_up_status</code> con doble factor para desactivar MFA).”</li>
-          <li><b>3. Callbacks Unificados:</b> “Sincronizamos el diccionario <code>CLOSING_STATES</code> entre <code>before_model</code> y <code>after_model</code> en los 6 agentes para que cualquier transferencia o bloqueo pronuncie la frase exacta en el idioma activo y cierre la sesión.”</li>
+          <li><b>1. El Fallo (Failure):</b> “Al auditar las simulaciones sin parámetros pre-cargados (<code>session_parameters: {}</code>), detectamos en las trazas dos problemas: en los upgrades de internet el modelo pedía el código OTP de voz sin haber invocado antes la herramienta <code>send_authentication_otp</code>, y en 7 herramientas sensibles había una condición con <code>and</code> que se desactivaba en cuanto se identificaba el teléfono.”</li>
+          <li><b>2. El Arreglo (Fix):</b> “Añadimos la instrucción obligatoria en <code>global_instruction.txt</code> para enviar siempre <code>send_authentication_otp</code> antes de pedir el código y pusimos el candado estricto <code>if auth_status != 'Pass'</code> en Python.”</li>
+          <li><b>3. Sin Regresión (No Regression):</b> “Volvimos a lanzar toda la suite de evaluación con <code>goldenHallucinationMetricBehavior: ENABLED</code> y confirmamos un <b>100% de aprobación sin regresiones</b> en pagos, reembolsos ni citas.”</li>
         </ul>
       </div>
     </div></footer>
   </section>
 
-  <!-- ================= SLIDE 4: 2.4 EXPANSION ROADMAP ================= -->
-  <section class="slide" data-name="2.4 · Roadmap de Expansión">
+  <!-- ================= STEP 5: EXPANSION ROADMAP (2.4) ================= -->
+  <section class="slide" data-name="5 · Hoja de Ruta y Escalado">
     <div class="canvas">
       <div class="inner">
-        <div class="head">
-          <div>
-            <span class="eyebrow"><span class="step-num">4</span> Sección 2.4 · Expansion Roadmap & Migration</span>
-            <h2>Próximos CUJs, Integración Backend, Latencia y Migración DFCX</h2>
-          </div>
-          <div class="stats">
-            <div class="stat"><b>88%</b><span>Meta Contención Q4</span></div>
-            <div class="stat"><b>&lt;750ms</b><span>Presupuesto Turno</span></div>
-            <div class="stat"><b>Apigee X</b><span>Pasarela mTLS</span></div>
-            <div class="stat"><b>N→1</b><span>Colapso Páginas DFCX</span></div>
+        <div class="step-head">
+          <span class="step-num-big s2">5</span>
+          <div class="head">
+            <h2>Hoja de ruta de expansión e integración empresarial</h2>
+            <p class="tagline">Evolución hacia el 88% de contención, pasarela Apigee mTLS y consolidación desde Dialogflow CX.</p>
           </div>
         </div>
 
-        <div class="bento grid-4">
+        <div class="bento closing-cards">
 
-          <!-- Next CUJs -->
-          <div class="tile sp3 v-white">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-cart"/></svg></span>
+          <!-- Horizon 1 -->
+          <button class="tile has-art sp2 v-outline flat" type="button">
+            <span class="ficon"><svg><use href="#i-tag"/></svg></span>
             <div>
-              <span class="v-pill blue">Próximos CUJs por Impacto</span>
-              <h3 style="margin-top:6px;">¿Qué añadimos en Fase 2 para llegar al 88%?</h3>
-              <ul class="short-list">
-                <li><b>1. Planes de Pago Fraccionados (`M3`):</b> Pagar 50% hoy para reactivar línea.</li>
-                <li><b>2. Activación eSIM (`M7`):</b> Reutilizando nuestro candado <code>step_up_status</code>.</li>
-                <li><b>3. PyME / B2B Light:</b> Atender cuentas de hasta 5 líneas sin transferir.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver matriz de impacto vs esfuerzo</span>
+              <h3>Ola 1 · Acuerdos de pago y eSIM</h3>
+              <p>Planes fraccionados al 50% en Facturación y activación digital de eSIM con Step-Up MFA.</p>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Priorización de Nuevos CUJs (Q3–Q4)</p>
-              <p>Hoy el 40% de los clientes con línea suspendida (`M7 → M3`) no pueden pagar los `$85.50` íntegros en el acto. Añadir <code>create_payment_arrangement</code> en `M3` permite cobrar el 50% inmediato, poner `flag_val = "balance_cleared"` y reactivar la línea en `M7`.</p>
+            <div class="art art-step" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+            <div class="detail">
+              <p><b>Priorizado por impacto directo en retención:</b> El 40% de los clientes con línea suspendida no pueden abonar el 100% de la deuda en el acto. Permitir una promesa de pago del 50% en <code>M3</code> eleva la contención global del 78% al 88%.</p>
             </div>
-          </div>
+          </button>
 
-          <!-- Backend & Quotas -->
-          <div class="tile sp3 v-gem2">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-clock"/></svg></span>
+          <!-- Horizon 2 -->
+          <button class="tile has-art sp2 v-solid" type="button">
+            <span class="ficon"><svg><use href="#i-panel"/></svg></span>
             <div>
-              <span class="v-pill green">Integraciones & Cuotas GCP</span>
-              <h3 style="margin-top:6px;">Apigee mTLS, DTMF PCI-DSS y Picos por Cortes (Outages)</h3>
-              <ul class="short-list">
-                <li><b>PCI-DSS Real:</b> La pasarela SIP convierte tonos DTMF en <code>TOK-xxxx</code>.</li>
-                <li><b>Latencia &lt;750ms:</b> Cloud Run min-instances + caché Redis en <code>M4</code>.</li>
-                <li><b>Cuotas Vertex AI:</b> Provisioned Throughput para picos 10x por tormentas/averías.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver arquitectura de producción</span>
+              <h3>Ola 2 · Apigee mTLS y Picos 10x</h3>
+              <p>Integración con CRM en &lt;750ms por turno y caché Redis para tormentas de averías.</p>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Protección frente a Picos de Tráfico (Outage Storms)</p>
-              <div class="code-box">
-Cuando cae un nodo de fibra regional, entran 5.000 llamadas en 10 minutos preguntando por internet:
-1. `check_area_outage` lee de Redis Memorystore en 12ms (Nivel 0, sin golpear el CRM).
-2. El cliente recibe confirmación del corte y hora estimada de arreglo en el Turno 2 (<25 seg de llamada).
-              </div>
+            <div class="art art-step" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></div>
+            <div class="detail">
+              <p>Durante una caída masiva de fibra regional, las llamadas se multiplican por 10. Servir <code>check_area_outage</code> desde caché Memorystore en 12ms absorbe el pico en Nivel 0 sin consumir cuota del CRM.</p>
             </div>
-          </div>
+          </button>
 
-          <!-- DFCX Migration Philosophy -->
-          <div class="tile sp6 v-gemini v-full">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-cards"/></svg></span>
+          <!-- Horizon 3 -->
+          <button class="tile has-art sp2 v-gemini" type="button">
+            <span class="ficon"><svg><use href="#i-cards"/></svg></span>
             <div>
-              <h3>Filosofía de Migración DFCX → CES: Rediseñar en vez de Copiar 1:1</h3>
-              <div class="pill-row">
-                <span class="v-pill">Colapsar 40+ Páginas DFCX en 5 Especialistas</span>
-                <span class="v-pill">Reemplazar Transition Routes por State Guards en Python</span>
-                <span class="v-pill">Mantener Reglas Deterministas solo en Hops Multi-Dominio</span>
-              </div>
-              <span class="click-hint">＋ Clic para ver la comparativa DFCX vs CES</span>
+              <h3>Ola 3 · Consolidación DFCX a CES</h3>
+              <p>Rediseño de 40+ páginas rígidas en 5 especialistas gobernados por estado en Python.</p>
             </div>
-            <div class="detail" hidden>
-              <p class="lead">Por qué no copiamos grafos DFCX nodo por nodo</p>
-              <p>Copiar cada página de Dialogflow CX como un sub-agente en CES añade saltos innecesarios y latencia. En cambio, agrupamos todas las páginas de un dominio en un único especialista (`M3` Facturación, `M7` Cuenta) y dejamos que las tools de Python validen las precondiciones.</p>
+            <div class="art art-step" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+            <div class="detail">
+              <p>En lugar de migrar cada página de Dialogflow CX 1 a 1 (lo que multiplica la latencia entre saltos), agrupamos cada dominio de negocio en un único especialista y trasladamos las reglas de negocio a validaciones deterministas en Python.</p>
             </div>
-          </div>
+          </button>
 
         </div>
       </div>
@@ -2512,141 +2664,22 @@ Cuando cae un nodo de fibra regional, entran 5.000 llamadas en 10 minutos pregun
     <footer class="notes"><div class="notes-inner">
       <div>
         <div class="note-card analogy">
-          <span class="note-tag">💡 Ejemplo cotidiano (De raíles de tren DFCX a autopista con guardarraíles)</span>
-          <p>En DFCX el usuario iba sobre vías de tren rígidas: si preguntaba por su factura mientras cambiaba una cita, descarrilaba. En CES construimos una <b>autopista amplia con guardarraíles de acero en Python</b>: el usuario puede conversar con fluidez, pero los bordes de seguridad son infranqueables.</p>
-        </div>
-        <div class="note-card tech">
-          <span class="note-tag">🔧 Respuesta clave sobre picos de tráfico</span>
-          <p>En una teleco, el mayor riesgo técnico es una caída de red regional (10x llamadas en minutos). Al servir `check_area_outage` en Nivel 0 desde caché en 12ms, contenemos el pico sin saturar el CRM ni las cuotas de Vertex AI.</p>
+          <span class="note-tag">💡 Ejemplo sencillo (Sección 2.4 Roadmap · 17:00 a 21:00)</span>
+          <p>Para explicar la <b>migración de DFCX a CES</b>: no hemos cambiado una locomotora vieja por un tren moderno sobre las mismas vías estrechas (<i>lift-and-shift</i>), sino que hemos construido una <b>autopista de 5 carriles con guardarraíles de acero en Python</b>.</p>
         </div>
       </div>
       <div class="note-card script">
-        <span class="note-tag">🗣️ Guion paso a paso (2.4 Roadmap)</span>
+        <span class="note-tag">🗣️ Guion de cierre y paso a preguntas (Q&A)</span>
         <ul>
-          <li><b>1. Próximos CUJs:</b> “Priorizamos Planes de Pago Fraccionados en <code>M3</code> para clientes que no pueden abonar toda su deuda al reactivar línea, y activación de eSIM en <code>M7</code> reutilizando nuestro <code>step_up_status</code>.”</li>
-          <li><b>2. Integraciones y Latencia:</b> “En producción conectamos las tools vía Apigee X con mTLS, aislamiento PCI-DSS por tonos DTMF y caché Redis para absorber picos 10x durante cortes de red manteniendo menos de 750ms por turno.”</li>
-          <li><b>3. Migración DFCX:</b> “En vez de migrar páginas DFCX 1 a 1, colapsamos cada dominio en un especialista y movemos las rutas rígidas a guardas de estado en Python.”</li>
+          <li><b>1. Siguientes casos de uso:</b> “En la Fase 2 incorporamos planes de pago fraccionados en Facturación y provisión de eSIM apoyándonos en el doble factor MFA que ya tenemos activo.”</li>
+          <li><b>2. Escalabilidad y Migración DFCX:</b> “Conectamos las herramientas mediante Apigee con un presupuesto de latencia inferior a 750ms y consolidamos las antiguas páginas de DFCX en nuestros 5 especialistas por dominio. Muchas gracias, quedo a vuestra disposición para cualquier pregunta.”</li>
         </ul>
       </div>
     </div></footer>
   </section>
 
-  <!-- ================= SLIDE 5: 2.5 QUALITY REPORTS & HILL-CLIMBING ================= -->
-  <section class="slide" data-name="2.5 · Calidad y Hill-Climbing">
-    <div class="canvas">
-      <div class="inner">
-        <div class="head">
-          <div>
-            <span class="eyebrow"><span class="step-num">5</span> Sección 2.5 · Quality Reports & Hill-Climbing Story</span>
-            <h2>De 63/90 al 100% en Simulaciones Reales con Cero Regresiones</h2>
-          </div>
-          <div class="stats">
-            <div class="stat"><b>9 / 9</b><span>Core Sims (100%)</span></div>
-            <div class="stat"><b>18 / 20</b><span>Secret Evals (90%)</span></div>
-            <div class="stat"><b>0 / 0</b><span>Lint Errors / Warns</span></div>
-            <div class="stat"><b>ENABLED</b><span>Hallucination Metric</span></div>
-          </div>
-        </div>
-
-        <div class="bento grid-4">
-
-          <!-- Hill Climbing Story -->
-          <div class="tile sp4 v-white">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-history"/></svg></span>
-            <div>
-              <span class="v-pill purple">Nuestra Historia Real de Hill-Climbing (`todo.md` v1.3 → v2.1)</span>
-              <h3 style="margin-top:6px;">Fallo en Traza → Fix Quirúrgico (Auth + Cierre) → 100% Sin Regresión</h3>
-              <ul class="short-list">
-                <li><b>1. El Fallo (`Failure`):</b> Al quitar los <code>session_parameters</code> pre-inyectados, falló el Upgrade de Internet (pedía OTP sin llamar a <code>send_authentication_otp</code>) y `manage_mfa` colaba por el `and`.</li>
-                <li><b>2. El Arreglo (`Fix`):</b> Regla global obligatoria <code>send_authentication_otp</code> + guardia estricta <code>if auth_status != "Pass"</code> en las 7 tools + diccionario <code>CLOSING_STATES</code>.</li>
-                <li><b>3. Cero Regresión (`No Regression`):</b> Re-ejecutamos las 9 simulaciones completas → <b>9/9 (100% PASS)</b> sin romper pagos, reembolsos ni citas.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver la evolución v1.0 → v1.3 → v2.0 → v2.1</span>
-            </div>
-            <div class="detail" hidden>
-              <p class="lead">Evolución Completa de Hill-Climbing en `todo.md`</p>
-              <div class="code-box">
-• v1.3 (Baseline Multilingüe): 63 / 90 PASS
-• v2.0 (Global Rules + Loop M7⇄M3): 71 / 90 PASS (¡18/20 = 90% en Secret Evals!)
-• Auditoría Forense de Trazas en v2.1:
-  - Trace 712b675a (Auth Gate): Cambiamos `if auth != Pass and id != Pass` → `if auth != Pass`
-    y obligamos a llamar a `send_authentication_otp` antes de pedir el código en Ventas.
-  - Trace 665178ac (Handover/Malicious): Unificamos `CLOSING_STATES` en `before_model` y `after_model`
-    para emitir 1 única frase oficial verbatim y cerrar con `end_session`.
-• Resultado Final: 9 / 9 (100% PASS) con `session_parameters: {}` y `0 errors, 0 warnings` en `cxas lint`.
-              </div>
-            </div>
-          </div>
-
-          <!-- Zero Red Flags -->
-          <div class="tile sp2 v-gem2">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-spark"/></svg></span>
-            <div>
-              <span class="v-pill green">Sección 5 · 0 Red Flags</span>
-              <h3 style="margin-top:6px;">Checklist Oficial Superado al 100%</h3>
-              <ul class="short-list">
-                <li><b>Hallucination:</b> <code>ENABLED</code> en `app.json`.</li>
-                <li><b>Sin Trampas:</b> <code>session_parameters: {}</code> vacíos.</li>
-                <li><b>Higiene Git:</b> 0 archivos privados en el repo.</li>
-              </ul>
-              <span class="click-hint">＋ Clic para ver verificación</span>
-            </div>
-            <div class="detail" hidden>
-              <p class="lead">Auditoría contra Automatic Red Flags (Sección 5)</p>
-              <div class="code-box">
-✅ goldenHallucinationMetricBehavior: "ENABLED" (en app.json y desplegado en CES)
-✅ session_parameters: {} en simulations.yaml y scenarios.yaml (el agente gana su propio estado)
-✅ 0 rastros de evaluaciones secretas en el repositorio Git
-✅ Guardarraíles reales en código Python (no solo en texto del prompt)
-              </div>
-            </div>
-          </div>
-
-          <!-- CCAI Insights -->
-          <div class="tile sp6 v-gemini v-full">
-            <span class="ficon"><svg width="20" height="20"><use href="#i-eye"/></svg></span>
-            <div>
-              <h3>Observabilidad Continua en Producción (CCAI Insights + Snapshots Inmutables)</h3>
-              <div class="pill-row">
-                <span class="v-pill">Reglas Autolabeling CEL en CCAI Insights</span>
-                <span class="v-pill">Alerta si falta Recording Disclosure en Turno 1</span>
-                <span class="v-pill">Loss Analysis Automático en Llamadas &gt;8 Turnos</span>
-                <span class="v-pill">Customer LGTM · Listo para Producción</span>
-              </div>
-              <span class="click-hint">＋ Clic para ver las reglas de monitorización</span>
-            </div>
-            <div class="detail" hidden>
-              <p class="lead">Monitorización Día 2 en Contact Center AI Insights</p>
-              <p>Todas las conversaciones de voz se auditan automáticamente con reglas CEL para verificar el saludo legal, medir contención por especialista (`M3–M7`) y detectar cualquier regresión tras futuras actualizaciones.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <footer class="notes"><div class="notes-inner">
-      <div>
-        <div class="note-card analogy">
-          <span class="note-tag">💡 ¿Cómo explicar Hill-Climbing en 1 frase?</span>
-          <p>“<b>Hill-climbing</b> es mejorar el agente guiándonos por las trazas de los fallos reales: encontramos por qué falló una simulación, aplicamos el cambio exacto en Python o en el prompt, y volvemos a pasar todos los tests sin parámetros pre-cargados para demostrar que subimos al 100% sin romper nada de lo que ya funcionaba.”</p>
-        </div>
-        <div class="note-card tech">
-          <span class="note-tag">🔧 Tus 2 casos estrella para cerrar por todo lo alto</span>
-          <p>Cuenta: <b>1) Cómo quitamos los `session_parameters` pre-inyectados</b> y arreglamos el envío de `send_authentication_otp` + el `and` de `auth_status`, y <b>2) Cómo unificamos `CLOSING_STATES`</b> entre `before_model` y `after_model` para que nunca suenen dos frases distintas al colgar.</p>
-        </div>
-      </div>
-      <div class="note-card script">
-        <span class="note-tag">🗣️ Guion literal de cierre (2.5 Calidad)</span>
-        <ul>
-          <li><b>1. Rigor en Evaluaciones:</b> “Para asegurarnos de que el 100% de aprobación era real y no artificial, vaciamos todos los <code>session_parameters</code> de las simulaciones y activamos <code>goldenHallucinationMetricBehavior: ENABLED</code> en <code>app.json</code>.”</li>
-          <li><b>2. Nuestra Historia de Hill-Climbing:</b> “Al correr los tests desde cero vimos dos fallos reales en trazas: en ventas el modelo pedía el OTP sin haber invocado antes <code>send_authentication_otp</code>, y al cerrar llamadas por insulto o transferencia el LLM inventaba una frase antes del callback. Añadimos la guarda en Python para el OTP y sincronizamos <code>CLOSING_STATES</code> entre <code>before_model</code> y <code>after_model</code>. Al repetir la suite completa logramos <b>9/9 (100% PASS) y 0 errores de linter con cero regresiones</b>.”</li>
-        </ul>
-      </div>
-    </div></footer>
-  </section>
-
-  <button class="arrow left" id="prev" type="button" aria-label="Diapositiva anterior"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
-  <button class="arrow right" id="next" type="button" aria-label="Siguiente diapositiva"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+  <button class="arrow left" id="prev" type="button" aria-label="Anterior"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+  <button class="arrow right" id="next" type="button" aria-label="Siguiente"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
 
 </main>
 
@@ -2657,7 +2690,7 @@ Cuando cae un nodo de fibra regional, entran 5.000 llamadas en 10 minutos pregun
 
 <div class="backdrop" id="backdrop" hidden>
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
-    <button class="sheet-close" id="sheetClose" type="button" aria-label="Cerrar">✕</button>
+    <button class="sheet-close" id="sheetClose" type="button" aria-label="Close">✕</button>
     <div class="sheet-head">
       <span class="ficon" id="sheetIcon"></span>
       <h3 id="sheetTitle"></h3>
@@ -2761,9 +2794,7 @@ Cuando cae un nodo de fibra regional, entran 5.000 llamadas en 10 minutos pregun
       sheetIcon.innerHTML = tile.querySelector('.ficon').innerHTML;
       sheetTitle.textContent = tile.querySelector('h3').textContent;
       sheetBody.innerHTML = '';
-      var clone = detail.cloneNode(true);
-      clone.hidden = false;
-      sheetBody.appendChild(clone);
+      sheetBody.appendChild(detail.cloneNode(true));
     }
 
     function openTile(tile) {
