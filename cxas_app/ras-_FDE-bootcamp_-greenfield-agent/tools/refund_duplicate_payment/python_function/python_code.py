@@ -1,18 +1,10 @@
 # // Mismo ledger que list_recent_payments. La plataforma no permite modulos Python
 # // compartidos entre tools, asi que cada tool consulta su propia copia del "backend".
-MOCK_PAYMENT_LEDGER = {
-    "5145550199": [
-        {"txn_id": "PMT-70112", "amount": 22.50, "paid_at": "2026-08-21T11:40:00-04:00", "invoice_id": "INV-2026-08", "card_last4": "4242", "status": "POSTED"},
-        {"txn_id": "PMT-77301", "amount": 22.50, "paid_at": "2026-09-20T10:14:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
-        {"txn_id": "PMT-77318", "amount": 22.50, "paid_at": "2026-09-21T09:02:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
-    ],
-    "4155550101": [
-        {"txn_id": "PMT-88231", "amount": 45.00, "paid_at": "2026-09-21T08:30:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
-    ],
-}
-
-DEFAULT_LEDGER = [
-    {"txn_id": "PMT-88239", "amount": 45.00, "paid_at": "2026-09-21T08:30:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
+PAYMENT_LEDGER = [
+    {"txn_id": "PMT-70112", "amount": 22.50, "paid_at": "2026-08-21T11:40:00-04:00", "invoice_id": "INV-2026-08", "card_last4": "4242", "status": "POSTED"},
+    {"txn_id": "PMT-77301", "amount": 22.50, "paid_at": "2026-09-20T10:14:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
+    {"txn_id": "PMT-77318", "amount": 22.50, "paid_at": "2026-09-21T09:02:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
+    {"txn_id": "PMT-88231", "amount": 45.00, "paid_at": "2026-09-21T08:30:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
 ]
 
 MAX_DAYS_APART = 7
@@ -24,11 +16,10 @@ def refund_duplicate_payment(txn_id_original: str, txn_id_duplicate: str) -> dic
         return {
             "status": "error",
             "error": "AUTH_REQUIRED",
-            "agent_action": "Complete OTP or PIN verification before refunding anything.",
+            "agent_action": "Call send_authentication_otp first and verify the caller before refunding anything.",
         }
 
-    clid = str(context.state.get("clid") or "")
-    ledger = MOCK_PAYMENT_LEDGER.get(clid, DEFAULT_LEDGER)
+    ledger = PAYMENT_LEDGER
     by_id = {p["txn_id"]: p for p in ledger}
 
     a = by_id.get((txn_id_original or "").strip().upper())

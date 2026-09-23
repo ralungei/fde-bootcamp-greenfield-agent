@@ -24,8 +24,16 @@ def process_payment(billing_account: str, amount: float = 45.0, dtmf_payment_tok
     raw_digits = str(dtmf_payment_token or context.state.get("dtmf_digits") or "")
     digits_only = "".join(c for c in raw_digits if c.isdigit())
 
-    # Decline on attempt 1 ONLY if the account's primary card in the vault is DECLINED (or token ends in 0000)
-    if (attempts == 1 and vault["primary_card_status"] == "DECLINED") or digits_only.endswith("0000"):
+    should_decline_first = (
+        vault["primary_card_status"] == "DECLINED"
+        or digits_only.endswith("0000")
+        or (
+            context.state.get("language") != "secondary"
+            and context.state.get("suspension_reason") != "non_payment"
+            and context.state.get("lob") != "direct_pay"
+        )
+    )
+    if attempts == 1 and should_decline_first:
         return {
             "status": "error",
             "error": "CARD_DECLINED",

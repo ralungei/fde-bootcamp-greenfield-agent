@@ -13,14 +13,7 @@
     max_turns: 10
   expectations:
   - The user completes the cancellation flow after hearing the mandatory contract disclosure
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__cancel_service_mobility_french
   tags:
   - P0
@@ -36,14 +29,7 @@
     max_turns: 10
   expectations:
   - The user completes the cancellation flow in French after hearing the mandatory contract disclosure
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__port_out_number_english
   tags:
   - P0
@@ -59,14 +45,7 @@
     max_turns: 10
   expectations:
   - The user successfully requests a port out and hears the mandatory contract disclosure
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__cancel_tv_service_english
   tags:
   - P0
@@ -81,14 +60,7 @@
     max_turns: 10
   expectations:
   - The user successfully cancels their TV service after hearing the mandatory contract disclosure
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__cancel_home_phone_french
   tags:
   - P0
@@ -104,14 +76,7 @@
   expectations:
   - The user successfully cancels their home phone service in French after hearing the mandatory contract
     disclosure
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__speak_immediate_english
   tags:
   - P0
@@ -125,14 +90,7 @@
     max_turns: 10
   expectations:
   - The user is immediately transferred to a live representative with the verbatim handoff message
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__speak_immediate_french
   tags:
   - P0
@@ -147,14 +105,7 @@
   expectations:
   - The user is immediately transferred to a French-speaking representative with the French verbatim handoff
     message
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__speak_mid_call_billing_english
   tags:
   - P0
@@ -170,14 +121,7 @@
     max_turns: 10
   expectations:
   - The user is successfully transferred to a live representative mid-call with the verbatim handoff message
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__speak_frustrated_english
   tags:
   - P0
@@ -192,14 +136,7 @@
     max_turns: 10
   expectations:
   - The user is immediately transferred to a live representative with the verbatim handoff message
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__speak_mid_call_tech_french
   tags:
   - P0
@@ -215,14 +152,7 @@
   expectations:
   - The user is successfully transferred to a French-speaking representative mid-call with the French
     verbatim handoff message
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__dispute_unrecognized_streaming_charge
   tags:
   - P0
@@ -239,14 +169,7 @@
     max_turns: 10
   expectations:
   - The user hears a confirmation that a $12.50 credit will appear on their next statement
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__dispute_billing_charge_french
   tags:
   - P0
@@ -263,14 +186,7 @@
     max_turns: 10
   expectations:
   - The user hears the credit confirmation in French without any language switching or degradation
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__dispute_charge_business_account_deflection
   tags:
   - P0
@@ -285,14 +201,7 @@
     max_turns: 10
   expectations:
   - The user hears the verbatim business handoff message and is transferred to an agent
-  session_parameters:
-    clid: '4155550103'
-    language: primary
-    business_flag: 'true'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__dispute_charge_auth_retry
   tags:
   - P0
@@ -310,14 +219,7 @@
   expectations:
   - The user is allowed to retry authentication and successfully disputes the charge after a successful
     second attempt
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__pay_mobility_bill_card_file
   tags:
   - P0
@@ -334,14 +236,7 @@
   expectations:
   - The user receives a payment confirmation message with the last 4 digits of their card spoken back
     securely
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__pay_bill_french_keypad
   tags:
   - P0
@@ -357,14 +252,7 @@
     max_turns: 10
   expectations:
   - The system registers the DTMF inputs correctly and confirms the payment in French
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__pay_past_due_bill_prevent_suspension
   tags:
   - P0
@@ -381,14 +269,7 @@
   expectations:
   - The user receives immediate confirmation that their payment was successful and their service status
     is secure
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__pay_bill_declined_card_retry
   tags:
   - P0
@@ -404,14 +285,7 @@
   expectations:
   - The user is prompted to provide alternative payment details after the first card fails, resulting
     in a successful transaction
-  session_parameters:
-    clid: '4155550104'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__setup_autopay_internet_english
   tags:
   - P0
@@ -427,14 +301,7 @@
     max_turns: 10
   expectations:
   - The user hears a confirmation that autopay has been successfully configured for their account
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__setup_autopay_french
   tags:
   - P0
@@ -448,14 +315,7 @@
     max_turns: 10
   expectations:
   - The user receives a clear confirmation of the autopay setup in French
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__setup_autopay_after_paying_bill
   tags:
   - P0
@@ -472,14 +332,7 @@
   expectations:
   - The system processes the payment first, then seamlessly transitions to the autopay enrollment flow
     without requiring re-authentication
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__request_credit_outage_days
   tags:
   - P0
@@ -495,14 +348,7 @@
     max_turns: 10
   expectations:
   - The user is offered a credit matching the downtime value and hears a confirmation of the credit application
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__request_refund_overcharge_french
   tags:
   - P0
@@ -517,14 +363,7 @@
     max_turns: 10
   expectations:
   - The user hears the refund confirmation pattern verbatim in French
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__request_refund_exceeding_threshold_escalation
   tags:
   - P0
@@ -540,14 +379,7 @@
   expectations:
   - The user is informed that the request requires specialist approval and is transferred with the verbatim
     transfer_to_specialist message
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_outage_active_postal_code
   tags:
   - P0
@@ -563,14 +395,7 @@
     max_turns: 10
   expectations:
   - The user hears the verbatim outage_active message and confirms they want to be texted
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-C
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_outage_french_active
   tags:
   - P0
@@ -586,14 +411,7 @@
     max_turns: 10
   expectations:
   - The user hears the active outage notification in French and is offered SMS updates in French
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-C
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_outage_none_found_sms_troubleshoot
   tags:
   - P0
@@ -610,14 +428,7 @@
     max_turns: 10
   expectations:
   - The user is offered and accepts an SMS troubleshooting guide after the outage check returns negative
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_tech_status_standard
   tags:
   - P0
@@ -635,14 +446,7 @@
   expectations:
   - The user successfully verifies their identity
   - The user receives the current status of their technician appointment
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_ticket_status_french
   tags:
   - P0
@@ -660,14 +464,7 @@
   expectations:
   - The conversation remains strictly in French Canadian
   - The user successfully authenticates and retrieves their ticket status
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_tech_status_reschedule_pivot
   tags:
   - P0
@@ -685,14 +482,7 @@
   expectations:
   - The user successfully checks their technician status
   - The user successfully reschedules their appointment
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_ticket_status_retry_strikes
   tags:
   - P0
@@ -710,14 +500,7 @@
   expectations:
   - The user successfully recovers from silent turns
   - The user authenticates and retrieves their ticket status
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_tech_status_business_deflection
   tags:
   - P0
@@ -732,14 +515,7 @@
     max_turns: 10
   expectations:
   - The user is routed to a live agent for business support
-  session_parameters:
-    clid: '4155550103'
-    language: primary
-    business_flag: 'true'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__reset_password_standard
   tags:
   - P0
@@ -756,14 +532,7 @@
   expectations:
   - The user is identified successfully
   - The user receives a password reset link via SMS
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__reset_password_french
   tags:
   - P0
@@ -779,14 +548,7 @@
   expectations:
   - The conversation remains strictly in French Canadian
   - The user receives the password reset link via SMS
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__reset_password_wrong_number_retry
   tags:
   - P0
@@ -802,14 +564,7 @@
   expectations:
   - The user successfully resolves the identification error
   - The user receives the password reset link
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__reset_password_pivot_billing
   tags:
   - P0
@@ -825,14 +580,7 @@
   expectations:
   - The user successfully switches topics mid-call
   - The user authenticates and retrieves their billing balance
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__reset_password_sms_escalation
   tags:
   - P0
@@ -847,14 +595,7 @@
     max_turns: 10
   expectations:
   - The user is escalated to a live agent
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__manage_mfa_disable
   tags:
   - P0
@@ -871,14 +612,7 @@
   expectations:
   - The user completes step-up authentication
   - The user successfully disables MFA
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__manage_mfa_enable
   tags:
   - P0
@@ -893,14 +627,7 @@
   expectations:
   - The user successfully authenticates
   - The user successfully enables MFA
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__manage_mfa_french_disable
   tags:
   - P0
@@ -916,14 +643,7 @@
   expectations:
   - The conversation remains strictly in French Canadian
   - The user successfully disables MFA
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__manage_mfa_auth_failure
   tags:
   - P0
@@ -937,14 +657,7 @@
     max_turns: 10
   expectations:
   - The user is escalated to a live agent after failing authentication
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__manage_mfa_pivot_tech
   tags:
   - P0
@@ -960,14 +673,7 @@
   expectations:
   - The user successfully enables MFA
   - The user successfully switches topics to technical support
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__report_fraud_standard
   tags:
   - P0
@@ -982,14 +688,7 @@
     max_turns: 10
   expectations:
   - The user is immediately transferred to the fraud team without authentication
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__report_fraud_french
   tags:
   - P0
@@ -1005,14 +704,7 @@
   expectations:
   - The conversation remains strictly in French Canadian
   - The user is immediately transferred to the fraud team
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__report_fraud_phishing
   tags:
   - P0
@@ -1027,14 +719,7 @@
     max_turns: 10
   expectations:
   - The user is immediately transferred to the fraud team
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__report_fraud_mid_call_switch
   tags:
   - P0
@@ -1052,14 +737,7 @@
   expectations:
   - The user successfully switches topics to fraud
   - The user is immediately transferred to the fraud team
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__report_fraud_sim_swap
   tags:
   - P0
@@ -1074,14 +752,7 @@
     max_turns: 10
   expectations:
   - The user is immediately transferred to the fraud team
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__restore_service_standard
   tags:
   - P0
@@ -1098,14 +769,7 @@
   expectations:
   - The user successfully authenticates
   - The user pays their balance and restores service
-  session_parameters:
-    clid: '4155550102'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: non_payment
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__restore_service_french
   tags:
   - P0
@@ -1121,14 +785,7 @@
   expectations:
   - The conversation remains strictly in French Canadian
   - The user pays their balance and restores service
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: non_payment
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__restore_service_payment_arrangement
   tags:
   - P0
@@ -1145,14 +802,7 @@
   expectations:
   - The user sets up a payment arrangement
   - The user successfully restores service
-  session_parameters:
-    clid: '4155550102'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: non_payment
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__restore_service_already_paid
   tags:
   - P0
@@ -1169,14 +819,7 @@
   expectations:
   - The user successfully authenticates
   - The user's service is restored after payment verification
-  session_parameters:
-    clid: '4155550102'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: non_payment
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__restore_service_business_deflection
   tags:
   - P0
@@ -1190,14 +833,7 @@
     max_turns: 10
   expectations:
   - The user is routed to a live agent for business support
-  session_parameters:
-    clid: '4155550103'
-    language: primary
-    business_flag: 'true'
-    suspension_reason: non_payment
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__troubleshoot_tv_signal
   tags:
   - P0
@@ -1213,14 +849,7 @@
     max_turns: 10
   expectations:
   - The user receives troubleshooting instructions or an SMS link to resolve the TV signal issue
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__troubleshoot_mobile_service_french
   tags:
   - P0
@@ -1236,14 +865,7 @@
     max_turns: 10
   expectations:
   - The user receives troubleshooting instructions in French to resolve their mobile network issue
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__troubleshoot_satellite_tv_error
   tags:
   - P0
@@ -1258,14 +880,7 @@
     max_turns: 10
   expectations:
   - The user receives specific troubleshooting steps or an SMS guide for Satellite TV Error 101
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__troubleshoot_mobile_data_slow
   tags:
   - P0
@@ -1280,14 +895,7 @@
     max_turns: 10
   expectations:
   - The user receives troubleshooting steps or an SMS guide to resolve slow mobile data
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__troubleshoot_tv_app_freezing
   tags:
   - P0
@@ -1301,14 +909,7 @@
     max_turns: 10
   expectations:
   - The user receives troubleshooting steps or an SMS guide for the Fibe TV app
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__upgrade_mobile_plan_data
   tags:
   - P0
@@ -1323,14 +924,7 @@
     max_turns: 10
   expectations:
   - The user successfully upgrades their mobile plan and receives confirmation
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__upgrade_internet_speed_french
   tags:
   - P0
@@ -1345,14 +939,7 @@
     max_turns: 10
   expectations:
   - The user successfully upgrades their home internet plan in French
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__upgrade_tv_package_sports
   tags:
   - P0
@@ -1366,14 +953,7 @@
     max_turns: 10
   expectations:
   - The user successfully adds the sports package to their TV plan
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__upgrade_mobile_plan_budget
   tags:
   - P0
@@ -1387,14 +967,7 @@
     max_turns: 10
   expectations:
   - The user successfully upgrades to a plan within their budget
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__upgrade_internet_wfh
   tags:
   - P0
@@ -1409,14 +982,7 @@
     max_turns: 10
   expectations:
   - The user successfully upgrades their internet plan
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__warranty_replacement_iphone_screen
   tags:
   - P0
@@ -1432,14 +998,7 @@
     max_turns: 10
   expectations:
   - The user successfully submits a warranty replacement request for their phone
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__warranty_replacement_samsung_french
   tags:
   - P0
@@ -1453,14 +1012,7 @@
     max_turns: 10
   expectations:
   - The user successfully submits a warranty replacement request in French
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__warranty_replacement_pixel_mic
   tags:
   - P0
@@ -1475,14 +1027,7 @@
     max_turns: 10
   expectations:
   - The user successfully submits a warranty replacement request for their phone
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__warranty_replacement_check_status
   tags:
   - P0
@@ -1497,14 +1042,7 @@
     max_turns: 10
   expectations:
   - The user successfully initiates a warranty replacement after confirming coverage
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__warranty_replacement_swollen_battery_french
   tags:
   - P0
@@ -1518,14 +1056,7 @@
     max_turns: 10
   expectations:
   - The user successfully submits an urgent warranty replacement request in French
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__transfer_number_competitor
   tags:
   - P0
@@ -1541,14 +1072,7 @@
     max_turns: 10
   expectations:
   - The user successfully initiates the phone number transfer process
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__transfer_landline_mobile_french
   tags:
   - P0
@@ -1563,14 +1087,7 @@
     max_turns: 10
   expectations:
   - The user successfully initiates the landline-to-mobile transfer in French
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__transfer_family_member_number
   tags:
   - P0
@@ -1585,11 +1102,4 @@
     max_turns: 10
   expectations:
   - The user successfully initiates the transfer of the external number to their account
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}

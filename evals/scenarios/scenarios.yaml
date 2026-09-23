@@ -7,977 +7,487 @@ evals:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__cancel_service_mobility_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__port_out_number_english
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__cancel_tv_service_english
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__cancel_home_phone_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__speak_immediate_english
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__speak_immediate_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__speak_mid_call_billing_english
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__speak_frustrated_english
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__speak_mid_call_tech_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__dispute_unrecognized_streaming_charge
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__dispute_billing_charge_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__dispute_charge_business_account_deflection
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550103'
-    language: primary
-    business_flag: 'true'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__dispute_charge_auth_retry
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__pay_mobility_bill_card_file
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__pay_bill_french_keypad
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__pay_past_due_bill_prevent_suspension
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__pay_bill_declined_card_retry
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550104'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__setup_autopay_internet_english
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__setup_autopay_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__setup_autopay_after_paying_bill
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__request_credit_outage_days
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__request_refund_overcharge_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__request_refund_exceeding_threshold_escalation
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_outage_active_postal_code
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-C
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_outage_french_active
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-C
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_outage_none_found_sms_troubleshoot
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_tech_status_standard
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_ticket_status_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_tech_status_reschedule_pivot
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_ticket_status_retry_strikes
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__check_tech_status_business_deflection
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550103'
-    language: primary
-    business_flag: 'true'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__reset_password_standard
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__reset_password_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__reset_password_wrong_number_retry
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__reset_password_pivot_billing
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__reset_password_sms_escalation
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__manage_mfa_disable
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__manage_mfa_enable
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__manage_mfa_french_disable
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__manage_mfa_auth_failure
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__manage_mfa_pivot_tech
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__report_fraud_standard
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__report_fraud_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__report_fraud_phishing
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__report_fraud_mid_call_switch
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__report_fraud_sim_swap
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__restore_service_standard
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550102'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: non_payment
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__restore_service_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: non_payment
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__restore_service_payment_arrangement
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550102'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: non_payment
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__restore_service_already_paid
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550102'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: non_payment
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__restore_service_business_deflection
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550103'
-    language: primary
-    business_flag: 'true'
-    suspension_reason: non_payment
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__troubleshoot_tv_signal
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__troubleshoot_mobile_service_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__troubleshoot_satellite_tv_error
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__troubleshoot_mobile_data_slow
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__troubleshoot_tv_app_freezing
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__upgrade_mobile_plan_data
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__upgrade_internet_speed_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__upgrade_tv_package_sports
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__upgrade_mobile_plan_budget
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__upgrade_internet_wfh
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__warranty_replacement_iphone_screen
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__warranty_replacement_samsung_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__warranty_replacement_pixel_mic
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__warranty_replacement_check_status
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__warranty_replacement_swollen_battery_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__transfer_number_competitor
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__transfer_landline_mobile_french
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - FRENCH
-  session_parameters:
-    clid: '5145550199'
-    language: secondary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}
 - name: sim__transfer_family_member_number
   priority: P0
   tags:
   - P0
   - PUBLIC_EVAL
   - ENGLISH
-  session_parameters:
-    clid: '4155550101'
-    language: primary
-    business_flag: 'false'
-    suspension_reason: ''
-    region: Region-A
-    mock_mode: 'True'
-    loyalty_limit: '25'
+  session_parameters: {}

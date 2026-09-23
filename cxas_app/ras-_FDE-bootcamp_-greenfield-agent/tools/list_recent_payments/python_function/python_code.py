@@ -6,19 +6,11 @@
 # //   REFUNDED -> ya devuelto al cliente (no se puede devolver dos veces)
 # // OJO: el ledger NO marca que un pago sea "duplicado". Eso se deduce comparando
 # // apuntes, y esa comparacion la hace codigo (refund_duplicate_payment), nunca el modelo.
-MOCK_PAYMENT_LEDGER = {
-    "5145550199": [
-        {"txn_id": "PMT-70112", "amount": 22.50, "paid_at": "2026-08-21T11:40:00-04:00", "invoice_id": "INV-2026-08", "card_last4": "4242", "status": "POSTED"},
-        {"txn_id": "PMT-77301", "amount": 22.50, "paid_at": "2026-09-20T10:14:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
-        {"txn_id": "PMT-77318", "amount": 22.50, "paid_at": "2026-09-21T09:02:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
-    ],
-    "4155550101": [
-        {"txn_id": "PMT-88231", "amount": 45.00, "paid_at": "2026-09-21T08:30:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
-    ],
-}
-
-DEFAULT_LEDGER = [
-    {"txn_id": "PMT-88239", "amount": 45.00, "paid_at": "2026-09-21T08:30:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
+PAYMENT_LEDGER = [
+    {"txn_id": "PMT-70112", "amount": 22.50, "paid_at": "2026-08-21T11:40:00-04:00", "invoice_id": "INV-2026-08", "card_last4": "4242", "status": "POSTED"},
+    {"txn_id": "PMT-77301", "amount": 22.50, "paid_at": "2026-09-20T10:14:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
+    {"txn_id": "PMT-77318", "amount": 22.50, "paid_at": "2026-09-21T09:02:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
+    {"txn_id": "PMT-88231", "amount": 45.00, "paid_at": "2026-09-21T08:30:00-04:00", "invoice_id": "INV-2026-09", "card_last4": "4242", "status": "POSTED"},
 ]
 
 
@@ -29,11 +21,10 @@ def list_recent_payments() -> dict:
             "status": "error",
             "error": "AUTH_REQUIRED",
             "message": "Caller is not authenticated (auth_status != Pass).",
-            "agent_action": "Complete OTP or PIN verification before listing payments.",
+            "agent_action": "Call send_authentication_otp first and verify the caller before listing payments.",
         }
 
-    clid = str(context.state.get("clid") or "")
-    payments = [dict(p) for p in MOCK_PAYMENT_LEDGER.get(clid, DEFAULT_LEDGER)]
+    payments = [dict(p) for p in PAYMENT_LEDGER]
 
     # // Un reembolso ya ejecutado en esta llamada se refleja en el historial (idempotencia).
     already = str(context.state.get("refunded_txn_id") or "")

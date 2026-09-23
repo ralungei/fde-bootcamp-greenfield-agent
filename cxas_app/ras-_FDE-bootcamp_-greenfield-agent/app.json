@@ -63,6 +63,9 @@
       "es-US": {
         "speakingRate": 1.0
       }
+    },
+    "bargeInConfig": {
+      "bargeInAwareness": true
     }
   },
   "loggingSettings": {

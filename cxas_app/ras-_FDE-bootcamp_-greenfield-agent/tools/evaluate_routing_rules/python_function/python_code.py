@@ -4,6 +4,23 @@ def evaluate_routing_rules(utterance: str, lob: str = "") -> dict:
         text = (utterance or context.state.get("utterance", "")).lower()
         if lob:
             context.state["lob"] = lob
+        if any(
+            w in text
+            for w in (
+                "mobility",
+                "mobile",
+                "past-due",
+                "past due",
+                "cut off",
+                "autopay",
+                "automatic",
+                "saved",
+                "card on file",
+                "suspend",
+                "restore",
+            )
+        ):
+            context.state["lob"] = "direct_pay"
 
         # Priority 1: M7 Account Management (Cancel, Port-Out, Suspend/Restore, MFA, Password Reset)
         if any(
