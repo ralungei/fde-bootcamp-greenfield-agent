@@ -84,7 +84,7 @@
         "extraToolCallBehavior": "ALLOW"
       }
     },
-    "goldenHallucinationMetricBehavior": "DISABLED"
+    "goldenHallucinationMetricBehavior": "ENABLED"
   },
   "variableDeclarations": [
     {
