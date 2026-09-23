@@ -31,5 +31,5 @@ def fetch_recent_bills(billing_account: str = "") -> dict:
                 ],
             }
         ],
-        "agent_instruction": f"Saved card on file ends in {card_last4}. For any disputed charge, overcharge, or outage credit <= $25.00, call apply_bill_adjustment immediately. Respond in the caller's language ({{language}}).",
+        "agent_instruction": f"Saved card on file ends in {card_last4}. If the caller has not specified which charge they are referring to, briefly list the recent charges from the bill to help them identify it. For any disputed charge, overcharge, or outage credit <= $25.00, call apply_bill_adjustment immediately. Respond in the caller's language ({{language}}).",
     }

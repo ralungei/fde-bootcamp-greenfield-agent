@@ -14,7 +14,7 @@ def report_malicious_utterance(category: str = "abuse", summary: str = "") -> di
         if lang == "secondary"
         else context.state.get("copy_malicious_closing_primary")
     ) or "I'm sorry, I cannot continue this call. Goodbye."
-    context.state["flag_val"] = "malicious_input"
+    context.state["flag_val"] = "malicious_terminated"
     context.state["handover_message"] = msg
     return {
         "status": "terminated",

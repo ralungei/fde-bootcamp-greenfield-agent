@@ -22,7 +22,7 @@ def execute_live_agent_handover(reason: str = "user_requested_agent", summary: s
         }
 
     context.state["api_resp"] = r
-    context.state["flag_val"] = "handover_ready"
+    context.state["flag_val"] = "handover_completed"
     lang = context.state.get("language", "primary")
 
     if "business" in r or context.state.get("business_flag") == "true":
