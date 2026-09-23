@@ -29,6 +29,7 @@ SECONDARY_CLID_PREFIXES = ("514", "418", "438", "305")
 # Session states that must close the call once the caller has heard the verbatim line.
 CLOSING_STATES = {
     "handover_completed": "handover_completed",
+    "malicious_terminated": "malicious_caller_terminated",
     "malicious_input": "malicious_input",
 }
 
@@ -110,6 +111,7 @@ def before_model_callback(
     # tool produced (business/fraud/refund/malicious wording all differ).
     closing_reason = CLOSING_STATES.get(state.get("flag_val"))
     if closing_reason:
+        state["flag_val"] = ""
         return LlmResponse.from_parts(
             parts=[
                 Part.from_text(text=state.get("handover_message") or _copy(state, "live_agent_handoff")),
