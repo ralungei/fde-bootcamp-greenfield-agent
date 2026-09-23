@@ -1,0 +1,41 @@
+{
+  "name": "sales_equipment_specialist",
+  "displayName": "sales_equipment_specialist",
+  "description": "Telco Voice Central sales_equipment_specialist module",
+  "instruction": "agents/sales_equipment_specialist/instruction.txt",
+  "tools": [
+    "check_service_coverage",
+    "fetch_plan_catalog",
+    "place_new_order",
+    "initiate_number_transfer",
+    "process_warranty_claim",
+    "send_sms",
+    "execute_live_agent_handover",
+    "update_language",
+    "report_malicious_utterance",
+    "end_session",
+    "fetch_customer_profile",
+    "send_authentication_otp",
+    "validate_authentication_otp",
+    "validate_authentication_pin"
+  ],
+  "childAgents": [],
+  "beforeAgentCallbacks": [
+    {
+      "pythonCode": "agents/sales_equipment_specialist/before_agent_callbacks/before_agent_callbacks_01/python_code.py",
+      "description": "Reset local_noinput_counter on module entry"
+    }
+  ],
+  "beforeModelCallbacks": [
+    {
+      "pythonCode": "agents/sales_equipment_specialist/before_model_callbacks/before_model_callbacks_01/python_code.py",
+      "description": "Section 6 per-turn preprocessing pipeline"
+    }
+  ],
+  "afterModelCallbacks": [
+    {
+      "pythonCode": "agents/sales_equipment_specialist/after_model_callbacks/after_model_callbacks_01/python_code.py",
+      "description": "Guarantee the verbatim handover line is spoken, then end_session in the same turn"
+    }
+  ]
+}

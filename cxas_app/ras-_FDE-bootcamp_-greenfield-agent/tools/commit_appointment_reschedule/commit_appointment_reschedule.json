@@ -1,0 +1,10 @@
+{
+  "name": "commit_appointment_reschedule",
+  "displayName": "commit_appointment_reschedule",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "commit_appointment_reschedule",
+    "pythonCode": "tools/commit_appointment_reschedule/python_function/python_code.py",
+    "description": "Commits an appointment booking, reschedule, or cancellation and sends an SMS confirmation (M6, CUJ-4). Repeat the new date/time back to the caller."
+  }
+}

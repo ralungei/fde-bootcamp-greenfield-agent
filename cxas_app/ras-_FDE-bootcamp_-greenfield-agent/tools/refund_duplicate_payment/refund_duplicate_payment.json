@@ -1,0 +1,10 @@
+{
+  "name": "refund_duplicate_payment",
+  "displayName": "refund_duplicate_payment",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "refund_duplicate_payment",
+    "pythonCode": "tools/refund_duplicate_payment/python_function/python_code.py",
+    "description": "Refunds a duplicated payment after re-verifying it in code. Pass the two transaction ids you believe are duplicates (order does not matter). The tool independently checks that both exist on this account, are POSTED, are different transactions, have the exact same amount, target the same invoice, were paid within 7 days of each other, and that the amount is within the self-service refund threshold. It refunds the LATER payment and returns the verbatim refund confirmation. Returns DUPLICATE_NOT_CONFIRMED if the two payments are not a genuine duplicate."
+  }
+}

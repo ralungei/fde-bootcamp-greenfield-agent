@@ -1,0 +1,10 @@
+{
+  "name": "check_service_coverage",
+  "displayName": "check_service_coverage",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "check_service_coverage",
+    "pythonCode": "tools/check_service_coverage/python_function/python_code.py",
+    "description": "Checks service coverage at the caller's address or postal/zip code for mobility, internet, or tv (M5, CUJ-5). MUST be called BEFORE presenting plan catalog options."
+  }
+}

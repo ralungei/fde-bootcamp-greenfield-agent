@@ -1,0 +1,10 @@
+{
+  "name": "execute_suspend_restore",
+  "displayName": "execute_suspend_restore",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "execute_suspend_restore",
+    "pythonCode": "tools/execute_suspend_restore/python_function/python_code.py",
+    "description": "Suspends or restores service on the caller's account (M7, CUJ-6). For non-payment suspension, requires balance_cleared via M1 -> M3 first, then restores service to active."
+  }
+}

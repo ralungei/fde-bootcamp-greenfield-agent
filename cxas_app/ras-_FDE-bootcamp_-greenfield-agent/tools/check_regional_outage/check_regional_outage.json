@@ -1,0 +1,10 @@
+{
+  "name": "check_regional_outage",
+  "displayName": "check_regional_outage",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "check_regional_outage",
+    "pythonCode": "tools/check_regional_outage/python_function/python_code.py",
+    "description": "Checks if there is an active regional service outage for the caller's postal code or region and line of business (M4, CUJ-3). Postal codes H3Z 2Y7 and G1R 4A6 or Region-C have an active outage. MUST be called FIRST before starting any technical diagnostic."
+  }
+}

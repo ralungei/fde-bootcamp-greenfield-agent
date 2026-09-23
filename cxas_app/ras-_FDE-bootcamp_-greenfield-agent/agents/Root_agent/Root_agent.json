@@ -1,0 +1,80 @@
+{
+  "name": "Root_agent",
+  "displayName": "Root_agent",
+  "description": "Telco Voice Central Root_agent module",
+  "instruction": "agents/Root_agent/instruction.txt",
+  "tools": [
+    "fetch_customer_profile",
+    "send_authentication_otp",
+    "validate_authentication_otp",
+    "validate_authentication_pin",
+    "evaluate_routing_rules",
+    "execute_live_agent_handover",
+    "end_session",
+    "update_language",
+    "report_malicious_utterance"
+  ],
+  "childAgents": [
+    "billing_specialist",
+    "tech_support_specialist",
+    "sales_equipment_specialist",
+    "appointment_specialist",
+    "account_management_specialist"
+  ],
+  "beforeAgentCallbacks": [
+    {
+      "pythonCode": "agents/Root_agent/before_agent_callbacks/before_agent_callbacks_01/python_code.py",
+      "description": "Reset local_noinput_counter on module entry"
+    }
+  ],
+  "beforeModelCallbacks": [
+    {
+      "pythonCode": "agents/Root_agent/before_model_callbacks/before_model_callbacks_01/python_code.py",
+      "description": "Section 6 per-turn preprocessing pipeline"
+    }
+  ],
+  "transferRules": [
+    {
+      "childAgent": "account_management_specialist",
+      "direction": "CHILD_TO_PARENT",
+      "deterministicTransfer": {
+        "pythonCodeCondition": {
+          "pythonCode": "def should_trigger_transfer_callback(context: CallbackContext) -> bool:\n    return context.state.get('flag_val') == 'balance_owed_redirect' and context.state.get('auth_status') == 'Pass'\n"
+        }
+      }
+    },
+    {
+      "childAgent": "billing_specialist",
+      "direction": "PARENT_TO_CHILD",
+      "deterministicTransfer": {
+        "pythonCodeCondition": {
+          "pythonCode": "def should_trigger_transfer_callback(context: CallbackContext) -> bool:\n    return context.state.get('flag_val') == 'balance_owed_redirect' and context.state.get('auth_status') == 'Pass'\n"
+        }
+      }
+    },
+    {
+      "childAgent": "billing_specialist",
+      "direction": "CHILD_TO_PARENT",
+      "deterministicTransfer": {
+        "pythonCodeCondition": {
+          "pythonCode": "def should_trigger_transfer_callback(context: CallbackContext) -> bool:\n    return context.state.get('flag_val') == 'balance_cleared' and context.state.get('suspension_reason') == 'non_payment' and context.state.get('auth_status') == 'Pass'\n"
+        }
+      }
+    },
+    {
+      "childAgent": "account_management_specialist",
+      "direction": "PARENT_TO_CHILD",
+      "deterministicTransfer": {
+        "pythonCodeCondition": {
+          "pythonCode": "def should_trigger_transfer_callback(context: CallbackContext) -> bool:\n    return context.state.get('flag_val') == 'balance_cleared' and context.state.get('suspension_reason') == 'non_payment' and context.state.get('auth_status') == 'Pass'\n"
+        }
+      }
+    }
+  ],
+  "afterModelCallbacks": [
+    {
+      "pythonCode": "agents/Root_agent/after_model_callbacks/after_model_callbacks_01/python_code.py",
+      "description": "Guarantee the verbatim handover line is spoken, then end_session in the same turn"
+    }
+  ]
+}

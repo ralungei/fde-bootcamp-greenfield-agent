@@ -1,0 +1,10 @@
+{
+  "name": "create_dispute_ticket",
+  "displayName": "create_dispute_ticket",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "create_dispute_ticket",
+    "pythonCode": "tools/create_dispute_ticket/python_function/python_code.py",
+    "description": "Creates a formal billing dispute case for charges <= $25.00 when back-office investigation is needed. If the disputed amount exceeds $25.00 (loyalty_limit), blocks ticket creation and triggers specialist handover."
+  }
+}

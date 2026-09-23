@@ -1,0 +1,10 @@
+{
+  "name": "execute_live_agent_handover",
+  "displayName": "execute_live_agent_handover",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "execute_live_agent_handover",
+    "pythonCode": "tools/execute_live_agent_handover/python_function/python_code.py",
+    "description": "Transfers the caller to a live representative queue while carrying full session context variables (BR-TV-015) and returns the exact verbatim handoff string to speak aloud to the caller."
+  }
+}

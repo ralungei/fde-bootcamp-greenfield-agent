@@ -1,0 +1,10 @@
+{
+  "name": "initiate_number_transfer",
+  "displayName": "initiate_number_transfer",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "initiate_number_transfer",
+    "pythonCode": "tools/initiate_number_transfer/python_function/python_code.py",
+    "description": "Initiates porting/transferring a phone number (mobile, landline, or family member number) into Telco."
+  }
+}

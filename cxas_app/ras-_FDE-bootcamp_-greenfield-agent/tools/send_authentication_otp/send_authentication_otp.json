@@ -1,0 +1,10 @@
+{
+  "name": "send_authentication_otp",
+  "displayName": "send_authentication_otp",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "send_authentication_otp",
+    "pythonCode": "tools/send_authentication_otp/python_function/python_code.py",
+    "description": "Dispatches a 6-digit OTP verification code to the caller's phone number. After calling this tool, state the id_verification_otp message in the caller's active language ({language})."
+  }
+}

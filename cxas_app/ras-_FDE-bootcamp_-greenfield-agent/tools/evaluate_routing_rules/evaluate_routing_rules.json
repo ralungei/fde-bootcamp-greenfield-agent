@@ -1,0 +1,10 @@
+{
+  "name": "evaluate_routing_rules",
+  "displayName": "evaluate_routing_rules",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "evaluate_routing_rules",
+    "pythonCode": "tools/evaluate_routing_rules/python_function/python_code.py",
+    "description": "Classifies the caller's intent utterance into the target module (M3 billing, M4 tech, M5 sales, M6 appointments/tickets, M7 account, M8 secondary_tech) and determines if authentication is required."
+  }
+}

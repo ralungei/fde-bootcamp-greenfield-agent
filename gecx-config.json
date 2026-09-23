@@ -1,0 +1,10 @@
+{
+  "gcp_project_id": "fde-bootcamp",
+  "location": "us",
+  "app_name": "ras-[FDE-bootcamp]-greenfield-agent",
+  "deployed_app_id": "844c20f7-c058-424e-8ce2-6a66e4ef4ddb",
+  "app_dir": "cxas_app/",
+  "model": "gemini-3.1-flash-live",
+  "modality": "audio",
+  "default_channel": "audio"
+}

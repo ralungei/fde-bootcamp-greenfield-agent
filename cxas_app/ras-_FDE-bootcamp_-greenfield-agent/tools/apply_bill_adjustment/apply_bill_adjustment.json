@@ -1,0 +1,10 @@
+{
+  "name": "apply_bill_adjustment",
+  "displayName": "apply_bill_adjustment",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "apply_bill_adjustment",
+    "pythonCode": "tools/apply_bill_adjustment/python_function/python_code.py",
+    "description": "Applies an immediate bill credit/refund for disputed charges, billing overcharges, or service-outage downtime credits within the $25.00 policy threshold (M3, CUJ-2). If amount > $25.00, returns the verbatim transfer_to_specialist message."
+  }
+}

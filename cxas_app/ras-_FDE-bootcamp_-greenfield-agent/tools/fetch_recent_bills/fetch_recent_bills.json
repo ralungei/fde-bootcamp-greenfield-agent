@@ -1,0 +1,10 @@
+{
+  "name": "fetch_recent_bills",
+  "displayName": "fetch_recent_bills",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "fetch_recent_bills",
+    "pythonCode": "tools/fetch_recent_bills/python_function/python_code.py",
+    "description": "Retrieves recent billing statements, line-item charges (including AppleStreaming, long-distance charges, internet overcharges), and saved payment card last-4 digits (M3, CUJ-2). Requires auth_status == 'Pass'."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "configure_autopay",
+  "displayName": "configure_autopay",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "configure_autopay",
+    "pythonCode": "tools/configure_autopay/python_function/python_code.py",
+    "description": "Enables or updates Autopay on the caller's billing account using their saved card ending in card_last4 or keypad card."
+  }
+}

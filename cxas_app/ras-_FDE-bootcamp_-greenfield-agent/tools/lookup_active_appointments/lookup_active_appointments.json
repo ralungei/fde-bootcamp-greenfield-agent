@@ -1,0 +1,10 @@
+{
+  "name": "lookup_active_appointments",
+  "displayName": "lookup_active_appointments",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "lookup_active_appointments",
+    "pythonCode": "tools/lookup_active_appointments/python_function/python_code.py",
+    "description": "Looks up existing active technician appointments (APT-5012) AND open support/repair tickets (TCK-8821) for the caller's account (M6, CUJ-4)."
+  }
+}

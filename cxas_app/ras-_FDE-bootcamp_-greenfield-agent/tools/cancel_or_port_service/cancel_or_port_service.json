@@ -1,0 +1,10 @@
+{
+  "name": "cancel_or_port_service",
+  "displayName": "cancel_or_port_service",
+  "executionType": "SYNCHRONOUS",
+  "pythonFunction": {
+    "name": "cancel_or_port_service",
+    "pythonCode": "tools/cancel_or_port_service/python_function/python_code.py",
+    "description": "Processes a service cancellation (mobility, internet, TV, or homephone) or generates a number port-out authorization after disclosing the verbatim contract_cancellation_fee_disclosure."
+  }
+}
