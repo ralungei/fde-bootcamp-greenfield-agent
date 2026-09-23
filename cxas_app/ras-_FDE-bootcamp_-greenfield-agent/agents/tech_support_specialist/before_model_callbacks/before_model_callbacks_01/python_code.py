@@ -30,7 +30,6 @@ SECONDARY_CLID_PREFIXES = ("514", "418", "438", "305")
 CLOSING_STATES = {
     "handover_completed": "handover_completed",
     "malicious_terminated": "malicious_caller_terminated",
-    "malicious_input": "malicious_input",
 }
 
 
