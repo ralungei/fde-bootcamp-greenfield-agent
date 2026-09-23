@@ -2361,14 +2361,14 @@
   </section>
 
   <!-- ================= STEP 3: LIVE DEMO SCENARIOS (2.2) ================= -->
-  <section class="slide" data-name="3 · Flujos en Vivo (Demo)">
+  <section class="slide" data-name="3 · Demo Time">
     <div class="canvas">
       <div class="inner">
         <div class="step-head">
           <span class="step-num-big s3">3</span>
           <div class="head">
-            <h2>Recorridos de usuario en producción (Live Demo)</h2>
-            <p class="tagline">Resolución transaccional entre múltiples especialistas y manejo determinista de casos límite en voz.</p>
+            <h2>Demo Time · Telco Voice Central en Vivo</h2>
+            <p class="tagline">Demostración en tiempo real de resolución multi-agente, persistencia de sesión y guardarraíles de voz.</p>
           </div>
         </div>
 
@@ -2381,9 +2381,9 @@
               <span>M7</span><em>&rsaquo;</em><span>M1</span><em>&rsaquo;</em><span class="hi">M3 Pago</span><em>&rsaquo;</em><span>M1</span><em>&rsaquo;</em><span class="hi">M7 Activa</span>
             </div>
             <div>
-              <h3>Flujo 1 · Reactivación de línea con cobro previo</h3>
+              <h3>Demo 1 · Reactivación de línea con cobro previo</h3>
               <p>Orquestación automática entre Gestión de Cuenta y Facturación conservando el cliente autenticado.</p>
-              <span class="chip light">Persistencia de estado en 4 saltos</span>
+              <span class="chip light">Cuenta: 123456789 · PIN: 1234</span>
             </div>
             <div class="detail">
               <div class="flow">
@@ -2393,7 +2393,12 @@
                 <span class="arrow-i"><svg aria-hidden="true"><use href="#i-right"/></svg></span>
                 <div class="node strong"><span class="k">3 · M7 Cuenta</span><span class="v">execute_suspend_restore<br>→ Línea activa</span></div>
               </div>
-              <p>El cliente pide reactivar su línea suspendida por falta de pago. El sistema impide activarla gratis, procesa el abono en Facturación y regresa automáticamente a Gestión de Cuenta para encender el servicio sin volver a pedir el PIN.</p>
+              <p><b>Qué decir en la Demo 1:</b></p>
+              <div class="rows">
+                <div class="maprow"><span class="from"><b>Turno 1:</b> “My phone was suspended because I forgot to pay. Account 123456789.”</span><span class="ar">&#8594;</span><span class="to">Identifica cuenta y detecta non_payment</span></div>
+                <div class="maprow"><span class="from"><b>Turno 2:</b> “My PIN is 1234.”</span><span class="ar">&#8594;</span><span class="to">auth_status = Pass · M7 bloquea restaurar gratis y salta a M3</span></div>
+                <div class="maprow"><span class="from"><b>Turno 3:</b> “Yes, pay the $85.50 with card token TOK-4242.”</span><span class="ar">&#8594;</span><span class="to">M3 cobra, pone balance_cleared y vuelve a M7 para activar</span></div>
+              </div>
             </div>
           </button>
 
@@ -2404,12 +2409,12 @@
               <span>$22.50 × 2</span><em>&rsaquo;</em><span class="hi">Refund</span>
             </div>
             <div>
-              <h3>Flujo 2 · Reembolso duplicado y contratación con OTP</h3>
+              <h3>Demo 2 · Reembolso duplicado y contratación con OTP</h3>
               <p>Conciliación en el ledger de pagos y envío obligatorio de código OTP antes de contratar.</p>
             </div>
             <div class="detail">
               <p><b>Caso A (Reembolso):</b> El agente consulta <code>list_recent_payments</code>, identifica dos cargos idénticos de <code>$22.50</code> (<code>PMT-77301</code> y <code>PMT-77318</code>) y ejecuta <code>refund_duplicate_payment</code>.</p>
-              <p><b>Caso B (Upgrade con OTP):</b> Antes de invocar <code>place_new_order</code> para subir la velocidad de fibra, el sistema exige disparar primero <code>send_authentication_otp</code> y validar el código con <code>validate_authentication_otp</code>.</p>
+              <p><b>Caso B (Upgrade con OTP):</b> Antes de invocar <code>place_new_order</code> para subir la velocidad de fibra, el sistema exige disparar primero <code>send_authentication_otp</code> y validar el código <code>123456</code> con <code>validate_authentication_otp</code>.</p>
             </div>
           </button>
 
@@ -2420,7 +2425,7 @@
               <i style="height:35%"></i><i style="height:85%"></i><i style="height:55%"></i><i style="height:100%"></i><i style="height:45%"></i><i style="height:75%"></i><i style="height:30%"></i>
             </div>
             <div>
-              <h3>Caso Límite 1 · Interrupción de voz (Barge-In) y bloqueo de idioma</h3>
+              <h3>Edge Case 1 · Interrupción de voz (Barge-In) y bloqueo de idioma</h3>
               <p>Si el usuario corta el saludo con una interjección (“Excusez-moi”), mantiene el idioma y repite el aviso legal.</p>
             </div>
             <div class="detail">
@@ -2439,7 +2444,7 @@
               <span>Declined</span><em>&rsaquo;</em><span class="hi">Retry Approved</span>
             </div>
             <div>
-              <h3>Caso Límite 2 · Tarjeta rechazada y reintento en llamada</h3>
+              <h3>Edge Case 2 · Tarjeta rechazada y reintento en llamada</h3>
               <p>Recuperación elegante ante fallo de pasarela con segunda tarjeta sin perder el flujo.</p>
             </div>
             <div class="detail">
@@ -2454,7 +2459,7 @@
               <span>PIN + OTP</span><em>&rsaquo;</em><span class="hi">MFA Off / Handoff</span>
             </div>
             <div>
-              <h3>Caso Límite 3 · Doble factor MFA y escalada inmediata</h3>
+              <h3>Edge Case 3 · Doble factor MFA y escalada inmediata</h3>
               <p>Exigencia de segundo factor para desactivar MFA y transferencia inmediata ante fraude o disputas &gt;$25.</p>
             </div>
             <div class="detail">
@@ -2467,20 +2472,22 @@
     </div>
     <footer class="notes"><div class="notes-inner">
       <div>
-        <div class="note-card tech">
-          <span class="note-tag">🔧 Tus casos reales para brillar en la Demo (Sección 2.2 · 6:30 a 11:00)</span>
-          <p>Aquí están exactamente los casos que hemos trabajado juntos:
-          <br>• <b>Tarjeta 1:</b> El bucle <code>M7 → M1 → M3 → M1 → M7</code> para que no reactive gratis.
-          <br>• <b>Tarjeta 2:</b> Tu caso de <code>send_authentication_otp</code> obligatorio antes de pedir el código en Ventas + los dos cobros de $22.50.
-          <br>• <b>Tarjeta 3:</b> Tu prueba real diciendo <i>“Excusez-moi”</i> en el saludo (Barge-In + regla de 3 palabras).</p>
+        <div class="note-card analogy">
+          <span class="note-tag">🎯 RUTA EXACTA A SEGUIR EN LA DEMO (Qué escribir/decir)</span>
+          <p><b>1. Ruta Happy Path + Persistencia (`M7 → M3 → M7`):</b>
+          <br>• <b>Tú dices:</b> <code>"Hi, my service was suspended because I forgot to pay my bill. My account is 123456789."</code>
+          <br>• <b>Tú dices:</b> <code>"My PIN is 1234."</code> → <i>(Verás cómo salta a M7, detecta deuda y te pasa a M3 sin volver a pedirte el PIN).</i>
+          <br>• <b>Tú dices:</b> <code>"Please charge the $85.50 to my card ending in 4242."</code> → <i>(Cobra en M3 y vuelve solo a M7 para reactivar la línea).</i>
+          <br><b>2. Ruta Edge Case (Voz Barge-In o Upgrade OTP):</b>
+          <br>• Interrumpe el saludo diciendo <code>"Excusez-moi"</code> (verás que NO cambia a francés por 1 palabra y repite el aviso legal), o pide <code>"I want to upgrade my internet for work from home"</code> (verás que llama primero a <code>send_authentication_otp</code> antes de pedirte el código <code>123456</code>).</p>
         </div>
       </div>
       <div class="note-card script">
-        <span class="note-tag">🗣️ Guion mientras muestras la Demo en Vivo</span>
+        <span class="note-tag">🗣️ POR QUÉ PASA CADA COSA (Para explicarlo mientras corre)</span>
         <ul>
-          <li><b>Antes de lanzar la llamada:</b> “Ejecutamos contra perfiles deterministas en memoria para aislar la demostración de dependencias externas.”</li>
-          <li><b>En el Happy Path:</b> “Fijaos cómo al pedir reactivar la línea suspendida, el agente recuerda que ya estamos autenticados al saltar de Gestión de Cuenta a Facturación y de vuelta.”</li>
-          <li><b>En el Edge Case de Voz / Auth:</b> “Y si interrumpimos el saludo diciendo solo <i>‘Excusez-moi’</i>, el sistema aplica la regla de mínimo 3 palabras para no cambiar el idioma por error y vuelve a pronunciar el aviso obligatorio de grabación.”</li>
+          <li><b>¿Por qué no reactiva la línea gratis en el Turno 2?</b> “Porque en <code>execute_suspend_restore</code> tenemos un guardarraíl en Python: al ver <code>suspension_reason == 'non_payment'</code>, devuelve <code>BALANCE_OWED</code> y activa la regla determinista que transfiere al cliente a Facturación (<code>M3</code>).”</li>
+          <li><b>¿Por qué Facturación (`M3`) no me vuelve a pedir el PIN?</b> “Porque <code>validate_authentication_pin</code> escribió <code>auth_status = 'Pass'</code> en <code>context.state</code>, y ese estado persiste entre todos los sub-agentes.”</li>
+          <li><b>¿Por qué al decir ‘Excusez-moi’ repite el saludo en inglés?</b> “Porque <code>bargeInAwareness: true</code> detecta que cortamos el aviso legal obligatorio (<code>BR-TV-001</code>), y nuestra regla de mínimo 3 palabras evita un cambio accidental de idioma.”</li>
         </ul>
       </div>
     </div></footer>
