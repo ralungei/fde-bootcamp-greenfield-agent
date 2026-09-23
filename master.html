@@ -2507,23 +2507,23 @@
 
         <div class="bento cols8">
 
-          <!-- Tile 1: 100% Core Pass Rate (Rows 1-2, Cols 1-3) -->
+          <!-- Tile 1: 91% Global / 93.3% Blind Pass Rate (Rows 1-2, Cols 1-3) -->
           <button class="tile has-art sp2 rw2 v-gemini" style="grid-area: 1 / 1 / 3 / 4" type="button">
             <span class="ficon"><svg><use href="#i-spark"/></svg></span>
             <div class="art art-stack light" aria-hidden="true"><span></span><span></span><span></span></div>
             <div>
               <h3>Validación End-to-End</h3>
-              <span class="bignum">100%</span>
-              <p>de aprobación en la suite principal de simulaciones</p>
-              <span class="chip light">90% en escenarios ciegos (18/20)</span>
+              <span class="bignum">91%</span>
+              <p>de aprobación global en 100 escenarios sin estado pre-inyectado</p>
+              <span class="chip light">93.3% en escenarios ciegos (30/30 Goals)</span>
             </div>
             <div class="detail">
-              <p>Todas las simulaciones se ejecutan desde un estado inicial limpio (<code>session_parameters: {}</code>), obligando al agente a ganar cada variable de sesión mediante llamadas reales a las herramientas:</p>
+              <p>Todas las simulaciones (70 públicas + 30 ciegas) se ejecutan desde un estado inicial limpio (<code>session_parameters: {}</code>) y con <code>goldenHallucinationMetricBehavior: ENABLED</code>:</p>
               <table class="matrix">
                 <tr><th>Fase de Ingeniería</th><th>Resultado</th><th>Hito Técnico</th><th></th></tr>
-                <tr><td>Baseline Multilingüe (v1.3)</td><td>63 / 90</td><td>Detección dinámica EN / FR-CA / ES-US</td><td><span class="mark yes">✓</span></td></tr>
-                <tr><td>Orquestación Multi-Agente (v2.0)</td><td>71 / 90 (18/20 ciegos)</td><td>Bucle completo M7 ⇄ M3 + Reglas Globales</td><td><span class="mark yes">✓</span></td></tr>
-                <tr><td>Blindaje por Trazas (v2.1 Actual)</td><td>100% Core Suite</td><td>Candado estricto Auth + Cierre Determinista</td><td><span class="mark yes">✓</span></td></tr>
+                <tr><td>Baseline Multilingüe (v1.3)</td><td>63 / 90 (70.0%)</td><td>Detección dinámica EN / FR-CA / ES-US</td><td><span class="mark yes">✓</span></td></tr>
+                <tr><td>Orquestación Multi-Agente (v2.0)</td><td>71 / 90 (78.8%)</td><td>Bucle completo M7 ⇄ M3 + Reglas Globales</td><td><span class="mark yes">✓</span></td></tr>
+                <tr><td>Blindaje por Trazas (v2.1 Actual)</td><td>91 / 100 (91.0%)</td><td>63/70 (90%) Public + 28/30 (93.3%) Blind (30/30 Goals)</td><td><span class="mark yes">✓</span></td></tr>
               </table>
             </div>
           </button>
