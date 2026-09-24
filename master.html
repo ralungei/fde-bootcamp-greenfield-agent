@@ -2160,6 +2160,9 @@
   <button class="toggle" id="notesToggle" aria-pressed="true">
     <span id="notesToggleLbl">Notas</span> <span class="kbd" aria-hidden="true">N</span>
   </button>
+  <button class="toggle" id="openNotesWin" type="button" title="Abrir notas en otro HTML sincronizado (P)">
+    <span>Notas ↗</span> <span class="kbd" aria-hidden="true">P</span>
+  </button>
 </div>
 
 <main class="stage" id="stage">
@@ -3681,7 +3684,7 @@ without calling send_authentication_otp first.</div>
 
     function goTo(index, back, remote) {
       if (index === i || switching || index < 0 || index >= slides.length) return;
-      if (!remote && chan) chan.postMessage({ slide: index });
+      if (!remote) { setTimeout(broadcastAll, 10); }
 
       if (reduced) { i = index; render(); return; }
 
@@ -3817,11 +3820,38 @@ without calling send_authentication_otp first.</div>
 
     toggle.addEventListener('click', flipNotes);
 
-    function openPresenter() {
-      var url = location.href.split('#')[0] + '#presenter';
-      var w = window.open(url, 'tvc-presenter', 'width=1280,height=900');
-      if (w && chan) setTimeout(function () { chan.postMessage({ slide: i }); }, 700);
+    var notesWin = null;
+    var SYNC_KEY = 'tvc-deck-state';
+    function broadcastAll() {
+      var payload = { slide: i, lang: currentLang, ts: Date.now() };
+      if (chan) { try { chan.postMessage(payload); } catch (e) {} }
+      try { localStorage.setItem(SYNC_KEY, JSON.stringify(payload)); } catch (e) {}
+      try { if (notesWin && !notesWin.closed) notesWin.postMessage(payload, '*'); } catch (e) {}
     }
+    function openPresenter() {
+      var base = location.href.split('#')[0].replace(/master\.html.*$/, '');
+      var url = base + 'notes.html';
+      notesWin = window.open(url, 'tvc-notes-html', 'width=1280,height=900');
+      applyNotes(false);
+      render();
+      setTimeout(broadcastAll, 400);
+    }
+    var openNotesBtn = document.getElementById('openNotesWin');
+    if (openNotesBtn) openNotesBtn.addEventListener('click', openPresenter);
+    window.addEventListener('storage', function (e) {
+      if (e.key === SYNC_KEY && e.newValue) {
+        try {
+          var d = JSON.parse(e.newValue);
+          if (d.lang && d.lang !== currentLang) applyLanguage(d.lang, true);
+          if (typeof d.slide === 'number' && d.slide !== i) goTo(d.slide, d.slide < i, true);
+        } catch (err) {}
+      }
+    });
+    window.addEventListener('message', function (e) {
+      var d = e.data || {};
+      if (d.lang && d.lang !== currentLang) applyLanguage(d.lang, true);
+      if (typeof d.slide === 'number' && d.slide !== i) goTo(d.slide, d.slide < i, true);
+    });
 
     /* ---- clock, presenter window only ---- */
     var t0 = Date.now();
@@ -3913,9 +3943,7 @@ without calling send_authentication_otp first.</div>
       currentLang = lang;
       document.documentElement.lang = lang;
       try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
-      if (!remote && chan) {
-        try { chan.postMessage({ lang: lang }); } catch (e) {}
-      }
+      if (!remote) { setTimeout(broadcastAll, 10); }
       var pack = lang === 'en' ? SLIDES_EN : SLIDES_ES;
       slides.forEach(function (s, idx) {
         if (pack[idx]) {
