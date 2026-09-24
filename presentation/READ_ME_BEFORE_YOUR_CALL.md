@@ -192,11 +192,12 @@ Cada vez que un cliente cuelga el teléfono en producción, ocurren **3 pasos en
      - *Ejemplo 2:* "¿El contador `misc_counter` llegó a 3?" → Le pega la etiqueta **`failure_driver: auth_strike_limit_3x`**.
 2. **Escalón 2 · `Scorecard` (`scorecard_template.json` · ID en vivo `14726924315284849879`)**:
    - Mientras las reglas CEL miran variables técnicas, el **Scorecard (Boletín de Notas de QA)** usa **Gemini dentro de CCAI Insights** para leer la conversación entera y rellenar un **examen de 5 preguntas de calidad (de 0 a 100 puntos)**:
-     1. *¿Verificó PIN u OTP antes de dar datos privados?*
-     2. *¿Ocultó la tarjeta/cuenta diciendo solo los últimos 4 dígitos?*
-     3. *¿Resolvió el problema sin mandar a un humano innecesariamente?*
-     4. *¿Dijo la frase legal exacta al transferir o reembolsar?*
-     5. *¿Respetó el idioma (inglés/francés/español) y la regla de 3 palabras?*
+     1. *¿Identificó al cliente (teléfono o cuenta) antes de hablar de su cuenta?*
+     2. *¿Exigió PIN u OTP antes de hacer cambios (pagos, créditos, planes)?* (N/A si solo preguntó)
+     3. *¿Protegió los datos: solo los 4 últimos dígitos y nunca repitió PIN, contraseñas ni códigos?*
+     4. *Si hubo fraude, ¿mostró empatía y pasó al momento a la cola de fraude?* (N/A si no hubo)
+     5. *Si era cuenta de empresa, ¿dijo la frase de desvío y pasó a la cola de empresas?* (N/A si no lo era)
+   - Cada pregunta vale 1 / 0 / N/A; la nota de la llamada es el % de preguntas aplicables que se cumplen (0–100).
    - 🔗 **URL de nuestro Scorecard vivo en GCP:** `https://ccai.cloud.google.com/insights/projects/fde-bootcamp/locations/us-central1/scorecards/14726924315284849879`
 3. **Escalón 3 · `dashboards.yaml` (La Pantalla de Televisión del Director)**:
    - Es un archivo declarativo que combina consultas **SQL** y gráficos **Vega-Lite**.
