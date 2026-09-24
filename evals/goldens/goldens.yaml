@@ -36,13 +36,48 @@ conversations:
       - "The agent must look up the customer profile and dispatch a 6-digit OTP code stating that valid codes start with 48."
     tags: [P0, HIGH, BR-TV-001, BR-TV-009, auth-otp]
 
+  - conversation: golden__identify_before_authenticate
+    session_parameters:
+      clid: "4155550101"
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "This call may be recorded for quality and training purposes. Welcome to Telco. I can help with billing, technical support, or managing your account. To get started, could you tell me the phone number or account number associated with your service?"
+      - user: "Hi, I think I was charged twice for my bill this month."
+        agent: "I can help you with that. First, could you tell me the phone number or account number on your service?"
+    expectations:
+      - "The agent must ask for the phone or account number before anything else."
+      - "The agent must NOT send a verification code, ask for a PIN, or mention authentication before the caller is identified."
+      - "The agent must NOT identify the caller silently from the caller ID."
+    tags: [P0, HIGH, BR-TV-008, identify-first]
+
+  - conversation: golden__caller_chooses_otp_or_pin
+    session_parameters:
+      clid: "4155550101"
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "This call may be recorded for quality and training purposes. Welcome to Telco. I can help with billing, technical support, or managing your account. To get started, could you tell me the phone number or account number associated with your service?"
+      - user: "Sure, it's 415-555-0101. I want to check my last bill."
+        agent: "Thanks. For your security, would you like me to send a 6-digit code to your phone and email, or would you prefer to enter your 4-digit PIN on the keypad?"
+        tool_calls:
+          - action: fetch_customer_profile
+            args:
+              account_or_phone:
+                $matchType: "contains"
+                $matchValue: "0101"
+                $originalValue: "415-555-0101"
+    expectations:
+      - "The agent must identify the caller with the number they said."
+      - "The agent must ask whether the caller prefers a 6-digit code or their 4-digit PIN."
+      - "The agent must NOT call send_authentication_otp before the caller chooses the code."
+    tags: [P0, HIGH, BR-TV-008, auth-method-choice]
+
   - conversation: golden__business_account_immediate_deflection
     session_parameters:
       clid: "4155550109"
       business_flag: "true"
     turns:
       - user: "Hi, I'm calling about our commercial business fiber account 415-555-0109."
-        agent: "It looks like you're calling about a business account. Let me transfer you to our business team right away."
+        agent: "To get you the best support for your business account, I'll transfer you to an agent. You'll need to use your phone keypad instead of talking to the virtual assistant. Just a moment while I connect you."
         tool_calls:
           - action: fetch_customer_profile
             args:
@@ -88,7 +123,7 @@ conversations:
       clid: "4155550101"
     turns:
       - user: "I want to speak to a human representative right now please."
-        agent: "I understand — let me connect you with a team member who can help. One moment please."
+        agent: "I'll connect you to a representative who can help. Please hold."
         tool_calls:
           - action: execute_live_agent_handover
             args:
