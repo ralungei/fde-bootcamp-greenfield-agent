@@ -2273,7 +2273,7 @@
           <p class="cue"><b>Señala el 85%.</b></p>
           <p>“El dato que más condiciona el diseño: <b>el 85% de las llamadas exige verificar la identidad</b> antes de hacer nada. No es un FAQ: son pagos, reembolsos, bajas y cambios de seguridad.”</p>
           <p>“Además los clientes llaman en inglés y en francés canadiense, y hay llamadas que cruzan áreas, como reactivar una línea que exige pagar antes.”</p>
-          <p>“Y estos son los requisitos principales: aviso de grabación literal, solo los últimos 4 dígitos de cualquier dato, el fraude va a una persona sin autenticar y las cuentas de empresa se atienden por una persona.”</p>
+          <p>“Y abajo tenéis las cinco reglas de oro del negocio: aviso de grabación literal, leer solo los últimos 4 dígitos de cualquier dato privado, las cuentas de empresa van siempre a una persona, <b>el fraude se transfiere a un humano inmediatamente sin pedir PIN</b>, y por eso mismo <b>las colas humanas de averías y fraude son las únicas abiertas 24/7</b>.”</p>
         </div>
       </div>
       <div class="col foryou">
@@ -2284,19 +2284,24 @@
             <li><b>2. De dónde salen las dos cifras clave del slide (85% y 55%):</b>
               <br>• <b>El 85% (Autenticación obligatoria):</b> En el documento de requisitos (PRD/brief), los 6 motivos suman el 100% del tráfico: Soporte técnico (30%) + Facturación (25%) + Ventas (15%) + Cuenta (15%) + Citas (10%) + Cambios (5%). Todos exigen autenticación obligatoria salvo Ventas (15%), donde un cliente nuevo puede preguntar precios sin tener cuenta. Por tanto: <code>100% - 15% = 85%</code>.
               <br>• <b>El 55% (Concentración de negocio):</b> Soporte técnico (30%) + Facturación (25%) = <b>55% de todas las llamadas</b>. Más de la mitad del call center vive en esos dos problemas. Si automatizas bien esos dos bloques, le ahorras a Telco más de la mitad de su carga operativa.</li>
-            <li><b>3. Analogía cotidiana (La máquina expendedora vs. el conserje con especialistas):</b>
-              <br>• <i>El sistema antiguo (IVR tradicional de botones):</i> Es como una máquina expendedora rígida. Si pulsas el 4 ("Reactivar línea suspendida"), el sistema intenta reactivarla, ve que debes 45$ y te dice: "Tiene deuda pendiente, cuelgue y llame a Facturación pulsando el 2".
-              <br>• <i>Nuestro diseño en CX Agent Studio (CES):</i> Es como un conserje de hotel que te pide el carné una sola vez en recepción, apunta en tu ficha digital (<code>context.state</code>) que ya estás verificado, y cuando el especialista de Cuenta descubre que debes 45$, te pasa en 1 segundo con su compañero de Facturación con la ficha ya abierta, cobras y vuelves a Cuenta sin repetir tu nombre ni tu PIN.</li>
-            <li><b>4. Por qué los 4 requisitos de abajo no son "detalles", sino leyes:</b>
-              <br>• <b>Aviso de grabación literal:</b> Por ley de telecomunicaciones, si el cliente interrumpe el saludo al principio, el robot está obligado a volver a decir <i>"This call may be recorded..."</i> antes de seguir.
-              <br>• <b>Solo últimos 4 dígitos (PCI/PII):</b> Como la llamada se graba, si el robot leyera los 16 dígitos de una tarjeta o un PIN completo en voz alta, quedaría grabado en el audio y violaría la normativa bancaria PCI-DSS.
-              <br>• <b>Fraude va a humano SIN autenticar:</b> Si alguien llama diciendo "¡Me han hackeado la cuenta!", NO puedes pedirle el PIN (porque el hacker podría haberlo cambiado, o porque el propio llamante es el ladrón probando PINs). Se transfiere a Seguridad inmediatamente sin pedir PIN.
-              <br>• <b>Cuentas de empresa (Business) van a humano:</b> Los contratos corporativos tienen penalizaciones y SLAs a medida que un agente de consumo no debe tocar.</li>
+            <li><b>3. ¡Duda clave resuelta! ¿Por qué `Fraude: a un humano sin autenticar` y qué tiene que ver con `Averías y fraude: colas 24/7`? (Las dos mitades de la misma regla):</b>
+              <br>• <b>Mitad A · ¿Por qué en Fraude está PROHIBIDO autenticar con PIN u OTP?</b>
+              <br>&nbsp;&nbsp;— <i>Imagina la situación real:</i> A María le acaban de robar el móvil en el metro o un hacker ha entrado en su cuenta de Telco y le ha cambiado el PIN. María llama desesperada desde el teléfono de un amigo diciendo: <i>"¡Me han hackeado la cuenta!"</i>.
+              <br>&nbsp;&nbsp;— <i>¿Qué pasaría si el robot le pidiera el PIN o le mandara un SMS OTP?</i> Que el SMS le llegaría **al móvil que tiene el ladrón en la mano**, y el PIN nuevo solo lo sabe el ladrón. La víctima real jamás pasaría el filtro del robot. Y al revés: si el que llama es el estafador intentando tantear la cuenta, pedirle el PIN en un sistema automático le daría pistas gratis.
+              <br>&nbsp;&nbsp;— <i>La regla en nuestro agente:</i> Aunque el 85% de las llamadas normales exigen PIN/OTP, en cuanto el cliente pronuncia "fraude / hackeo / robo / cargo no autorizado", el robot **salta por encima del PIN** y ejecuta `execute_live_agent_handover(reason="fraud_report")` en ese mismo segundo para que un especialista humano de Seguridad bloquee la línea verificando su DNI/pasaporte.
+              <br>• <b>Mitad B · ¿Y qué significa `Averías y fraude: colas 24/7`?</b>
+              <br>&nbsp;&nbsp;— En el Call Center de Telco (según el PRD), **los agentes humanos NO trabajan a todas horas en todos los departamentos**: las colas humanas de *Facturación*, *Ventas*, *Citas* y *Bajas* tienen horario comercial (por ejemplo, de 08:00 a 22:00). Si llamas a las 3:30 de la madrugada para disputar una factura de 80$, no hay humanos de Facturación despiertos.
+              <br>&nbsp;&nbsp;— **PERO hay dos colas de humanos que NUNCA cierran (están abiertas 24 horas, 7 días a la semana = `24/7`):** la cola de **Fraude/Seguridad** y la cola de **Averías Técnicas**.
+              <br>&nbsp;&nbsp;— *¿Cómo se conectan las dos pastillas?* Como el robot tiene prohibido resolver casos de fraude por su cuenta (`Fraude: a un humano sin autenticar`), Telco garantiza que **la cola humana de Fraude y Averías está abierta 24/7** (`Averías y fraude: colas 24/7`). Así, aunque te roben el móvil un domingo a las 4 de la mañana, el traspaso inmediato del robot siempre encuentra a un agente humano despierto al otro lado.</li>
+            <li><b>4. Las otras 3 reglas legales de la barra inferior:</b>
+              <br>• <b>Aviso de grabación literal:</b> Por ley de telecomunicaciones, si el cliente interrumpe el saludo al principio, el robot está obligado a volver a decir <i>"This call may be recorded for quality and training purposes"</i> antes de seguir.
+              <br>• <b>Solo últimos 4 dígitos (PCI/PII):</b> Como el 100% de las llamadas se graban, si el robot leyera los 16 dígitos de una tarjeta o un PIN completo en voz alta, quedaría grabado en el audio y violaría la normativa bancaria PCI-DSS.
+              <br>• <b>Cuentas de empresa (Business) van a humano:</b> Cuando `fetch_customer_profile` devuelve `account_type == "BUSINESS"`, el agente transfiere inmediatamente a un gestor corporativo humano porque las empresas tienen contratos y penalizaciones (SLAs) a medida.</li>
           </ul>
         </div>
         <div class="nb">
           <span class="lbl">El valor en la evaluación</span>
-          <p>En la rúbrica (Sección 1.1), el evaluador busca ver si entiendes <b>por qué</b> construiste el agente así antes de enseñar cajas técnicas. Cada dato de esta slide justifica una pieza técnica que enseñarás después: el 85% justifica las guardas en Python; las llamadas cruzadas justifican el multi-agente con <code>context.state</code>; el bilingüismo justifica la regla de 3 palabras.</p>
+          <p>En la rúbrica (Sección 1.1), el evaluador busca ver si entiendes <b>por qué</b> construiste el agente así antes de enseñar cajas técnicas. Si al señalar esas dos pastillas explicas: <i>"El fraude no se autentica con PIN porque el atacante puede tener el teléfono robado, y precisamente por eso la cola humana de fraude y averías es 24/7 mientras que facturación o ventas tienen horario de oficina"</i>, demuestras que leíste el PRD como un arquitecto real.</p>
         </div>
         <div class="nb ask">
           <span class="lbl">Si te preguntan</span>
@@ -3356,27 +3361,30 @@ without calling send_authentication_otp first.</div>
       </div>
       <div class="col foryou">
         <div class="nb">
-          <span class="lbl">Para entenderlo · Estudio a fondo (Por qué este Roadmap demuestra madurez de FDE)</span>
+          <span class="lbl">Para entenderlo · Estudio a fondo de CADA punto del Roadmap (de menos a más)</span>
           <ul>
-            <li><b>1. En lenguaje llano (Por qué dividimos en 3 Olas):</b>
-              <br>• <b>Ola 1 (Cimientos reales):</b> No añade "efectos especiales", sino que desenchufa los datos de juguete (mocks) y enchufa el CRM real de Telco, la pasarela de pagos con teclado telefónico (DTMF para cumplir normativa bancaria PCI-DSS y que el cliente teclee los 16 números de su tarjeta en vez de dictarlos) y el control de idempotencia en base de datos (para que si un cliente llama dos veces seguidas, no cobre dos reembolsos).
-              <br>• <b>Ola 2 (Donde está el 30% del volumen):</b> Conecta el diagnóstico de fibra en tiempo real y pone un "escudo pre-llamada" (si se ha caído internet en todo Montreal, el agente lo anuncia en el segundo 1 de la llamada antes de pedir siquiera el PIN, ahorrando miles de llamadas).
-              <br>• <b>Ola 3 (Operación 24/7 con CCAI Insights + SCRAPI):</b> Con miles de llamadas simultáneas necesitas vigilar cuotas de GPU/voz en GCP, latencia P95 (&lt; 1,5 segundos de silencio en voz) y tener el pipeline de <code>uv run cxas insights</code> sincronizando <code>autolabel_rules.yaml</code>, el Scorecard <code>14726924315284849879</code> y <code>dashboards.yaml</code> en producción.</li>
-            <li><b>2. Por qué confesar nosotros mismos los 3 riesgos ("Deuda técnica conocida") suma puntos:</b>
-              <br>• En la rúbrica de graduación FDE (Sección 4), el evaluador busca diferenciar a un vendedor de humo ("mi agente es perfecto") de un ingeniero de producción ("sé exactamente qué 3 cosas endurecería antes de abrir el grifo a 100.000 clientes"):
-              <br>&nbsp;&nbsp;① <b>Guarda copiada en cada tool:</b> Como CES no permite hacer <code>import auth_helper</code> entre distintas tools, la línea <code>if auth_status != "Pass"</code> está copiada en cada fichero. Mitigación: test unitario en CI/CD que revise que ninguna tool se suba sin esa línea.
-              <br>&nbsp;&nbsp;② <b>Crédito de cortesía de hasta 25$ (`issue_service_credit`):</b> Hoy verifica autenticación y que sea ≤ 25$, pero no comprueba en backend si hubo realmente una caída de red en su nodo. Mitigación: cruzarlo con el ID de ticket de avería en Ola 1.
-              <br>&nbsp;&nbsp;③ <b>Separación limpia entre `&lt;constraints&gt;` y `&lt;taskflow&gt;`:</b> <code>&lt;constraints&gt;</code> debe tener solo prohibiciones absolutas ("nunca leas más de 4 dígitos"), mientras que los pasos en orden ("primero haz A, luego B") deben vivir todos en <code>&lt;taskflow&gt;</code>.</li>
+            <li><b>1. Fase 1 · Integración con sistemas reales (Qué significa cada uno de los 3 puntos de la tarjeta):</b>
+              <br>• <b>CRM, facturación y pasarela en lugar de mocks (con los mismos contratos):</b> Hoy nuestras 28 funciones Python devuelven diccionarios simulados (mocks), pero la estructura de campos JSON (`past_due_balance`, `card_last_four`, `account_status`) ya es idéntica a la del PRD. En producción cambias el interior de la función Python por un `requests.post()` hacia el API Gateway (Apigee/MuleSoft) de Telco y **no tienes que cambiar ni una coma de los prompts de los 5 agentes**.
+              <br>• <b>Telefonía: tarjeta por teclado, nunca hablada (DTMF / PCI-DSS):</b> En el simulador web escribimos los últimos 4 dígitos en chat, pero en una llamada telefónica real, si un cliente quiere añadir una tarjeta nueva de 16 dígitos, **nunca debe dictarla con la voz** (porque quedaría grabada en el audio de la llamada). En telefonía real (Avaya/Genesys + Cloud Telephony) se activa **DTMF (Dual-Tone Multi-Frequency)**: el cliente pulsa los números en el teclado del móvil (`pi-pi-pi`), la centralita silencia los tonos en la grabación y envía el token bancario directo a Stripe/Adyen sin que Gemini vea ni escuche jamás los 16 dígitos.
+              <br>• <b>Control de reembolsos duplicados en el sistema de facturación (Idempotencia en BD):</b> Hoy, `refund_duplicate_payment` guarda en la memoria de la llamada (`context.state["refunded_txns"]`) qué pago acaba de devolver para no devolverlo dos veces en la misma conversación. Pero `context.state` se borra al colgar. Si el cliente cuelga y vuelve a llamar 2 minutos después, una sesión nueva no sabría que ya se le devolvió. Por eso en la Fase 1 esa marca (`ALREADY_REFUNDED`) se escribe en la base de datos central de Facturación (idempotencia transaccional).</li>
+            <li><b>2. Fase 2 · Nuevos recorridos y la lógica "Antes de la llamada" (Pre-Call Routing del PRD):</b>
+              <br>• <b>Soporte técnico conectado (30% del volumen):</b> Es el motivo #1 de llamadas. En Fase 2 conectamos `run_connection_diagnostic` con la telemetría real del router GPON/fibra del cliente y activamos un webhook que le manda un SMS automático cuando el técnico cierra la incidencia en la calle.
+              <br>• <b>¿Qué son las 3 cosas de "Antes de la llamada" (`números bloqueados`, `aviso de avería regional`, `horario de colas`)?</b>
+                <br>&nbsp;&nbsp;① <b>Números bloqueados (Blacklist / Anti-Spam en centralita):</b> Antes siquiera de despertar a Gemini (que cuesta dinero por segundo), el servidor de telefonía comprueba el número que llama (`ANI / Caller ID`) contra una lista de números de spam/abuso bloqueados.
+                <br>&nbsp;&nbsp;② <b>Aviso de avería regional en el saludo (Proactive Outage Deflection):</b> Si se ha roto un cable de fibra en Toronto y llaman 5.000 vecinos a la vez, no esperas a que hablen con el especialista técnico. En el segundo 1, al cruzar su teléfono con su código postal, el Root Agent les dice en el saludo: <i>"Sabemos que hay una avería en tu zona (Toronto) y quedará resuelta a las 18:00h. ¿Llamas por esto o por otra cosa?"</i>. El 80% cuelga satisfecho en 10 segundos sin gastar minutos de agente.
+                <br>&nbsp;&nbsp;③ <b>Horario de colas (Queue Hours · 08:00–22:00 vs. 24/7):</b> Como vimos en la Diapositiva 1, **solo las colas humanas de Averías y Fraude están abiertas 24/7**. Las colas humanas de Facturación, Ventas y Bajas cierran por la noche. En la Fase 2, antes de ejecutar `execute_live_agent_handover`, la herramienta consulta el reloj del call center: si son las 3:00 AM y es un traspaso de Facturación (ej. disputa &gt; 50$), en vez de transferir a una cola vacía donde el cliente se quedaría colgado, le informa de que el departamento abre a las 8:00 AM y le deja programada una devolución de llamada (callback). En cambio, si el traspaso es por `fraud_report` o `tech_outage`, lo pasa en directo porque esas dos colas son 24/7.</li>
+            <li><b>3. Fase 3 · Escalado y observabilidad (Cuotas, Latencia y CCAI Insights):</b>
+              <br>• <b>Cuotas de GCP (Concurrencia):</b> Asegurar cuota de `chirp_2` / Gemini Live en la región `us` para soportar picos de 500–1.000 llamadas simultáneas sin errores `429 Too Many Requests`.
+              <br>• <b>Objetivos de latencia y coste por turno:</b> Vigilar en producción que el tiempo de respuesta de voz (Voice-to-Voice latency) se mantenga por debajo de 1,2–1,5 segundos para que no haya silencios incómodos al teléfono.
+              <br>• <b>Indicadores en Insights (`autolabel_rules.yaml`, Scorecard `ras_telco_voice_central_qa` y `dashboards.yaml`):</b> El circuito de 3 pisos que explicamos en Calidad corriendo automáticamente cada noche sobre el 100% de las llamadas reales.</li>
+            <li><b>4. Riesgos y mitigación + Puntos de aprobación del cliente (Customer Sign-off):</b>
+              <br>• Decir tú mismo los 3 riesgos técnicos (guarda copiada en cada archivo porque CES no comparte módulos Python, crédito de 25$ sin cruzar con ticket real y separar `&lt;constraints&gt;` de `&lt;taskflow&gt;`) y pedir la firma del cliente en los umbrales financieros (25$/50$) demuestra mentalidad real de **Forward Deployed Engineer (FDE)**.</li>
           </ul>
-        </div>
-        <div class="nb">
-          <span class="lbl">El valor</span>
-          <p>Decir tú los riesgos antes de que te los pregunten desarma cualquier objeción del jurado y demuestra que conoces las tripas de tu propio código.</p>
         </div>
         <div class="nb ask">
           <span class="lbl">Si te preguntan</span>
-          <p class="q">“¿Y el segundo agente (el convertido de Dialogflow CX del Día 2)?”</p>
-          <p>“Esta presentación se centra 100% en profundidad en el agente Greenfield Telco Voice Central. En una migración desde DFCX el principio arquitectónico que aplicamos es idéntico: consolidar decenas de páginas rígidas en 4 especialistas por dominio y llevar las validaciones financieras y de estado a código Python.”</p>
+          <p class="q">“¿Qué pasa si un cliente intenta disputar un cargo de 80 dólares a las 3 de la mañana cuando Facturación está cerrado?”</p>
+          <p>“La herramienta `adjust_billing_dispute` rechaza aprobar 80$ en automático por superar el límite de 50$ y solicita traspaso a humano. Con la comprobación de horario de colas de la Ola 2, al ver que la cola de Facturación está fuera de horario comercial (a diferencia de Fraude y Averías que son 24/7), el agente registra el ticket de disputa en el CRM, protege la cuenta contra recargos y agenda una llamada prioritaria del equipo de Facturación a primera hora.”</p>
         </div>
       </div>
     </div></footer>
@@ -3440,12 +3448,22 @@ without calling send_authentication_otp first.</div>
       </div>
       <div class="col foryou">
         <div class="nb">
-          <span class="lbl">Para ti</span>
-          <p>Aquí para de hablar y deja silencio. Las preguntas difíciles más probables, con respuesta, están en la diapositiva privada “Preguntas difíciles” (solo aparece con las notas activadas).</p>
+          <span class="lbl">Para entenderlo · Cómo clavar el cierre y los 8 minutos de Q&amp;A</span>
+          <ul>
+            <li><b>1. Por qué cerramos con estas 3 tarjetas exactas:</b> Cada una de las 3 tarjetas corresponde a una de las <b>3 notas del 1 al 5</b> que el evaluador tiene en su hoja de calificación:
+              <br>• <i>Tarjeta 1 (Cobertura funcional):</i> Puntúa **Arquitectura y Estado Compartido** (`Root` + 4 especialistas + `context.state` + 3 idiomas).
+              <br>• <i>Tarjeta 2 (Control determinista):</i> Puntúa **Fiabilidad en Producción y Seguridad** (guardas `auth_status` / `step_up_status` en Python, 8 reglas de reembolso, callbacks de salida/entrada, `redactionConfig` y `guardrails/`).
+              <br>• <i>Tarjeta 3 (Calidad verificada):</i> Puntúa **Rigor de Evaluación y Hill-Climbing** (`92/100` en Agent Academy, `29/30 = 96.7%` en casos ocultos, `5/5` en Goldens, `6/6` en Gate Check y observabilidad en CCAI Insights).</li>
+            <li><b>2. La fórmula infalible para responder cualquier pregunta difícil en el Q&amp;A ("Hoy vs. Producción"):</b>
+              <br>• Si te hacen una pregunta sobre algo que en el Bootcamp es un mock (por ejemplo: <i>"¿Qué pasa si la API del banco tarda 10 segundos?"</i> o <i>"¿Cómo verificáis que el teléfono desde el que llama es el suyo?"</i>), **nunca inventes que el mock hace magia**.
+              <br>• Usa siempre esta estructura en dos partes:
+                <br>&nbsp;&nbsp;① <b>"Hoy en el agente desplegado..."</b> (explicas qué hace la tool de Python y qué valida en `context.state`).
+                <br>&nbsp;&nbsp;② <b>"...y en la Ola 1 de paso a producción..."</b> (explicas cómo se conecta al sistema real, DTMF, horario de colas o base de datos transaccional). Eso demuestra honestidad técnica total + visión de producción.</li>
+          </ul>
         </div>
         <div class="nb">
-          <span class="lbl">Si te bloqueas en una pregunta</span>
-          <p>“Buena pregunta. Hoy está resuelto así… y en producción lo haría así…” Separar “lo que hay hoy” de “lo que haría” siempre funciona y es honesto.</p>
+          <span class="lbl">Qué pestañas tener preparadas por si piden ver código en el Q&amp;A</span>
+          <p>1) <code>app.json</code> (para enseñar <code>guardrails</code>, <code>redactionConfig</code> y <code>evaluationMetricsThresholds</code>). 2) <code>tools/refund_duplicate_payment/python_function/python_code.py</code> (para enseñar las 8 comprobaciones en Python). 3) <code>autolabel_rules.yaml</code> + <code>scorecard_template.json</code> + <code>dashboards.yaml</code> (para enseñar los 3 pisos de CCAI Insights).</p>
         </div>
       </div>
     </div></footer>
@@ -3497,8 +3515,8 @@ without calling send_authentication_otp first.</div>
     </div>
     <footer class="notes"><div class="notes-inner single">
       <div class="nb">
-        <span class="lbl">Recuerda</span>
-        <p>Esta diapositiva y la siguiente desaparecen al pulsar <b>N</b>. En la ventana que compartes, las notas tienen que estar apagadas.</p>
+        <span class="lbl">Para entenderlo · Por qué cada dato de prueba funciona así</span>
+        <p>• <b>Cuenta `123456789` + PIN `1234`:</b> En <code>fetch_customer_profile</code> carga el perfil residencial con saldo vencido de <code>45.00$</code> y tarjeta guardada terminada en <code>4242</code>.<br>• <b>OTP `482913` vs `123456`:</b> El código de <code>validate_authentication_otp</code> comprueba que la cadena tenga 6 dígitos y empiece por <code>"48"</code>. Si metes <code>123456</code>, incrementa <code>misc_counter</code> (+1) y te avisa de que quedan 2 intentos.<br>• <b>Atajo visual:</b> Esta diapositiva y la siguiente tienen <code>data-private="1"</code>, por lo que desaparecen automáticamente en la pantalla compartida cuando pulsas la tecla <b>N</b>.</p>
       </div>
     </div></footer>
   </section>
@@ -3551,8 +3569,8 @@ without calling send_authentication_otp first.</div>
     </div>
     <footer class="notes"><div class="notes-inner single">
       <div class="nb">
-        <span class="lbl">Cómo responder</span>
-        <p>Respuesta corta primero, detalle solo si repreguntan. Y separa siempre “lo que hay hoy” de “lo que haría en producción”.</p>
+        <span class="lbl">Para entenderlo · Guía rápida de las 3 preguntas estrella del tribunal</span>
+        <p>• <b>Si preguntan por Fraude y Colas 24/7:</b> <i>"En fraude está prohibido pedir PIN u OTP porque el ladrón puede tener el móvil robado o haber cambiado el PIN; se transfiere al instante sin autenticar, y por eso la cola humana de Fraude y Averías es 24/7 mientras que Facturación o Ventas tienen horario comercial."</i><br>• <b>Si preguntan por los 8 fallos del 92/100 en Agent Academy:</b> <i>"En los 30 casos ocultos sacamos 29/30 (96.7%), lo que demuestra que no hay overfitting. De los 7 fallos públicos, 2 fueron por cambiar una palabra de la frase literal en el mismo turno de transferencia, 1 por timeout de red en francés (144s) y 1 porque el simulador dio un solo OTP cuando MFA exige un segundo OTP fresco de step-up."</i><br>• <b>Si preguntan por SCRAPI y CCAI Insights:</b> <i>"SCRAPI es nuestro puente Infrastructure-as-Code para versionar en Git `autolabel_rules.yaml` (etiquetas CEL post-llamada), el Scorecard `ras_telco_voice_central_qa` (5 preguntas QA puntuadas de 0 a 100) y `dashboards.yaml` (gráficas SQL/Vega-Lite de contención, sentimiento y latencia P50/P95)."</i></p>
       </div>
     </div></footer>
   </section>
