@@ -1,3 +1,22 @@
+# ==========================================================================================
+# WHAT THIS CALLBACK DOES (after_model_callback)
+# ------------------------------------------------------------------------------------------
+# Runs AFTER the model has written its reply and BEFORE the caller hears it.
+#
+# We use this to guarantee the closing line of the call. When a tool has set a closing state
+# (handover to a human, or a malicious caller), this callback:
+#   * Checks that the model is saying the exact verbatim line (handover_message, from app.json).
+#   * If the model paraphrased it, replaces the text with the exact line.
+#   * Adds end_session so the call really ends right after the line, exactly once.
+#   * If the model said the line exactly, keeps its original audio (sounds more natural).
+#
+# If we did not have this:
+#   * The model could reword the legal / transfer line ("let me get someone for you..."),
+#     which fails compliance and the golden tests.
+#   * The call might not end after the transfer line, or end_session could be sent twice.
+#   * The model could keep talking after saying goodbye to a malicious caller.
+# ==========================================================================================
+
 from typing import Optional
 
 CLOSING_STATES = {

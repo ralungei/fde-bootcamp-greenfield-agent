@@ -1,4 +1,28 @@
 # Copyright 2026 Google LLC
+# ==========================================================================================
+# WHAT THIS CALLBACK DOES (before_model_callback)
+# ------------------------------------------------------------------------------------------
+# Runs BEFORE every call to the model. It handles the things that must be deterministic
+# (decided by code, not by the LLM). It can answer on its own and skip the model entirely.
+#
+# We use this to:
+#   * Record the digits the caller actually said or typed (caller_said_digits), so
+#     fetch_customer_profile can only identify with a number the caller gave, never the caller ID.
+#   * Normalise keypad (DTMF) input so PINs and numbers reach the model in a clean format.
+#   * Pick the language on turn 1 from the caller's area code.
+#   * Count silences: after 3 no-inputs, transfer to a human and end the call.
+#   * Escalate when a backend tool is down, and end the call after repeated invalid input.
+#   * Block restricted / anonymous callers with a fixed line.
+#   * Speak the opening greeting (regional outage notice + recording notice + welcome) word
+#     for word from the copy_* variables in app.json.
+#   * Close the call if a closing state was left pending (handover or malicious caller).
+#
+# If we did not have this:
+#   * The model could identify someone silently with the caller ID and send an OTP to them.
+#   * The legally required recording notice and greeting could be paraphrased or skipped.
+#   * Silent or abusive calls could stay open forever, and tool outages would leave the
+#     caller stuck instead of reaching a human.
+# ==========================================================================================
 """
 before_model_callback — Telco Voice Central Per-Turn Preprocessing Pipeline (Section 6).
 
