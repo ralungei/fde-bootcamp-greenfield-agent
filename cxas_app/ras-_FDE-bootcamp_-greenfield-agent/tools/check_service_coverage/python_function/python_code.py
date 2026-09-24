@@ -4,7 +4,7 @@ def check_service_coverage(address_or_zip: str = "94105", lob: str = "tv") -> di
         return {
             "status": "error",
             "error": "BUSINESS_HANDOFF_REQUIRED",
-            "verbatim_business_handoff": "To get you the best support for your business account, I'll transfer you to an agent. You'll need to use your phone keypad instead of talking to the virtual assistant. Just a moment while I connect you.",
+            "verbatim_business_handoff": context.state.get("copy_handoff_business_secondary") if context.state.get("language") == "secondary" else context.state.get("copy_handoff_business_primary"),
             "escalate_reason": "business_handoff",
             "agent_action": "Emit the verbatim business_handoff line and escalate with reason business_handoff.",
         }

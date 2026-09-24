@@ -35,8 +35,8 @@ def create_dispute_ticket(charge_id: str, reason: str, amount: float, notes: str
             "requested_amount": f"{float(amount):.2f}",
             "loyalty_limit": f"{limit:.2f}",
             "escalate_reason": "refund_threshold_exceeded",
-            "verbatim_transfer": "I'll connect you to a billing specialist now — they'll have everything we've already discussed.",
-            "verbatim_transfer_fr": "Je vais vous transférer à un spécialiste de la facturation maintenant — il aura tout ce dont nous avons déjà discuté.",
+            "verbatim_transfer": context.state.get("copy_handoff_refund_primary"),
+            "verbatim_transfer_fr": context.state.get("copy_handoff_refund_secondary"),
             "agent_action": "CRITICAL: Do NOT mention any dispute ticket ID because no ticket was created (amount exceeds $25.00). Call execute_live_agent_handover(reason='refund_threshold_exceeded') and respond ONLY with verbatim_transfer (or verbatim_transfer_fr if speaking French).",
         }
 

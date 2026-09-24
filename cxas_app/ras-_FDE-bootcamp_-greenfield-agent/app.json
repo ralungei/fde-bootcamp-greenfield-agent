@@ -153,6 +153,60 @@
       }
     },
     {
+      "name": "copy_handoff_business_primary",
+      "description": "Verbatim spoken copy: handoff_business_primary",
+      "schema": {
+        "type": "STRING",
+        "default": "To get you the best support for your business account, I'll transfer you to an agent. You'll need to use your phone keypad instead of talking to the virtual assistant. Just a moment while I connect you.",
+        "required": []
+      }
+    },
+    {
+      "name": "copy_handoff_business_secondary",
+      "description": "Verbatim spoken copy: handoff_business_secondary",
+      "schema": {
+        "type": "STRING",
+        "default": "Pour vous offrir le meilleur soutien pour votre compte d'entreprise, je vais vous transf\u00e9rer \u00e0 un agent. Vous devrez utiliser le clavier de votre t\u00e9l\u00e9phone plut\u00f4t que de parler \u00e0 l'assistant virtuel. Un instant pendant que je vous mets en relation.",
+        "required": []
+      }
+    },
+    {
+      "name": "copy_handoff_fraud_primary",
+      "description": "Verbatim spoken copy: handoff_fraud_primary",
+      "schema": {
+        "type": "STRING",
+        "default": "I'm very sorry to hear that you are facing challenges. I will ensure we handle your request with the utmost care. I'll connect you to a representative who can help. Please hold.",
+        "required": []
+      }
+    },
+    {
+      "name": "copy_handoff_fraud_secondary",
+      "description": "Verbatim spoken copy: handoff_fraud_secondary",
+      "schema": {
+        "type": "STRING",
+        "default": "Je suis vraiment d\u00e9sol\u00e9 d'apprendre que vous rencontrez ces difficult\u00e9s. Je veillerai \u00e0 ce que votre demande soit trait\u00e9e avec le plus grand soin. Je vais vous transf\u00e9rer \u00e0 un repr\u00e9sentant qui pourra vous aider. Veuillez patienter.",
+        "required": []
+      }
+    },
+    {
+      "name": "copy_handoff_refund_primary",
+      "description": "Verbatim spoken copy: handoff_refund_primary",
+      "schema": {
+        "type": "STRING",
+        "default": "I'll connect you to a billing specialist now \u2014 they'll have everything we've already discussed.",
+        "required": []
+      }
+    },
+    {
+      "name": "copy_handoff_refund_secondary",
+      "description": "Verbatim spoken copy: handoff_refund_secondary",
+      "schema": {
+        "type": "STRING",
+        "default": "Je vais vous transf\u00e9rer \u00e0 un sp\u00e9cialiste de la facturation maintenant \u2014 il aura tout ce dont nous avons d\u00e9j\u00e0 discut\u00e9.",
+        "required": []
+      }
+    },
+    {
       "name": "copy_malicious_closing_primary",
       "description": "Verbatim spoken copy: malicious_closing_primary",
       "schema": {
