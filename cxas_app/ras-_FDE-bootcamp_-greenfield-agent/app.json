@@ -369,6 +369,33 @@
       }
     },
     {
+      "name": "user_turn",
+      "description": "Counter of caller turns (written by before_model_callback).",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
+      "name": "last_user_text",
+      "description": "Last thing the caller said or typed (written by before_model_callback).",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
+      "name": "auth_choice_turn",
+      "description": "Caller turn in which we asked 'code or PIN?' (written by send_authentication_otp).",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
       "name": "handover_message",
       "description": "Verbatim line that must be spoken in full before the session is closed (handover or malicious-input close)",
       "schema": {

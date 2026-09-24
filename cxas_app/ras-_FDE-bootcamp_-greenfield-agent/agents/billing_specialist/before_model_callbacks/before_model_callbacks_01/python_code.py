@@ -107,6 +107,12 @@ def before_model_callback(
     said = _spoken_digits(user_text)
     if said and said not in (state.get("caller_said_digits") or ""):
         state["caller_said_digits"] = ((state.get("caller_said_digits") or "") + " " + said).strip()[-400:]
+    # // Numero de turno del cliente y su ultima frase: las tools los usan para saber si el
+    # // cliente ya ha contestado (p. ej. a la pregunta codigo o PIN) sin depender del modelo.
+    snap = user_text[-300:]
+    if snap and snap != state.get("last_user_text"):
+        state["last_user_text"] = snap
+        state["user_turn"] = str(int(state.get("user_turn") or 0) + 1)
     lower_text = user_text.lower()
 
     # STEP 1: DTMF NORMALIZATION (spec Section 6.1)

@@ -22,7 +22,10 @@ def validate_authentication_otp(code: str) -> dict:
         # // por send_authentication_otp). Al exigir 6 digitos que empiecen por '48', quedan
         # // descartados automaticamente codigos de digitos repetidos (111111, 999999),
         # // secuencias genericas (123456, 654321) o longitudes distintas.
-        is_valid_otp = len(digits_only) == 6 and digits_only.startswith("48")
+        # // Y tiene que ser un codigo que el cliente haya dicho o tecleado (caller_said_digits):
+        # // si el modelo completa o inventa digitos (p. ej. el cliente dijo 5), no autentica.
+        said = (context.state.get("caller_said_digits") or "").replace(" ", "")
+        is_valid_otp = len(digits_only) == 6 and digits_only.startswith("48") and digits_only in said
 
         if not is_valid_otp:
             attempts = int(context.state.get("misc_counter") or 0) + 1

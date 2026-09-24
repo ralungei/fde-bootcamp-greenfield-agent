@@ -1,5 +1,6 @@
 # We use this to force the exact closing line and end_session; without it the model could paraphrase the transfer line and the call might not end.
 
+import re
 from typing import Optional
 
 CLOSING_STATES = {
@@ -14,6 +15,20 @@ def after_model_callback(
 ) -> Optional[LlmResponse]:
     """Guarantee the exact verbatim handover line is spoken (preserving native audio when matched), then end_session."""
     state = callback_context.state
+    # // Un solo asistente: fuera de un traspaso real a humano (execute_live_agent_handover o cierre),
+    # // quitamos frases de "le paso con un representante / espere" que el modelo improvise, p. ej.
+    # // cuando la deuda hace que el sistema lleve al cliente a Facturacion.
+    if llm_response and llm_response.content and llm_response.content.parts and state.get("flag_val") not in CLOSING_STATES:
+        calls = [getattr(getattr(p, "function_call", None), "name", "") for p in llm_response.content.parts]
+        if not any(c in ("execute_live_agent_handover", "report_malicious_utterance") for c in calls):
+            _xfer = re.compile(r"[^.!?]*\b(connect you|transfer you|representative|please hold|transf[eé]rer|repr[eé]sentant|veuillez patienter)\b[^.!?]*[.!?]?\s*", re.I)
+            texts = [p for p in llm_response.content.parts if getattr(p, "text", None)]
+            if any(_xfer.search(p.text) for p in texts):
+                cleaned = [_xfer.sub("", p.text).strip() for p in texts]
+                if any(cleaned) or any(calls):
+                    for p, t in zip(texts, cleaned):
+                        p.text = t
+                    return llm_response
     closing_reason = CLOSING_STATES.get(state.get("flag_val"))
     if not closing_reason:
         return None

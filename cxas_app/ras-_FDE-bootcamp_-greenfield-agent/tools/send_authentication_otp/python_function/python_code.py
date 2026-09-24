@@ -1,3 +1,5 @@
+import re
+
 # Sends a 6-digit code by SMS and email, only if the caller is already identified.
 def send_authentication_otp(clid: str = "", channel: str = "sms_and_email") -> dict:
     """Send a 6-digit authentication OTP to the customer's registered phone number and backup email on file."""
@@ -10,6 +12,21 @@ def send_authentication_otp(clid: str = "", channel: str = "sms_and_email") -> d
             "next_step": "identify",
             "agent_action": "The caller is NOT identified yet, so this action cannot run. Step 1 of 2: ask for the phone number or 9-digit account number on their service and call fetch_customer_profile with it. Do NOT ask for a PIN or code yet. Once identified, come back to authentication.",
         }
+    # // El cliente elige codigo o PIN. Solo se envia si en su frase pide el codigo, o si ya se le
+    # // pregunto en un turno anterior. Si no, devolvemos la pregunta. El step-up (ya autenticado) no pregunta.
+    if context.state.get("auth_status") != "Pass":
+        last = (context.state.get("last_user_text") or "").lower()
+        asked_code = re.search(r"\b(code|codes|otp|text|sms|message|email|e-mail|send|c[oó]digo|mensaje|correo|texto|courriel|envoyer|envoyez)\b", last)
+        turn = str(context.state.get("user_turn") or "0")
+        offered = str(context.state.get("auth_choice_turn") or "")
+        if not asked_code and (not offered or offered == turn):
+            context.state["auth_choice_turn"] = offered or turn
+            return {
+                "status": "error",
+                "error": "AUTH_METHOD_CHOICE_REQUIRED",
+                "next_step": "ask_code_or_pin",
+                "agent_action": "Do NOT send a code yet: the caller has not chosen. Ask in one sentence in the caller's language: 'For your security, would you like me to send a 6-digit code to your phone and email, or would you prefer to enter your 4-digit PIN on the keypad?' and wait for the answer. If they choose the code, call send_authentication_otp; if the PIN, call validate_authentication_pin.",
+            }
     try:
         target = (clid or context.state.get("clid", "4155550101")).strip()
         last4 = target[-4:] if len(target) >= 4 else "0101"
