@@ -172,20 +172,42 @@ En la guía del evaluador aparece como **Red Flag Automático**: mucha gente lo 
 
 ---
 
-## 7️⃣ Scorecards de CCAI Insights (`autolabel_rules.yaml` y `dashboards.yaml`)
+## 7️⃣ ¿Qué son `autolabel_rules.yaml`, `Scorecards` y `dashboards.yaml`? ¿Son de SCRAPI o de Google Cloud?
 
-### 💡 1. En genérico (la analogía)
-Cuando el agente recibe 10.000 llamadas al día en producción, ningún humano puede leerse las 10.000 transcripciones.
-- **`autolabel_rules.yaml` (Reglas CEL)**: Es una máquina que al terminar cada llamada le pega automáticamente **etiquetas de colores (pegatinas)** según lo que pasó: *"🟢 Resuelta sola (`contained`)"*, *"🟡 Escalada por 3 fallos de PIN"*, *"🔴 Cliente enfadado"*.
-- **`dashboards.yaml` (Cuadros de Mando)**: Es la pantalla de televisión del director del Call Center que suma esas pegatinas con consultas SQL y dibuja las gráficas de **Contención**, **Sentimiento** y **Velocidad de las APIs (P50/P95)**.
+### 💡 1. Entender el mapa completo (Quién es quién)
+Imagina que tienes un restaurante (tu Call Center):
+1. **CX Agent Studio / CES (`cxas_app/`)**: Es **el camarero robot** que atiende la llamada en directo mientras el cliente está al teléfono.
+2. **Google Cloud CCAI Insights**: Es **el auditor de calidad nocturno** (otro producto de Google Cloud distinto de CES). Cuando el cliente cuelga el teléfono, CES envía el audio y la transcripción completa a **CCAI Insights** para que analice qué tal fue la llamada.
+3. **SCRAPI (`cxas-scrapi`, el comando `uv run cxas insights ...`)**: Es **el puente o "camión de mudanzas" (Infrastructure-as-Code)**.
+   - *Sin SCRAPI:* Tendrías que entrar a la página web de CCAI Insights con el ratón y crear 20 reglas y 10 gráficos a mano haciendo 300 clics. Si mañana cambias de entorno (de Desarrollo a Producción), tendrías que volver a hacer los 300 clics.
+   - *Con SCRAPI:* Escribes tus reglas y gráficos en ficheros de texto limpio en tu repositorio Git (`autolabel_rules.yaml` y `dashboards.yaml`) y ejecutas un comando (`uv run cxas insights autolabel sync` / `uv run cxas insights dashboards sync`) para que SCRAPI los cree automáticamente en Google Cloud.
 
-### 🛠️ 3. Qué hemos hecho nosotros
-Creamos ambos archivos siguiendo el esquema oficial de Google Cloud CCAI Insights:
-- **[autolabel_rules.yaml](file:///Users/rasalungei/Documents/2026/GECX%20Bootcamp/ras-fde-bootcamp-greenfield-agent/autolabel_rules.yaml)**: 4 reglas en lenguaje CEL (`containment_resolution_status`, `agent_specialist_domain`, `containment_failure_driver`, `security_and_mfa_tier`), todas con su condición de cierre por defecto (`condition: ""`).
-- **[dashboards.yaml](file:///Users/rasalungei/Documents/2026/GECX%20Bootcamp/ras-fde-bootcamp-greenfield-agent/dashboards.yaml)**: Un Scorecard ejecutivo con 3 pestañas (*1. Containment & Resolution*, *2. Sentiment & Safety Guardrails*, *3. Tool & API Performance P50/P95*).
+### 🏗️ 2. Cómo funcionan los 3 escalones en cuanto termina una llamada
+Cada vez que un cliente cuelga el teléfono en producción, ocurren **3 pasos en cadena** dentro de CCAI Insights:
 
-### 🗣️ 4. Cómo explicárselo al evaluador
-> *"Para observabilidad en Día 2 de producción, definimos declarativamente `autolabel_rules.yaml` con expresiones CEL que etiquetan cada llamada según si fue contenida, qué especialista actuó y por qué escaló (como los 3 strikes de autenticación), alimentando las tres pestañas del Scorecard en `dashboards.yaml`: tasa de contención por dominio, sentimiento del cliente y latencia P50/P95 de las 32 tools."*
+1. **Escalón 1 · `autolabel_rules.yaml` (La Máquina de Poner Pegatinas con reglas CEL)**:
+   - Es una lista de reglas automáticas escritas en un lenguaje de fórmulas de Google llamado **CEL** (*Common Expression Language*, parecido a las fórmulas `=SI(...)` de Excel).
+   - Mira los datos técnicos de la llamada recién terminada y le pega **"etiquetas" (labels)** como si fueran post-its de colores:
+     - *Ejemplo 1:* "¿El agente NO llamó a la herramienta `execute_live_agent_handover` y el sentimiento no es negativo?" → Le pega la etiqueta **`contained: true`** (Llamada resuelta sin humano).
+     - *Ejemplo 2:* "¿El contador `misc_counter` llegó a 3?" → Le pega la etiqueta **`failure_driver: auth_strike_limit_3x`**.
+2. **Escalón 2 · `Scorecard` (`scorecard_template.json` · ID en vivo `14726924315284849879`)**:
+   - Mientras las reglas CEL miran variables técnicas, el **Scorecard (Boletín de Notas de QA)** usa **Gemini dentro de CCAI Insights** para leer la conversación entera y rellenar un **examen de 5 preguntas de calidad (de 0 a 100 puntos)**:
+     1. *¿Verificó PIN u OTP antes de dar datos privados?*
+     2. *¿Ocultó la tarjeta/cuenta diciendo solo los últimos 4 dígitos?*
+     3. *¿Resolvió el problema sin mandar a un humano innecesariamente?*
+     4. *¿Dijo la frase legal exacta al transferir o reembolsar?*
+     5. *¿Respetó el idioma (inglés/francés/español) y la regla de 3 palabras?*
+   - 🔗 **URL de nuestro Scorecard vivo en GCP:** `https://ccai.cloud.google.com/insights/projects/fde-bootcamp/locations/us-central1/scorecards/14726924315284849879`
+3. **Escalón 3 · `dashboards.yaml` (La Pantalla de Televisión del Director)**:
+   - Es un archivo declarativo que combina consultas **SQL** y gráficos **Vega-Lite**.
+   - ¿De dónde saca los números para pintar las barras y tartas? **De las pegatinas del Escalón 1 (`autolabel_rules.yaml`) y de las notas del Escalón 2 (`Scorecard`)**.
+   - Nuestro `dashboards.yaml` crea una pantalla con **3 pestañas**:
+     - *Pestaña 1 (Containment & Resolution):* Porcentaje de llamadas con pegatina `contained: true` por cada uno de los 4 especialistas.
+     - *Pestaña 2 (Sentiment & Safety Guardrails):* Nota media del Scorecard QA, sentimiento del cliente por idioma (`en-US`, `fr-CA`, `es-US`) y disparos de `report_malicious_utterance`.
+     - *Pestaña 3 (Tool & API Performance):* Velocidad de respuesta (latencia P50 y P95 en milisegundos) de nuestras herramientas Python.
+
+### 🗣️ 3. Cómo explicárselo al evaluador en 20 segundos
+> *"CES atiende la llamada en vivo y CCAI Insights la audita al colgar. Para no configurar Insights a mano con clics en la consola, usamos SCRAPI como Infrastructure-as-Code con tres piezas conectadas: primero, `autolabel_rules.yaml` aplica expresiones CEL para etiquetar si la llamada fue contenida (`contained: true`) y qué especialista actuó; segundo, nuestro Scorecard vivo en GCP (`14726924315284849879`) evalúa de 0 a 100 el cumplimiento de autenticación y PII en la transcripción; y tercero, `dashboards.yaml` agrega esas etiquetas y notas con SQL para pintar los gráficos de contención, sentimiento y latencia P50/P95."*
 
 ---
 
