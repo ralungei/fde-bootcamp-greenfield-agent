@@ -36,7 +36,7 @@ def commit_appointment_reschedule(appt_id: str = "APT-5012", slot_id: str = "", 
             "status": "error",
             "error": "AUTH_REQUIRED",
             "next_step": "authenticate",
-            "agent_action": "The caller is identified but NOT authenticated yet, so this action cannot run. Step 2 of 2: offer a 6-digit code (call send_authentication_otp, then validate_authentication_otp) or their 4-digit keypad PIN (validate_authentication_pin). Do NOT ask for their phone or account number again. Then retry this action.",
+            "agent_action": "The caller is identified but NOT authenticated yet, so this action cannot run. Step 2 of 2: ask whether they prefer a 6-digit code or their 4-digit keypad PIN (unless they already chose). Only if they choose the code, call send_authentication_otp and then validate_authentication_otp; for the PIN use validate_authentication_pin. Do NOT ask for their phone or account number again. Then retry this action.",
         }
 
     slot = SLOT_CATALOG.get((slot_id or "").strip().upper())

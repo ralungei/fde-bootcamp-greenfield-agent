@@ -109,14 +109,14 @@ conversations:
       language: "secondary"
     turns:
       - user: "Bonjour, j'aimerais parler en français concernant mon compte 514-555-0101."
-        agent: "Cet appel peut être enregistré à des fins de qualité et de formation. Bienvenue chez Telco. Pour votre sécurité, je viens d'envoyer un code à 6 chiffres à ce numéro — veuillez me le lire."
+        agent: "Cet appel peut être enregistré à des fins de qualité et de formation. Bienvenue chez Telco. Pour votre sécurité, préférez-vous que je vous envoie un code à 6 chiffres par texto et courriel, ou entrer votre NIP à 4 chiffres sur le clavier?"
         tool_calls:
           - action: update_language
             args:
-              language_code:
+              language:
                 $matchType: "contains"
-                $matchValue: "fr"
-                $originalValue: "fr-CA"
+                $matchValue: "secondary"
+                $originalValue: "secondary"
           - action: fetch_customer_profile
             args:
               account_or_phone:
@@ -126,4 +126,5 @@ conversations:
     expectations:
       - "The agent must switch and lock the conversation language to Canadian French (fr-CA)."
       - "The agent must look up the caller's profile in French without reverting to English."
+      - "The agent must ask whether the caller prefers a 6-digit code or their 4-digit PIN, and must NOT send a code before the caller chooses."
     tags: [P0, HIGH, BR-TV-004, BR-TV-020, bilingual-fr-ca]
