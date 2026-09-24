@@ -1180,6 +1180,13 @@
   .sift-row .mark { font-weight: 600; }
   .sift-row.keep .mark { color: var(--ok); }
   .sift-row.drop .mark { color: var(--no); }
+  .sift .where, .sheet .where, .detail .where { position: static; right: auto; display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.3rem; color: inherit; font-size: inherit; }
+  .sift .where .chip, .detail .where .chip, .sheet .where .chip { font-family: inherit; font-size: 0.68rem; padding: 0.14rem 0.5rem; }
+  .where .chip.py { background: var(--b-100); color: var(--b-800); }
+  .where .chip.pr { background: var(--cyan-50); color: var(--cyan-800); }
+  .where .chip.cb { background: #fef7e0; color: #8a5a00; }
+  .where .chip.st { background: var(--surface); color: var(--muted); border: 1px solid var(--line-2); }
+  .sift-row .route { white-space: nowrap; font-size: 0.74rem; }
   .route { font-family: var(--mono); font-size: 0.76rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
   .code {
