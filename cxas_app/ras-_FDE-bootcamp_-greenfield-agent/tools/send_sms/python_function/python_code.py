@@ -1,3 +1,4 @@
+# Sends an informational SMS to the caller (e.g. repair steps or confirmations).
 def send_sms(sms_content: str, sms_type: str = "Public") -> dict:
     """Send SMS payload to the caller's phone number."""
     try:

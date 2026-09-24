@@ -10,6 +10,7 @@ PAYMENT_LEDGER = [
 MAX_DAYS_APART = 7
 
 
+# Refunds a duplicate payment after 8 checks in code (auth, same amount, same bill, 7 days, limit...).
 def refund_duplicate_payment(txn_id_original: str, txn_id_duplicate: str) -> dict:
     """Refund a duplicated payment after re-verifying the duplicate in code (M3, CUJ-2)."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

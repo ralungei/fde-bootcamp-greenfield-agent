@@ -34,6 +34,7 @@ CLOSING_STATES = {
 }
 
 
+# Returns a verbatim line from app.json in the caller's language (falls back to English).
 def _copy(state, key: str) -> str:
     # // Los textos verbatim viven en app.json (variables copy_*). Si faltara la copia del
     # // idioma activo se cae al principal, para no dejar la llamada en silencio.
@@ -41,6 +42,7 @@ def _copy(state, key: str) -> str:
     return state.get(f"copy_{key}_{lang}") or state.get(f"copy_{key}_primary") or ""
 
 
+# Gets the text of the caller's last turn (speech transcript or keypad input).
 def _extract_last_user_text(callback_context: CallbackContext, llm_request: LlmRequest) -> str:
     texts = []
     try:
@@ -66,6 +68,7 @@ _NUM_WORDS = {
 }
 
 
+# Turns what the caller said into digits ("four one five" -> "415").
 def _spoken_digits(text: str) -> str:
     # // Pasa a cifras lo que el cliente dice o teclea ("four one five" -> "415").
     out = []
@@ -79,6 +82,7 @@ def _spoken_digits(text: str) -> str:
     return re.sub(r"\s+", " ", "".join(out)).strip()
 
 
+# True only for the platform's silence signal, never for words the caller says.
 def _is_no_input(user_text: str) -> bool:
     if not user_text:
         return False
@@ -92,6 +96,7 @@ def _is_no_input(user_text: str) -> bool:
     )
 
 
+# Runs before every model call: deterministic greeting, language, silences, errors and call closing.
 def before_model_callback(
     callback_context: CallbackContext, llm_request: LlmRequest
 ) -> Optional[LlmResponse]:

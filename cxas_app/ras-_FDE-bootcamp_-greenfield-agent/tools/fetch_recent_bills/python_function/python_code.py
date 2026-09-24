@@ -1,3 +1,4 @@
+# Returns the caller's recent bills (requires authentication).
 def fetch_recent_bills(billing_account: str = "") -> dict:
     """Fetch recent bills, line items, and saved card_last4."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

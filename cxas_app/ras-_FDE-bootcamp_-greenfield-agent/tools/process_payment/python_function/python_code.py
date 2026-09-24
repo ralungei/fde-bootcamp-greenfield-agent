@@ -6,6 +6,7 @@ MOCK_PAYMENT_VAULT = {
 }
 
 
+# Charges a payment to the card on file (requires authentication).
 def process_payment(billing_account: str, amount: float = 45.0, dtmf_payment_token: str = "", payment_method: str = "card_on_file") -> dict:
     """Process one-time bill payment via saved card or DTMF card entry (M3, CUJ-1)."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

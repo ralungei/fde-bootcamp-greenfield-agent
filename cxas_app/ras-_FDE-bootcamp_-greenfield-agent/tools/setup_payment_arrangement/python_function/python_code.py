@@ -1,3 +1,4 @@
+# Sets up a plan to pay the balance in instalments (requires authentication).
 def setup_payment_arrangement(billing_account: str = "", installment_amount: float = 22.50, installments: int = 2) -> dict:
     """Set up a payment arrangement and mark flag_val='balance_cleared' so M7 can restore service."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

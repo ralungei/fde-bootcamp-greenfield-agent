@@ -4,6 +4,7 @@
 SUPPORTED_LANGUAGES = ("primary", "secondary")
 
 
+# Switches the conversation language when the caller speaks another language.
 def update_language(language: str) -> dict:
     """Lock the conversation to the language the caller is actually speaking (BR-TV-004 / BR-TV-020)."""
     normalized = (language or "").strip().lower()

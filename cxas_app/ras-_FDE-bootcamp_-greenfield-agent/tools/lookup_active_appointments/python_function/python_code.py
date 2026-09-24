@@ -27,6 +27,7 @@ SLOT_CATALOG = [
 ]
 
 
+# Finds the caller's upcoming technician appointments (requires authentication).
 def lookup_active_appointments(cirn: str = "") -> dict:
     """Look up active technician appointments, bookable slots, and open support ticket status (M6, CUJ-4)."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

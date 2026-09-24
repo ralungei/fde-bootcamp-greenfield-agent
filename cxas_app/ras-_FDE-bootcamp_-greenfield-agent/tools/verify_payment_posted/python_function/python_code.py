@@ -71,6 +71,7 @@ DEFAULT_LEDGER = {
 }
 
 
+# Checks if a payment the caller says they made has actually posted.
 def verify_payment_posted() -> dict:
     """Reconcile the caller's account against the billing ledger after a prior-payment claim.
 

@@ -1,3 +1,4 @@
+# Opens a warranty claim for a faulty device (requires authentication).
 def process_warranty_claim(device_id: str, intent_type: str = "Defective") -> dict:
     """Evaluate and process equipment warranty claim or check claim status."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

@@ -1,3 +1,4 @@
+# Lists available technician appointment slots (requires authentication).
 def fetch_availability_slots(zip_code: str = "94105", service_type: str = "TV & Fiber Installation") -> dict:
     """Return 2-3 available appointment windows (M6, CUJ-4)."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

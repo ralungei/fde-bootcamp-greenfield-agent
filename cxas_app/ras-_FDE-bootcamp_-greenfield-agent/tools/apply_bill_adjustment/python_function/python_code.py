@@ -1,3 +1,4 @@
+# Applies a small bill credit; above the refund limit it refuses and asks for a specialist handover.
 def apply_bill_adjustment(charge_id: str = "CHG-202", amount: float = 12.50) -> dict:
     """Apply an immediate billing adjustment/credit/refund (<= $25.00) or trigger specialist escalation (> $25.00)."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

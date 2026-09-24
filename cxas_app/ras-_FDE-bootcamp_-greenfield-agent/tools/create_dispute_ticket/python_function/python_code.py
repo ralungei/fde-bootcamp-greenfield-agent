@@ -1,3 +1,4 @@
+# Opens a billing dispute ticket; above the refund limit it creates no ticket and asks for handover.
 def create_dispute_ticket(charge_id: str, reason: str, amount: float, notes: str = "") -> dict:
     """Open a billing dispute ticket (<= $25) or deterministically redirect to billing specialist if > $25."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

@@ -1,3 +1,4 @@
+# Sends a password reset link by SMS to the phone on file.
 def send_password_reset_sms(cirn: str = "") -> dict:
     """Send a 30-minute self-serve password reset SMS link (M7, CUJ-1)."""
     if context.state.get("identification_status") != "Pass" and context.state.get("auth_status") != "Pass":

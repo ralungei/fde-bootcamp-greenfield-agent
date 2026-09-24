@@ -1,3 +1,4 @@
+# Decides which specialist should handle the caller's request.
 def evaluate_routing_rules(utterance: str, lob: str = "") -> dict:
     """Evaluate caller utterance to determine target capability module and auth requirement."""
     try:

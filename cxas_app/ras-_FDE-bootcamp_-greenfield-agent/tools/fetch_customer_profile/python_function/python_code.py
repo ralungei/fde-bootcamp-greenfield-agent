@@ -1,3 +1,4 @@
+# Identifies the caller, only with a number they actually said on the call (never the caller ID).
 def fetch_customer_profile(account_or_phone: str = "") -> dict:
     """Identify the caller from the phone or account number THEY state on the call (never the telephony caller ID)."""
     try:

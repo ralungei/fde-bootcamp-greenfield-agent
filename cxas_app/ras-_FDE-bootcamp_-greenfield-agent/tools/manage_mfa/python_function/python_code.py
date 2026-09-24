@@ -1,3 +1,4 @@
+# Changes two-factor settings; disabling MFA needs an extra step-up code.
 def manage_mfa(action: str = "enable") -> dict:
     """Enable or disable MFA. Disabling additionally requires a fresh 6-digit OTP step-up verification."""
     # // (1) Autenticacion base: obligatoria para cualquier cambio de MFA.

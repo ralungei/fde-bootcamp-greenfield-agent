@@ -5,6 +5,7 @@
 from typing import Optional
 
 
+# Runs when the call enters this agent: resets the silence counter and fills safe defaults.
 def before_agent_callback(callback_context: CallbackContext) -> Optional[Content]:
     state = callback_context.state
     current_agent = "billing_specialist"

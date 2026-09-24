@@ -1,3 +1,4 @@
+# Transfers to a human: picks the exact verbatim line from app.json and flags the call to close.
 def execute_live_agent_handover(reason: str = "user_requested_agent", summary: str = "") -> dict:
     """Transfer the caller to a human representative and select the exact verbatim transfer sentence."""
     r = (reason or "user_requested_agent").strip().lower()

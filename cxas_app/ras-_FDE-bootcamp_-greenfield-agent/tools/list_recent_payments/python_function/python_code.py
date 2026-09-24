@@ -14,6 +14,7 @@ PAYMENT_LEDGER = [
 ]
 
 
+# Lists recent payments so the model can spot duplicates by itself (no hint labels).
 def list_recent_payments() -> dict:
     """Return the payment history (ledger) of the authenticated caller's account (M3, CUJ-2)."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

@@ -1,3 +1,4 @@
+# Sends a 6-digit code by SMS and email, only if the caller is already identified.
 def send_authentication_otp(clid: str = "", channel: str = "sms_and_email") -> dict:
     """Send a 6-digit authentication OTP to the customer's registered phone number and backup email on file."""
     # // No se puede autenticar a quien aun no se ha identificado: sin cuenta no hay a quien

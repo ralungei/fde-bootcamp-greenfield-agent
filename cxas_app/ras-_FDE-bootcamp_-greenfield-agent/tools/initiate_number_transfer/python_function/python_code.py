@@ -1,3 +1,4 @@
+# Starts porting a number in from another carrier.
 def initiate_number_transfer(phone_number_to_port: str, previous_carrier: str = "Competitor", account_pin: str = "") -> dict:
     """Initiate a number transfer-in (port-in) request from a competitor or landline."""
     try:

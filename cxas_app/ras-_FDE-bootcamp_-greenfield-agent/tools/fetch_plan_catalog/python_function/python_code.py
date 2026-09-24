@@ -1,3 +1,4 @@
+# Returns the plans and equipment the caller can buy.
 def fetch_plan_catalog(lob: str = "tv", customer_type: str = "Existing") -> dict:
     """Return a curated shortlist of 2 comparable plans matching lob ('mobility', 'internet', or 'tv')."""
     try:

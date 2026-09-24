@@ -1,3 +1,4 @@
+# Checks the 4-digit PIN; after 3 failures the caller is transferred to a human.
 def validate_authentication_pin(pin: str, is_dtmf: bool = True) -> dict:
     """Validate 4-digit PIN for primary authentication (never grants step-up)."""
     try:

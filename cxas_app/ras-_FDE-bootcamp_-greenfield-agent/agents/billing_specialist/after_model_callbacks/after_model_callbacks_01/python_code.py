@@ -8,6 +8,7 @@ CLOSING_STATES = {
 }
 
 
+# Makes sure the exact closing line is spoken and then ends the call (once).
 def after_model_callback(
     callback_context: CallbackContext, llm_response: LlmResponse
 ) -> Optional[LlmResponse]:
@@ -40,6 +41,7 @@ def after_model_callback(
         p.text.strip() for p in llm_response.content.parts if getattr(p, "text", None)
     ).strip()
 
+    # Normalises text (case, quotes, spaces) so we can compare what the model said with the expected line.
     def _norm(s: str) -> str:
         return " ".join(s.lower().replace("\u2019", "'").split())
 

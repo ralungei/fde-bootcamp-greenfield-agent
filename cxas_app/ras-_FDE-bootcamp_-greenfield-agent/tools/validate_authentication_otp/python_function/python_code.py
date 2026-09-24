@@ -1,3 +1,4 @@
+# Checks the 6-digit code; after 3 failures the caller is transferred to a human.
 def validate_authentication_otp(code: str) -> dict:
     """Validate the 6-digit OTP code entered or spoken by the caller (BR-TV-008, BR-TV-009)."""
     try:

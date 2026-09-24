@@ -1,3 +1,4 @@
+# Checks if a service is available at the caller's address; business accounts go to a human.
 def check_service_coverage(address_or_zip: str = "94105", lob: str = "tv") -> dict:
     """Verify service coverage at caller's address before presenting plans (CUJ-5)."""
     if context.state.get("business_flag") == "true":

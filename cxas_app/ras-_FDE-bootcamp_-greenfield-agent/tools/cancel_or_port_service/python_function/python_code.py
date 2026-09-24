@@ -1,3 +1,4 @@
+# Cancels a service or ports the number out, only if the caller is authenticated.
 def cancel_or_port_service(action: str = "cancel", lob: str = "mobility", fee_disclosed: bool = True) -> dict:
     """Cancel service or authorize port-out after mandatory contract fee disclosure."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

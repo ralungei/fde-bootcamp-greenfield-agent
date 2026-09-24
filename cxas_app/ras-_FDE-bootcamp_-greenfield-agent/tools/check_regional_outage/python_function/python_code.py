@@ -1,3 +1,4 @@
+# Checks if there is a known outage in the caller's area before troubleshooting.
 def check_regional_outage(region: str = "Region-A", lob: str = "tv", postal_code: str = "") -> dict:
     """Check regional outage status by postal code or region before starting diagnostics (M4, CUJ-3)."""
     try:

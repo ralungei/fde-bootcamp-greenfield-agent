@@ -14,6 +14,7 @@ UNKNOWN_ACCOUNT = {"past_due_balance": 45.00}
 COLLECTIONS_HOLDS = ("", "non_payment")
 
 
+# Suspends or restores a line; restore only happens once the past-due balance is paid.
 def execute_suspend_restore(action: str, reason: str = "", cirn: str = "") -> dict:
     """Suspend or restore service (M7, CUJ-6) and send SMS confirmation.
 

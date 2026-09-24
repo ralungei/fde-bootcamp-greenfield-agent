@@ -1,3 +1,4 @@
+# Places an order for a new plan or device (requires authentication).
 def place_new_order(plan_id: str, lob: str = "tv", cirn: str = "") -> dict:
     """Place a new service/upgrade order and send SMS confirmation receipt (CUJ-5)."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

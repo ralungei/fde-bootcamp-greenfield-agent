@@ -19,6 +19,7 @@ SLOT_CATALOG = {
 }
 
 
+# Confirms the new technician appointment slot (requires authentication).
 def commit_appointment_reschedule(appt_id: str = "APT-5012", slot_id: str = "", service_type: str = "", action: str = "reschedule") -> dict:
     """Commit an appointment booking, reschedule, or cancellation and send SMS confirmation (CUJ-4)."""
     # // Puerta de identidad en dos pasos, en codigo y no en el prompt: primero IDENTIFICAR

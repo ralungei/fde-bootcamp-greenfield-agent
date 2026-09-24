@@ -1,3 +1,4 @@
+# Runs a guided remote repair / line test for the caller's service.
 def start_virtual_repair(cirn: str = "", lob: str = "tv", symptom: str = "no signal", tv_sub_type: str = "") -> dict:
     """Start a virtual repair session with LOB-specific troubleshooting steps (mobility, internet, tv)."""
     try:
