@@ -45,7 +45,6 @@ def process_payment(billing_account: str, amount: float = 45.0, dtmf_payment_tok
     last4 = digits_only[-4:] if len(digits_only) >= 4 else vault["saved_last4"]
     paid_amt = float(amount) if float(amount or 0) > 0 else 45.0
     context.state["flag_val"] = "balance_cleared"
-    context.state["suspension_reason"] = "none"
     lang = context.state.get("language", "primary")
     msg = (
         f"Votre paiement de {paid_amt:.2f} $ sur la carte se terminant par {last4} a été accepté. Votre solde est maintenant de 0,00 $."

@@ -54,7 +54,7 @@
       "direction": "PARENT_TO_CHILD",
       "deterministicTransfer": {
         "pythonCodeCondition": {
-          "pythonCode": "def should_trigger_transfer_callback(context: CallbackContext) -> bool:\n    return context.state.get('flag_val') == 'balance_owed_redirect' and context.state.get('auth_status') == 'Pass'\n"
+          "pythonCode": "def should_trigger_transfer_callback(context: CallbackContext) -> bool:\n    if context.state.get('flag_val') == 'balance_owed_redirect' and context.state.get('auth_status') == 'Pass':\n        context.state['flag_val'] = 'none'\n        return True\n    return False\n"
         }
       }
     },

@@ -116,7 +116,6 @@ def verify_payment_posted() -> dict:
     payment = posted[-1]
     # // Solo el backend puede saldar la deuda. Esta es la unica escritura autorizada aqui.
     context.state["flag_val"] = "balance_cleared"
-    context.state["suspension_reason"] = "none"
     return {
         "status": "success",
         "payment_found": True,

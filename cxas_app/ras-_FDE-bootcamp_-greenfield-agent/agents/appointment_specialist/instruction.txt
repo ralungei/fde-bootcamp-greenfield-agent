@@ -40,4 +40,4 @@ You own (Checking open support ticket status `TCK-8821`, checking technician vis
 </subtask>
 </taskflow>
 
-- If `auth_status` is not `Pass` yet, you may authenticate the caller directly using {@TOOL: fetch_customer_profile}, {@TOOL: send_authentication_otp}, {@TOOL: validate_authentication_otp}, or {@TOOL: validate_authentication_pin} without transferring back to Root_agent.
+- If `identification_status` is not `Pass` yet, first identify the caller with {@TOOL: fetch_customer_profile}. Then, if `auth_status` is not `Pass` yet, authenticate them directly using {@TOOL: send_authentication_otp} + {@TOOL: validate_authentication_otp} (or {@TOOL: validate_authentication_pin}) without transferring back to Root_agent. (If `auth_status` is already `Pass`, never ask for PIN or OTP again).
