@@ -1,9 +1,9 @@
-def fetch_customer_profile(clid: str = "", account_or_phone: str = "") -> dict:
+def fetch_customer_profile(account_or_phone: str = "") -> dict:
     """Identify the caller from the phone or account number THEY state on the call (never the telephony caller ID)."""
     try:
         # // Opcion A: se identifica SOLO con el numero que dice el cliente. El caller ID (clid)
         # // de telefonia se usa para el idioma, nunca para identificar en silencio.
-        raw_input = (account_or_phone or clid or "").strip()
+        raw_input = (account_or_phone or "").strip()
         if not raw_input:
             return {
                 "status": "error",
@@ -12,6 +12,18 @@ def fetch_customer_profile(clid: str = "", account_or_phone: str = "") -> dict:
                 "agent_action": "Ask the caller for the phone number or 9-digit account number on their service, then call fetch_customer_profile with account_or_phone set to exactly what they said. Never use the caller ID.",
             }
         digits = "".join(c for c in raw_input if c.isdigit())
+
+        # // Guarda determinista: el numero tiene que haberlo dicho o tecleado el cliente en esta
+        # // llamada (lo registra before_model_callback en caller_said_digits). Si el modelo intenta
+        # // usar el caller ID u otro numero que el cliente no ha dicho, no se identifica.
+        said = (context.state.get("caller_said_digits") or "").replace(" ", "")
+        if len(digits) >= 4 and digits not in said and digits[-9:] not in said:
+            return {
+                "status": "error",
+                "error": "NUMBER_NOT_PROVIDED_BY_CALLER",
+                "identification_status": "",
+                "agent_action": "The caller has NOT said this number on the call. Do not use the caller ID or any number the caller did not say. Ask the caller for the phone number or 9-digit account number on their service, then call fetch_customer_profile with exactly what they said.",
+            }
 
         if raw_input == "ERROR_SYSTEM":
             context.state["api_resp"] = "SYSTEM_DOWN"

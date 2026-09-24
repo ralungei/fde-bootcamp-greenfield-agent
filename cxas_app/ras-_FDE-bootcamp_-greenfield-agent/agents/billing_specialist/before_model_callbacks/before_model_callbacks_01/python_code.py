@@ -57,6 +57,27 @@ def _extract_last_user_text(callback_context: CallbackContext, llm_request: LlmR
     return " ".join(texts).strip()
 
 
+_NUM_WORDS = {
+    "zero": "0", "oh": "0", "one": "1", "two": "2", "three": "3", "four": "4", "five": "5",
+    "six": "6", "seven": "7", "eight": "8", "nine": "9",
+    "zéro": "0", "un": "1", "deux": "2", "trois": "3", "quatre": "4", "cinq": "5",
+    "sept": "7", "huit": "8", "neuf": "9",
+}
+
+
+def _spoken_digits(text: str) -> str:
+    # // Pasa a cifras lo que el cliente dice o teclea ("four one five" -> "415").
+    out = []
+    for tok in re.findall(r"\d+|[a-zà-ÿ]+", (text or "").lower()):
+        if tok.isdigit():
+            out.append(tok)
+        elif tok in _NUM_WORDS:
+            out.append(_NUM_WORDS[tok])
+        else:
+            out.append(" ")
+    return re.sub(r"\s+", " ", "".join(out)).strip()
+
+
 def _is_no_input(user_text: str) -> bool:
     if not user_text:
         return False
@@ -75,6 +96,11 @@ def before_model_callback(
 ) -> Optional[LlmResponse]:
     state = callback_context.state
     user_text = _extract_last_user_text(callback_context, llm_request)
+    # // Registro determinista de los numeros que el cliente ha dicho o tecleado en la llamada.
+    # // fetch_customer_profile solo identifica con un numero que aparezca aqui (nunca el caller ID).
+    said = _spoken_digits(user_text)
+    if said and said not in (state.get("caller_said_digits") or ""):
+        state["caller_said_digits"] = ((state.get("caller_said_digits") or "") + " " + said).strip()[-400:]
     lower_text = user_text.lower()
 
     # STEP 1: DTMF NORMALIZATION (spec Section 6.1)

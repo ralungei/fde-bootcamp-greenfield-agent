@@ -360,6 +360,15 @@
       }
     },
     {
+      "name": "caller_said_digits",
+      "description": "Digits the caller has said or typed during the call (written by before_model_callback). fetch_customer_profile only identifies with a number found here, never the caller ID.",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
       "name": "handover_message",
       "description": "Verbatim line that must be spoken in full before the session is closed (handover or malicious-input close)",
       "schema": {
