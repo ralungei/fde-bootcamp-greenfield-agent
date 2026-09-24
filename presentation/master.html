@@ -96,6 +96,7 @@
   .toggle:hover { border-color: var(--faint); }
   .toggle:focus-visible { outline: 2px solid var(--b-600); outline-offset: 2px; }
   .toggle .kbd { opacity: 0.55; font-size: 0.68rem; }
+  .toggle .tg-ic { width: 16px; height: 16px; display: block; }
 
   .lang-switch {
     display: inline-flex;
@@ -2180,11 +2181,11 @@
     <button type="button" class="lang-btn active" data-lang="es" title="Español (L)">ES</button>
     <button type="button" class="lang-btn" data-lang="en" title="English (L)">EN</button>
   </div>
-  <button class="toggle" id="notesToggle" aria-pressed="true">
-    <span id="notesToggleLbl">Notas</span> <span class="kbd" aria-hidden="true">N</span>
+  <button class="toggle" id="notesToggle" aria-pressed="true" title="Mostrar u ocultar notas (N)" aria-label="Notas">
+    <svg class="tg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3.5" width="16" height="17" rx="3"/><path d="M8 8.5h8M8 12h8M8 15.5h5"/></svg> <span class="kbd" aria-hidden="true">N</span>
   </button>
-  <button class="toggle" id="openNotesWin" type="button" title="Abrir notas en otro HTML sincronizado (P)">
-    <span>Notas ↗</span> <span class="kbd" aria-hidden="true">P</span>
+  <button class="toggle" id="openNotesWin" type="button" title="Abrir notas en otra ventana (P)" aria-label="Abrir notas en otra ventana">
+    <svg class="tg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-8 8"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg> <span class="kbd" aria-hidden="true">P</span>
   </button>
 </div>
 
