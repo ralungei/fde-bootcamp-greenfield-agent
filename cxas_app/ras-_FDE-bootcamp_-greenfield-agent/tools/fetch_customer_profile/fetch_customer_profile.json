@@ -3,7 +3,7 @@
   "pythonFunction": {
     "name": "fetch_customer_profile",
     "pythonCode": "tools/fetch_customer_profile/python_function/python_code.py",
-    "description": "Resolve caller identity from telephony CLID or provided phone/account number."
+    "description": "Identify the caller from the phone or account number THEY state on the call (never the telephony caller ID)."
   },
   "executionType": "SYNCHRONOUS",
   "displayName": "fetch_customer_profile"

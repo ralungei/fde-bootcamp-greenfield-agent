@@ -1,6 +1,15 @@
 def validate_authentication_pin(pin: str, is_dtmf: bool = True) -> dict:
     """Validate 4-digit PIN for primary authentication (never grants step-up)."""
     try:
+        # // No se puede autenticar a quien aun no se ha identificado: sin cuenta no hay a quien
+        # // enviar el codigo ni contra que validar el PIN. Solo fetch_customer_profile identifica.
+        if context.state.get("identification_status") != "Pass":
+            return {
+                "status": "error",
+                "error": "IDENTIFICATION_REQUIRED",
+                "next_step": "identify",
+                "agent_action": "The caller is NOT identified yet, so this action cannot run. Step 1 of 2: ask for the phone number or 9-digit account number on their service and call fetch_customer_profile with it. Do NOT ask for a PIN or code yet. Once identified, come back to authentication.",
+            }
         was_authenticated = context.state.get("auth_status") == "Pass"
         candidate = (context.state.get("dtmf_digits") or pin or "").strip()
         digits_only = "".join(ch for ch in candidate if ch.isdigit())
@@ -27,7 +36,6 @@ def validate_authentication_pin(pin: str, is_dtmf: bool = True) -> dict:
             }
 
         context.state["auth_status"] = "Pass"
-        context.state["identification_status"] = "Pass"
         context.state["misc_counter"] = "0"
         # // El PIN estatico SOLO sirve como autenticacion primaria. Si el cliente ya estaba
         # // autenticado y necesitamos step-up, no concedemos step_up_status y guiamos al

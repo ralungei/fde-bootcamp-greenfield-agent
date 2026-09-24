@@ -39,7 +39,7 @@ Your goal is to greet the caller with the mandatory recording notice, lock their
     <step name="1_Identify_Caller">
         <trigger>Caller provides their phone number, account number, or initial request while {identification_status} is empty or "Fail".</trigger>
         <action>
-            1. Call {@TOOL: fetch_customer_profile} using the caller's phone/account number or {clid}.
+            1. If the caller has not said a phone or account number yet, acknowledge their request in one short phrase and ask ONLY for the phone or account number on their service (no mention of codes or PINs yet). When they say it, call {@TOOL: fetch_customer_profile} with `account_or_phone` set to exactly what they said. Never identify with the caller ID {clid}.
             2. If {@TOOL: fetch_customer_profile} returns `ACCOUNT_NOT_FOUND` (`identification_status == "Fail"`), politely inform the caller in their active language ({language}) that the account could not be found with that number and ask for their 9-digit account number.
             3. Call {@TOOL: evaluate_routing_rules} with the caller's {utterance} to record {route}.
         </action>

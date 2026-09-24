@@ -1,5 +1,14 @@
 def send_authentication_otp(clid: str = "", channel: str = "sms_and_email") -> dict:
     """Send a 6-digit authentication OTP to the customer's registered phone number and backup email on file."""
+    # // No se puede autenticar a quien aun no se ha identificado: sin cuenta no hay a quien
+    # // enviar el codigo ni contra que validar el PIN. Solo fetch_customer_profile identifica.
+    if context.state.get("identification_status") != "Pass":
+        return {
+            "status": "error",
+            "error": "IDENTIFICATION_REQUIRED",
+            "next_step": "identify",
+            "agent_action": "The caller is NOT identified yet, so this action cannot run. Step 1 of 2: ask for the phone number or 9-digit account number on their service and call fetch_customer_profile with it. Do NOT ask for a PIN or code yet. Once identified, come back to authentication.",
+        }
     try:
         target = (clid or context.state.get("clid", "4155550101")).strip()
         last4 = target[-4:] if len(target) >= 4 else "0101"

@@ -1,7 +1,16 @@
 def fetch_customer_profile(clid: str = "", account_or_phone: str = "") -> dict:
-    """Resolve caller identity from telephony CLID or provided phone/account number."""
+    """Identify the caller from the phone or account number THEY state on the call (never the telephony caller ID)."""
     try:
-        raw_input = (account_or_phone or clid or context.state.get("clid", "4155550101")).strip()
+        # // Opcion A: se identifica SOLO con el numero que dice el cliente. El caller ID (clid)
+        # // de telefonia se usa para el idioma, nunca para identificar en silencio.
+        raw_input = (account_or_phone or clid or "").strip()
+        if not raw_input:
+            return {
+                "status": "error",
+                "error": "NUMBER_REQUIRED",
+                "identification_status": "",
+                "agent_action": "Ask the caller for the phone number or 9-digit account number on their service, then call fetch_customer_profile with account_or_phone set to exactly what they said. Never use the caller ID.",
+            }
         digits = "".join(c for c in raw_input if c.isdigit())
 
         if raw_input == "ERROR_SYSTEM":

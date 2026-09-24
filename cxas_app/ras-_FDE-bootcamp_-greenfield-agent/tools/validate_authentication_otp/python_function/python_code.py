@@ -1,6 +1,15 @@
 def validate_authentication_otp(code: str) -> dict:
     """Validate the 6-digit OTP code entered or spoken by the caller (BR-TV-008, BR-TV-009)."""
     try:
+        # // No se puede autenticar a quien aun no se ha identificado: sin cuenta no hay a quien
+        # // enviar el codigo ni contra que validar el PIN. Solo fetch_customer_profile identifica.
+        if context.state.get("identification_status") != "Pass":
+            return {
+                "status": "error",
+                "error": "IDENTIFICATION_REQUIRED",
+                "next_step": "identify",
+                "agent_action": "The caller is NOT identified yet, so this action cannot run. Step 1 of 2: ask for the phone number or 9-digit account number on their service and call fetch_customer_profile with it. Do NOT ask for a PIN or code yet. Once identified, come back to authentication.",
+            }
         # // Se captura ANTES de sobrescribir: si el cliente ya estaba autenticado, este
         # // segundo codigo fresco cuenta como step-up (segundo factor para accion critica).
         was_authenticated = context.state.get("auth_status") == "Pass"
@@ -33,7 +42,6 @@ def validate_authentication_otp(code: str) -> dict:
             }
 
         context.state["auth_status"] = "Pass"
-        context.state["identification_status"] = "Pass"
         context.state["misc_counter"] = "0"
         # // Step-up: solo un OTP valido sobre una sesion ya autenticada concede step_up_status.
         if was_authenticated:
