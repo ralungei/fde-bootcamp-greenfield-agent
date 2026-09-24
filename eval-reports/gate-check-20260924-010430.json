@@ -1,0 +1,289 @@
+{
+  "app_name": "projects/fde-bootcamp/locations/us/apps/844c20f7-c058-424e-8ce2-6a66e4ef4ddb",
+  "timestamp": "2026-09-24T00:04:30.568565Z",
+  "gates": [
+    {
+      "gate": 1,
+      "name": "Pull, Lint and Push",
+      "status": "pass",
+      "findings": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "gate": 2,
+      "name": "Agent hierarchy",
+      "status": "pass",
+      "findings": [
+        {
+          "root_agent": "Root_agent",
+          "agents": [
+            "Root_agent",
+            "account_management_specialist",
+            "appointment_specialist",
+            "billing_specialist",
+            "sales_equipment_specialist",
+            "tech_support_specialist"
+          ]
+        }
+      ],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "gate": 3,
+      "name": "Tool associations",
+      "status": "pass",
+      "findings": [
+        {
+          "platform_tools": [
+            "apply_bill_adjustment",
+            "cancel_or_port_service",
+            "check_regional_outage",
+            "check_service_coverage",
+            "commit_appointment_reschedule",
+            "configure_autopay",
+            "create_dispute_ticket",
+            "evaluate_routing_rules",
+            "execute_live_agent_handover",
+            "execute_suspend_restore",
+            "fetch_availability_slots",
+            "fetch_customer_profile",
+            "fetch_plan_catalog",
+            "fetch_recent_bills",
+            "initiate_number_transfer",
+            "list_recent_payments",
+            "lookup_active_appointments",
+            "manage_mfa",
+            "place_new_order",
+            "process_payment",
+            "process_warranty_claim",
+            "refund_duplicate_payment",
+            "report_malicious_utterance",
+            "send_authentication_otp",
+            "send_password_reset_sms",
+            "send_sms",
+            "setup_payment_arrangement",
+            "start_virtual_repair",
+            "update_language",
+            "validate_authentication_otp",
+            "validate_authentication_pin",
+            "verify_payment_posted"
+          ],
+          "per_agent_tools": {
+            "Root_agent": {
+              "tools": [
+                "end_session",
+                "evaluate_routing_rules",
+                "execute_live_agent_handover",
+                "fetch_customer_profile",
+                "report_malicious_utterance",
+                "send_authentication_otp",
+                "update_language",
+                "validate_authentication_otp",
+                "validate_authentication_pin"
+              ],
+              "toolsets": []
+            },
+            "account_management_specialist": {
+              "tools": [
+                "cancel_or_port_service",
+                "end_session",
+                "execute_live_agent_handover",
+                "execute_suspend_restore",
+                "fetch_customer_profile",
+                "manage_mfa",
+                "report_malicious_utterance",
+                "send_authentication_otp",
+                "send_password_reset_sms",
+                "send_sms",
+                "update_language",
+                "validate_authentication_otp",
+                "validate_authentication_pin",
+                "verify_payment_posted"
+              ],
+              "toolsets": []
+            },
+            "appointment_specialist": {
+              "tools": [
+                "commit_appointment_reschedule",
+                "end_session",
+                "execute_live_agent_handover",
+                "fetch_availability_slots",
+                "fetch_customer_profile",
+                "lookup_active_appointments",
+                "report_malicious_utterance",
+                "send_authentication_otp",
+                "send_sms",
+                "update_language",
+                "validate_authentication_otp",
+                "validate_authentication_pin"
+              ],
+              "toolsets": []
+            },
+            "billing_specialist": {
+              "tools": [
+                "apply_bill_adjustment",
+                "configure_autopay",
+                "create_dispute_ticket",
+                "end_session",
+                "execute_live_agent_handover",
+                "fetch_customer_profile",
+                "fetch_recent_bills",
+                "list_recent_payments",
+                "process_payment",
+                "refund_duplicate_payment",
+                "report_malicious_utterance",
+                "send_authentication_otp",
+                "setup_payment_arrangement",
+                "update_language",
+                "validate_authentication_otp",
+                "validate_authentication_pin",
+                "verify_payment_posted"
+              ],
+              "toolsets": []
+            },
+            "sales_equipment_specialist": {
+              "tools": [
+                "check_service_coverage",
+                "end_session",
+                "execute_live_agent_handover",
+                "fetch_customer_profile",
+                "fetch_plan_catalog",
+                "initiate_number_transfer",
+                "place_new_order",
+                "process_warranty_claim",
+                "report_malicious_utterance",
+                "send_authentication_otp",
+                "send_sms",
+                "update_language",
+                "validate_authentication_otp",
+                "validate_authentication_pin"
+              ],
+              "toolsets": []
+            },
+            "tech_support_specialist": {
+              "tools": [
+                "check_regional_outage",
+                "end_session",
+                "execute_live_agent_handover",
+                "fetch_customer_profile",
+                "report_malicious_utterance",
+                "send_authentication_otp",
+                "send_sms",
+                "start_virtual_repair",
+                "update_language",
+                "validate_authentication_otp",
+                "validate_authentication_pin"
+              ],
+              "toolsets": []
+            }
+          }
+        }
+      ],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "gate": 4,
+      "name": "Callback inventory + test discovery",
+      "status": "pass",
+      "findings": [
+        {
+          "callbacks_per_agent": {
+            "Root_agent": {
+              "before_model_callbacks": 1,
+              "after_model_callbacks": 1,
+              "before_agent_callbacks": 1
+            },
+            "account_management_specialist": {
+              "before_model_callbacks": 1,
+              "after_model_callbacks": 1,
+              "before_agent_callbacks": 1
+            },
+            "appointment_specialist": {
+              "before_model_callbacks": 1,
+              "after_model_callbacks": 1,
+              "before_agent_callbacks": 1
+            },
+            "billing_specialist": {
+              "before_model_callbacks": 1,
+              "after_model_callbacks": 1,
+              "before_agent_callbacks": 1
+            },
+            "sales_equipment_specialist": {
+              "before_model_callbacks": 1,
+              "after_model_callbacks": 1,
+              "before_agent_callbacks": 1
+            },
+            "tech_support_specialist": {
+              "before_model_callbacks": 1,
+              "after_model_callbacks": 1,
+              "before_agent_callbacks": 1
+            }
+          },
+          "total": 18
+        },
+        {
+          "tests_authored": 0,
+          "tests_discoverable_by_runner": 0
+        }
+      ],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "gate": 5,
+      "name": "Single-turn smoke test",
+      "status": "pass",
+      "findings": [
+        {
+          "session_id": "gate5-9f089247",
+          "status": "responded"
+        }
+      ],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "gate": 6,
+      "name": "Multi-turn smoke test",
+      "status": "pass",
+      "findings": [
+        {
+          "session_id": "gate6-e13ad43f",
+          "turns": [
+            {
+              "turn": 1,
+              "text": "Hi, I'd like to check my current bill balance please.",
+              "status": "responded"
+            },
+            {
+              "turn": 2,
+              "text": "My phone number is 415-555-0101.",
+              "status": "responded"
+            },
+            {
+              "turn": 3,
+              "text": "The 6-digit verification code is 481234.",
+              "status": "responded"
+            },
+            {
+              "turn": 4,
+              "text": "Can you tell me what my current balance is and what charges are on the bill?",
+              "status": "responded"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "error": null
+    }
+  ],
+  "overall": {
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "all_pass": true
+  }
+}

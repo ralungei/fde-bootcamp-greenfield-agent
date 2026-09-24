@@ -1,10 +1,10 @@
 {
   "name": "validate_authentication_otp",
-  "displayName": "validate_authentication_otp",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "validate_authentication_otp",
     "pythonCode": "tools/validate_authentication_otp/python_function/python_code.py",
-    "description": "Validates the 6-digit OTP code provided by the caller (via voice or DTMF). Rejects invalid codes ('000000', '999999', '9999', '0000') so the caller can retry, and sets auth_status='Pass' on valid code."
-  }
+    "description": "Validate the 6-digit OTP code entered or spoken by the caller (BR-TV-008, BR-TV-009)."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "validate_authentication_otp"
 }

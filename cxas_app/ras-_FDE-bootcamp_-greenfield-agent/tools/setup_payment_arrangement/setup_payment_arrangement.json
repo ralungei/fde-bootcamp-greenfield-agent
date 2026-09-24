@@ -1,10 +1,10 @@
 {
   "name": "setup_payment_arrangement",
-  "displayName": "setup_payment_arrangement",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "setup_payment_arrangement",
     "pythonCode": "tools/setup_payment_arrangement/python_function/python_code.py",
-    "description": "Sets up a deferred payment arrangement plan on a past-due balance so suspended service can be restored (M3, CUJ-6)."
-  }
+    "description": "Set up a payment arrangement and mark flag_val\u003d\u0027balance_cleared\u0027 so M7 can restore service."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "setup_payment_arrangement"
 }

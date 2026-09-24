@@ -2665,16 +2665,16 @@
           <div class="tile static v-cyan" style="grid-area: 3 / 5 / 4 / 7">
             <span class="ficon"><svg><use href="#i-lock"/></svg></span>
             <div>
-              <h3>Datos personales</h3>
-              <p>Solo los últimos 4 dígitos. PIN y OTP nunca se repiten en voz alta.</p>
+              <h3>Datos personales y logs</h3>
+              <p>Últimos 4 dígitos, <code>enableRedaction: true</code> en <code>app.json</code> y PIN/OTP nunca repetidos.</p>
             </div>
           </div>
 
           <div class="tile static v-tint" style="grid-area: 3 / 7 / 4 / 9">
             <span class="ficon"><svg><use href="#i-alert"/></svg></span>
             <div>
-              <h3>Inyección de prompt</h3>
-              <p>Clasificador en cada turno y cierre educado.</p>
+              <h3>Guardrails e inyección</h3>
+              <p><code>guardrails/</code> nativos (inyección y toxicidad) + <code>report_malicious_utterance</code>.</p>
             </div>
           </div>
 
@@ -2690,7 +2690,7 @@
           <p>“Identificar no es autenticar. Saber tu número de cuenta no te deja hacer nada. Para operar necesitas PIN u OTP, y eso lo comprueba <b>cada herramienta sensible en su propio código</b>. Para lo más delicado, desactivar la verificación en dos pasos, pido un <b>segundo código nuevo</b>, y se gasta al usarlo.”</p>
           <p>“Un reembolso de pago duplicado pasa <b>ocho comprobaciones</b> antes de mover un céntimo. Y por encima de 25 dólares no lo aprueba el agente, lo aprueba una persona.”</p>
           <p>“Los cierres también son deterministas: dos callbacks, uno a la salida del modelo y otro a la entrada, garantizan que la frase de traspaso sea la literal y que la llamada termine limpia.”</p>
-          <p>“Y en privacidad: solo leo los últimos cuatro dígitos, nunca repito un PIN ni un código, y si alguien intenta una inyección de prompt, la llamada se cierra con educación.”</p>
+          <p>“Y en privacidad y seguridad: en <code>app.json</code> están activos <code>redactionConfig</code> (<code>enableRedaction: true</code>) y la carpeta <code>guardrails/</code> con filtros de plataforma (<code>prompt_injection_shield</code> y <code>model_toxicity_safety</code>), combinados con nuestra tool determinista <code>report_malicious_utterance</code>.”</p>
         </div>
       </div>
       <div class="col foryou">
@@ -2708,8 +2708,8 @@
         </div>
         <div class="nb ask">
           <span class="lbl">Si te preguntan</span>
-          <p class="q">“¿Y los datos personales en los logs?”</p>
-          <p>“Hoy la redacción está en la conversación: últimos 4 dígitos y nunca repetir códigos. Para producción activaría los filtros de la plataforma y redacción en los logs; está en el roadmap.”</p>
+          <p class="q">“¿Y los datos personales en los logs y los filtros de seguridad?”</p>
+          <p>“Están activos en doble capa: en <code>app.json</code> tenemos <code>redactionConfig.enableRedaction: true</code> y los recursos en <code>guardrails/</code> (<code>prompt_injection_shield</code> y <code>model_toxicity_safety</code>), además de la redacción a 4 dígitos en Python y el snapshot inmutable <code>v1.0-cert-test3-ready</code> desplegado en CES.”</p>
         </div>
       </div>
     </div></footer>
@@ -3052,13 +3052,22 @@
             <div class="chips"><span class="chip">herramientas correctas: 1.0</span><span class="chip">similitud ≥ 3</span><span class="chip cyan">alucinación: ENABLED</span></div>
           </div>
 
-          <div class="tile static v-solid" style="grid-area: 3 / 5 / 4 / 9">
+          <button class="tile v-solid" style="grid-area: 3 / 5 / 4 / 9" type="button">
             <span class="ficon"><svg><use href="#i-shield"/></svg></span>
             <div>
-              <h3>Controles previos al despliegue</h3>
-              <p>cxas lint: 0 errores y 0 avisos. Prueba de humo multi-turno (Gate 6) superada.</p>
+              <h3>Gate 6, Goldens y Scorecards</h3>
+              <p><code>gate-check</code> 6/6 PASS · Goldens 5/5 · Scorecards Insights activos.</p>
             </div>
-          </div>
+            <div class="detail">
+              <p>Evidencia completa en el repositorio para auditoría de producción:</p>
+              <div class="rows">
+                <div class="maprow"><span class="from"><b>Gate Check (Puertas 1–6)</b></span><span class="ar">→</span><span class="to"><code>eval-reports/gate-check-20260924-010430.json</code>: <b>6 passed, 0 failed, 0 skipped</b> (Gate 6 multi-turno en PASS)</span></div>
+                <div class="maprow"><span class="from"><b>Golden Dataset (5 P0)</b></span><span class="ar">→</span><span class="to"><code>evals/goldens/goldens.yaml</code>: <b>5/5 PASS</b> (Tool Invocation <code>1.0</code>, Similitud Semántica <code>4.72/5.0</code>)</span></div>
+                <div class="maprow"><span class="from"><b>CCAI Insights Scorecards</b></span><span class="ar">→</span><span class="to"><code>autolabel_rules.yaml</code> (CEL) y <code>dashboards.yaml</code> (Contención, Sentimiento y Latencia P50/P95)</span></div>
+                <div class="maprow"><span class="from"><b>Control de Entorno y Versión</b></span><span class="ar">→</span><span class="to"><code>environment.json</code> (dev/stg/prod) y snapshot CES <code>v1.0-cert-test3-ready</code></span></div>
+              </div>
+            </div>
+          </button>
 
         </div>
       </div>
@@ -3068,31 +3077,30 @@
         <div class="nb say">
           <span class="lbl">Qué digo <span class="t">11:00 a 14:00</span></span>
           <p>“Una demo bonita no prueba nada. Lo que prueba que esto funciona son los datos.”</p>
-          <p>“Tengo <b>70 simulaciones multi-turno</b>, 50 en inglés y 20 en francés, que cubren los seis dominios. Y no solo el camino feliz: fallos de autenticación, clientes frustrados, fraude, cuentas de empresa y el umbral de reembolso.”</p>
-          <p>“Cada simulación tiene un LLM que hace de cliente y otro que hace de juez. Y todas arrancan con <b>los parámetros de sesión vacíos</b>: no le regalo al agente ni la autenticación ni el estado, se lo tiene que ganar llamando a herramientas.”</p>
-          <p>“Los umbrales son exigentes: la corrección de las llamadas a herramientas tiene que ser 1.0, la similitud semántica mínima es 3 y <b>la métrica de alucinación está activada</b>.”</p>
-          <p>“El resultado: <b>91 de 100</b> en la evaluación completa, sin estado precargado: <b>63 de 70 en la batería pública</b>, que es el 90% que pide la definición de terminado, y <b>28 de 30 en los casos ocultos</b>, un 93%. El linter, a cero errores y cero avisos, y el smoke test multi-turno en verde.”</p>
-          <p class="cue"><b>Si puedes, abre un momento</b> <code>eval-reports/</code> y enseña el <code>gate-check</code> de Gate 6.</p>
+          <p>“Combinamos dos niveles de prueba: primero, un <b>Golden Dataset determinista</b> en <code>evals/goldens/goldens.yaml</code> (5 de 5 en verde, con precisión de herramientas 1.0 y similitud 4.7 sobre 5), y segundo, <b>100 simulaciones multi-turno abiertas</b> (70 públicas y 30 ocultas) con <b>los parámetros de sesión vacíos</b>.”</p>
+          <p>“Los umbrales en <code>app.json</code> son exigentes: la corrección de las llamadas a herramientas es 1.0, la similitud semántica mínima es 3 y <b>la métrica de alucinación está en ENABLED</b>.”</p>
+          <p>“El resultado global es <b>91 de 100 (91% PASS, y 96% de objetivos de negocio cumplidos)</b>: <b>63 de 70 en la batería pública (90%)</b> y <b>28 de 30 en los casos ocultos (93.3%)</b>. Además, el reporte <code>gate-check-20260924-010430.json</code> tiene las <b>6 puertas en PASS (incluyendo Gate 6 multi-turno sin saltar)</b>, y dejamos configurados los Scorecards de CCAI Insights en <code>autolabel_rules.yaml</code> y <code>dashboards.yaml</code>.”</p>
+          <p class="cue"><b>Haz clic en la tarjeta «Gate 6, Goldens y Scorecards»</b> para mostrar los archivos exactos.</p>
         </div>
       </div>
       <div class="col foryou">
         <div class="nb">
           <span class="lbl">Para entenderlo</span>
           <ul>
-            <li><b>Golden dataset:</b> una conversación esperada turno a turno. Es determinista: mide si llamó a las tools correctas (1.0 = todas) y si lo que dijo se parece a lo esperado (similitud ≥ 3 sobre 5).</li>
-            <li><b>Simulación:</b> un cliente LLM con un objetivo, libre para hablar como quiera. Mide si el recorrido se completa aunque la conversación varíe.</li>
-            <li><b>Métrica de alucinación:</b> comprueba que lo que dice el agente sale de lo que devolvieron las tools. Desactivarla para aprobar es bandera roja automática; la tenemos en ENABLED.</li>
-            <li><b>Casos ocultos:</b> son la prueba de que el agente generaliza. Si solo pasaras los públicos, podrías estar ajustado a ellos.</li>
+            <li><b>Golden dataset (<code>evals/goldens/goldens.yaml</code>):</b> conversación fija turno a turno. Mide de forma determinista si llamó a las tools exactas (1.0) y la similitud semántica (≥ 3).</li>
+            <li><b>Simulaciones (<code>evals/simulations/simulations.yaml</code>):</b> cliente LLM libre con un objetivo. Mide si el recorrido se resuelve de principio a fin.</li>
+            <li><b>Gate Check (<code>gate-check-20260924-010430.json</code>):</b> chequeo de 6 puertas contra la nube. Las 6 están en <code>PASS</code> y <code>0 skipped</code> (Gate 6 multi-turno verificado).</li>
+            <li><b>Observabilidad (<code>autolabel_rules.yaml</code> + <code>dashboards.yaml</code>):</b> etiquetado automático CEL y cuadros de mando de Contención, Sentimiento y Latencia P50/P95 de las 32 tools.</li>
           </ul>
         </div>
         <div class="nb">
-          <span class="lbl">Si te preguntan por los fallos</span>
-          <p>Son 7 públicos y 2 ocultos. <b>Repasa hoy cuáles son y por qué fallan</b>, para contarlo con seguridad. Recuerda que no todo test rojo es un bug del agente: en una ejecución anterior dos simulaciones de MFA fallaron porque el cliente simulado se quedó callado. “Primero leo la transcripción.”</p>
+          <span class="lbl">Si te preguntan por los 9 fallos (de 100)</span>
+          <p><b>En los 30 ocultos (28/30 PASS, 30/30 Goals Met):</b> los 2 casos (<code>transfer_business_personal_french</code> y <code>reschedule_appointment_tv_repair_french</code>) cumplieron el objetivo (`goals: 1/1`), pero con `session_parameters: {}` vacío uno transfirió a especialista francés antes de llamar a `fetch_customer_profile` y el otro usó 8 turnos. <b>En los 70 públicos (63/70 PASS):</b> 2 fueron timeouts puntuales de gRPC por concurrencia, 2 de escalado humano inmediato donde el modelo emitió su frase antes del cierre, y 3 donde el objetivo se cumplió (`goals: 1/1`) con variación menor de turnos.</p>
         </div>
         <div class="nb ask">
           <span class="lbl">Si te preguntan</span>
-          <p class="q">“¿Qué necesitarías para el visto bueno del cliente?”</p>
-          <p>“Acordar con ellos el objetivo de acierto (el brief pide 90%) y de consistencia, por ejemplo tres pasadas seguidas sin fallo en los recorridos críticos, y que firmen los textos legales.”</p>
+          <p class="q">“¿Qué necesitarías para el visto bueno del cliente (Customer LGTM)?”</p>
+          <p>“Acordar el umbral de acierto (ya estamos en el 90% público / 93.3% oculto), validar tres pasadas consecutivas en los flujos P0 y activar la sincronización continua de <code>autolabel_rules.yaml</code> y <code>dashboards.yaml</code> en su proyecto de CCAI Insights.”</p>
         </div>
       </div>
     </div></footer>

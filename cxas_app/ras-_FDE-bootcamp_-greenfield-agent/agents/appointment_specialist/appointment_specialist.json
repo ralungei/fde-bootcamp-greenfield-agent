@@ -3,37 +3,17 @@
   "displayName": "appointment_specialist",
   "description": "Telco Voice Central appointment_specialist module",
   "instruction": "agents/appointment_specialist/instruction.txt",
-  "tools": [
-    "lookup_active_appointments",
-    "fetch_availability_slots",
-    "commit_appointment_reschedule",
-    "send_sms",
-    "execute_live_agent_handover",
-    "update_language",
-    "report_malicious_utterance",
-    "end_session",
-    "fetch_customer_profile",
-    "send_authentication_otp",
-    "validate_authentication_otp",
-    "validate_authentication_pin"
-  ],
-  "childAgents": [],
-  "beforeAgentCallbacks": [
-    {
-      "pythonCode": "agents/appointment_specialist/before_agent_callbacks/before_agent_callbacks_01/python_code.py",
-      "description": "Reset local_noinput_counter on module entry"
-    }
-  ],
-  "beforeModelCallbacks": [
-    {
-      "pythonCode": "agents/appointment_specialist/before_model_callbacks/before_model_callbacks_01/python_code.py",
-      "description": "Section 6 per-turn preprocessing pipeline"
-    }
-  ],
-  "afterModelCallbacks": [
-    {
-      "pythonCode": "agents/appointment_specialist/after_model_callbacks/after_model_callbacks_01/python_code.py",
-      "description": "Guarantee the verbatim handover line is spoken, then end_session in the same turn"
-    }
-  ]
+  "tools": ["commit_appointment_reschedule", "end_session", "execute_live_agent_handover", "fetch_availability_slots", "fetch_customer_profile", "lookup_active_appointments", "report_malicious_utterance", "send_authentication_otp", "send_sms", "update_language", "validate_authentication_otp", "validate_authentication_pin"],
+  "beforeAgentCallbacks": [{
+    "pythonCode": "agents/appointment_specialist/before_agent_callbacks/before_agent_callbacks_01/python_code.py",
+    "description": "Reset local_noinput_counter on module entry"
+  }],
+  "beforeModelCallbacks": [{
+    "pythonCode": "agents/appointment_specialist/before_model_callbacks/before_model_callbacks_01/python_code.py",
+    "description": "Section 6 per-turn preprocessing pipeline"
+  }],
+  "afterModelCallbacks": [{
+    "pythonCode": "agents/appointment_specialist/after_model_callbacks/after_model_callbacks_01/python_code.py",
+    "description": "Guarantee the verbatim handover line is spoken, then end_session in the same turn"
+  }]
 }

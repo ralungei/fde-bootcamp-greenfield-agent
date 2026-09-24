@@ -1,10 +1,10 @@
 {
   "name": "fetch_customer_profile",
-  "displayName": "fetch_customer_profile",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "fetch_customer_profile",
     "pythonCode": "tools/fetch_customer_profile/python_function/python_code.py",
-    "description": "Looks up the caller profile by 10-digit clid or account/phone number. Sets identification_status='Pass' (or 'Fail' if an invalid/wrong number is given on first try), customer_type, business_flag, saved card_last4, cirn (last-4), billing_account (last-4), and region."
-  }
+    "description": "Resolve caller identity from telephony CLID or provided phone/account number."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "fetch_customer_profile"
 }

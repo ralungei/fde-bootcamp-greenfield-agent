@@ -1,0 +1,67 @@
+{
+  "active_environment": "production",
+  "environments": {
+    "development": {
+      "gcp_project_id": "fde-bootcamp",
+      "gcp_project_number": "84954549114",
+      "location": "us",
+      "app_id": "844c20f7-c058-424e-8ce2-6a66e4ef4ddb",
+      "model": "gemini-3.1-flash-live",
+      "mock_backend": true,
+      "api_timeouts_ms": {
+        "crm_profile_lookup": 1500,
+        "otp_dispatch": 2000,
+        "billing_ledger": 2000,
+        "payment_gateway": 3000
+      },
+      "security": {
+        "secret_manager_prefix": "projects/84954549114/secrets/dev-telco-",
+        "pii_redaction_enabled": true,
+        "hallucination_metric": "ENABLED"
+      }
+    },
+    "staging": {
+      "gcp_project_id": "fde-bootcamp",
+      "gcp_project_number": "84954549114",
+      "location": "us",
+      "app_id": "844c20f7-c058-424e-8ce2-6a66e4ef4ddb",
+      "model": "gemini-3.1-flash-live",
+      "mock_backend": false,
+      "api_timeouts_ms": {
+        "crm_profile_lookup": 1200,
+        "otp_dispatch": 1500,
+        "billing_ledger": 1800,
+        "payment_gateway": 2500
+      },
+      "security": {
+        "secret_manager_prefix": "projects/84954549114/secrets/stg-telco-",
+        "pii_redaction_enabled": true,
+        "hallucination_metric": "ENABLED"
+      }
+    },
+    "production": {
+      "gcp_project_id": "fde-bootcamp",
+      "gcp_project_number": "84954549114",
+      "location": "us",
+      "app_id": "844c20f7-c058-424e-8ce2-6a66e4ef4ddb",
+      "model": "gemini-3.1-flash-live",
+      "mock_backend": false,
+      "api_timeouts_ms": {
+        "crm_profile_lookup": 1000,
+        "otp_dispatch": 1500,
+        "billing_ledger": 1500,
+        "payment_gateway": 2500
+      },
+      "security": {
+        "iam_service_account": "telco-voice-central-runtime@fde-bootcamp.iam.gserviceaccount.com",
+        "secret_manager_prefix": "projects/84954549114/secrets/prod-telco-",
+        "pii_redaction_enabled": true,
+        "hallucination_metric": "ENABLED",
+        "guardrails": [
+          "prompt_injection_shield",
+          "model_toxicity_safety"
+        ]
+      }
+    }
+  }
+}

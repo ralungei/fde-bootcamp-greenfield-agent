@@ -1,10 +1,10 @@
 {
   "name": "fetch_plan_catalog",
-  "displayName": "fetch_plan_catalog",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "fetch_plan_catalog",
     "pythonCode": "tools/fetch_plan_catalog/python_function/python_code.py",
-    "description": "Returns a curated shortlist of 2 comparable plan options tailored to the requested line of business: 'mobility' (5G data & budget plans under $60), 'internet' (high-speed Fiber for home/WFH), or 'tv' (Essential & Premier with Sports Package) (M5, CUJ-5)."
-  }
+    "description": "Return a curated shortlist of 2 comparable plans matching lob (\u0027mobility\u0027, \u0027internet\u0027, or \u0027tv\u0027)."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "fetch_plan_catalog"
 }

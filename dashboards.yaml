@@ -1,0 +1,115 @@
+version: "1.0"
+project_id: "fde-bootcamp"
+location: "us"
+
+dashboards:
+  - dashboard_id: "telco_voice_central_executive_scorecard"
+    display_name: "Telco Voice Central — Executive Production Scorecard"
+    description: "Multi-tab observability scorecard monitoring Self-Service Containment, Caller Sentiment, Safety Guardrails, and Tool API Latency."
+    date_range:
+      relative:
+        quantity: 7
+        unit: "DAY"
+
+    root_container:
+      display_name: "Root"
+      widgets:
+        - container:
+            display_name: "1. Containment & Resolution Overview"
+            description: "Containment KPIs and escalation drivers across all 6 agents"
+            widgets:
+              - chart:
+                  display_name: "Self-Service Containment Rate"
+                  chart_visualization_type: "SCORE_CARD"
+                  width: 4
+                  height: 3
+                  data_source:
+                    generative_insights:
+                      sql_query: >-
+                        SELECT ROUND(COUNTIF(labels['resolution_status'] LIKE 'contained%') * 100.0 / COUNT(1), 1) AS containment_pct
+                        FROM conversations
+                      chart_spec:
+                        mark: "text"
+                        encoding:
+                          text: {field: "containment_pct", type: "quantitative"}
+
+              - chart:
+                  display_name: "Containment Volume by Specialist Domain"
+                  chart_visualization_type: "BAR"
+                  width: 8
+                  height: 6
+                  data_source:
+                    generative_insights:
+                      sql_query: >-
+                        SELECT labels['agent_domain'] AS specialist_domain, COUNT(1) AS volume
+                        FROM conversations
+                        WHERE labels['agent_domain'] IS NOT NULL
+                        GROUP BY 1
+                        ORDER BY volume DESC
+                      chart_spec:
+                        mark: "bar"
+                        encoding:
+                          x: {field: "volume", type: "quantitative", title: "Calls"}
+                          y: {field: "specialist_domain", type: "nominal", sort: "-x", title: "Specialist"}
+
+        - container:
+            display_name: "2. Sentiment & Safety Guardrails"
+            description: "Caller sentiment trends, 3-strike auth escalations, and blocked prompt injections"
+            widgets:
+              - chart:
+                  display_name: "Containment Failure Breakdown"
+                  chart_visualization_type: "PIE"
+                  width: 6
+                  height: 6
+                  data_source:
+                    generative_insights:
+                      sql_query: >-
+                        SELECT labels['containment_failure_reason'] AS reason, COUNT(1) AS calls
+                        FROM conversations
+                        WHERE labels['containment_failure_reason'] != 'none'
+                        GROUP BY 1
+                      chart_spec:
+                        mark: "arc"
+                        encoding:
+                          theta: {field: "calls", type: "quantitative"}
+                          color: {field: "reason", type: "nominal"}
+
+              - chart:
+                  display_name: "Daily Caller Sentiment & Barge-In Recovery"
+                  chart_visualization_type: "LINE"
+                  width: 6
+                  height: 6
+                  data_source:
+                    generative_insights:
+                      sql_query: >-
+                        SELECT DATE(start_time) AS call_date, AVG(caller_sentiment_score) AS avg_sentiment
+                        FROM conversations
+                        GROUP BY 1
+                        ORDER BY 1
+                      chart_spec:
+                        mark: "line"
+                        encoding:
+                          x: {field: "call_date", type: "temporal", title: "Date"}
+                          y: {field: "avg_sentiment", type: "quantitative", title: "Sentiment Score"}
+
+        - container:
+            display_name: "3. Tool & API Performance"
+            description: "Latency P50/P95 and error rates across the 32 Python function tools"
+            widgets:
+              - chart:
+                  display_name: "Tool Execution Latency (P50 vs P95 ms)"
+                  chart_visualization_type: "TABLE"
+                  width: 12
+                  height: 6
+                  data_source:
+                    generative_insights:
+                      sql_query: >-
+                        SELECT tool_name,
+                               APPROX_QUANTILES(latency_ms, 100)[OFFSET(50)] AS p50_ms,
+                               APPROX_QUANTILES(latency_ms, 100)[OFFSET(95)] AS p95_ms,
+                               ROUND(COUNTIF(status != 'OK') * 100.0 / COUNT(1), 2) AS error_rate_pct
+                        FROM tool_invocations
+                        GROUP BY 1
+                        ORDER BY p95_ms DESC
+                      chart_spec:
+                        mark: "text"

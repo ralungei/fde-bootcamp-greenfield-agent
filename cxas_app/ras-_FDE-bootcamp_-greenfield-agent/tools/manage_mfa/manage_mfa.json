@@ -1,10 +1,10 @@
 {
   "name": "manage_mfa",
-  "displayName": "manage_mfa",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "manage_mfa",
     "pythonCode": "tools/manage_mfa/python_function/python_code.py",
-    "description": "Enables or disables multi-factor authentication (MFA) on the caller's portal account. Requires auth_status == 'Pass'. Disabling MFA additionally requires a fresh step-up verification: if it returns STEP_UP_REQUIRED, send and validate one extra OTP, then call this tool again."
-  }
+    "description": "Enable or disable MFA. Disabling additionally requires a fresh 6-digit OTP step-up verification."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "manage_mfa"
 }

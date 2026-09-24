@@ -1,10 +1,10 @@
 {
   "name": "update_language",
-  "displayName": "update_language",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "update_language",
     "pythonCode": "tools/update_language/python_function/python_code.py",
-    "description": "Locks the conversation to the language the caller is actually speaking. Call this the moment you determine the caller is speaking a different language than the current one, or when they explicitly ask to change language. Pass language='primary' for English or language='secondary' for Canadian French or Spanish. Never switch language without calling this tool."
-  }
+    "description": "Lock the conversation to the language the caller is actually speaking (BR-TV-004 / BR-TV-020)."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "update_language"
 }

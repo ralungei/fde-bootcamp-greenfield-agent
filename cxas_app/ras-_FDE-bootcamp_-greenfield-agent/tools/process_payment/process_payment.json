@@ -1,10 +1,10 @@
 {
   "name": "process_payment",
-  "displayName": "process_payment",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "process_payment",
     "pythonCode": "tools/process_payment/python_function/python_code.py",
-    "description": "Processes a bill payment using the saved card on file (card_last4) or a keypad DTMF card token, and clears any overdue balance for service restoration (M3, CUJ-6)."
-  }
+    "description": "Process one-time bill payment via saved card or DTMF card entry (M3, CUJ-1)."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "process_payment"
 }

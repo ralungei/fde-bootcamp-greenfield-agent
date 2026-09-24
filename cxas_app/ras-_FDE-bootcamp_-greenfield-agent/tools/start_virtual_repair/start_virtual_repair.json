@@ -1,10 +1,10 @@
 {
   "name": "start_virtual_repair",
-  "displayName": "start_virtual_repair",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "start_virtual_repair",
     "pythonCode": "tools/start_virtual_repair/python_function/python_code.py",
-    "description": "Starts a guided virtual-repair diagnostic session tailored to the caller's lob ('mobility' for slow mobile data/network, 'internet' for home Wi-Fi/fiber, or 'tv' for Satellite Error 101, Fibe TV app freezing, or receiver signal) (M4, M8, CUJ-3)."
-  }
+    "description": "Start a virtual repair session with LOB-specific troubleshooting steps (mobility, internet, tv)."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "start_virtual_repair"
 }

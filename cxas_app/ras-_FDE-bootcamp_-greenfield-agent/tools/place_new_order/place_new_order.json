@@ -1,10 +1,10 @@
 {
   "name": "place_new_order",
-  "displayName": "place_new_order",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "place_new_order",
     "pythonCode": "tools/place_new_order/python_function/python_code.py",
-    "description": "Places an order or plan upgrade for a selected mobility, internet, or TV plan/package and dispatches an SMS confirmation receipt (M5, CUJ-5). Returns order_id and delivery_eta."
-  }
+    "description": "Place a new service/upgrade order and send SMS confirmation receipt (CUJ-5)."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "place_new_order"
 }

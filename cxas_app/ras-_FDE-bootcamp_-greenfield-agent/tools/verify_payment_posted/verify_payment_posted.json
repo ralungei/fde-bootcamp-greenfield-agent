@@ -1,10 +1,10 @@
 {
   "name": "verify_payment_posted",
-  "displayName": "verify_payment_posted",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "verify_payment_posted",
     "pythonCode": "tools/verify_payment_posted/python_function/python_code.py",
-    "description": "Reconciles the caller's account against the billing ledger when the caller claims they have already paid. Call this whenever the caller states or implies a prior payment, in any wording or language; never assume the claim is true. Returns payment_found=true only when the billing system actually shows a posted payment, and only then is the past-due balance cleared."
-  }
+    "description": "Reconcile the caller\u0027s account against the billing ledger after a prior-payment claim.\n\nDeliberately takes no arguments: the account is resolved from the authenticated session\n(clid), never from what the caller says, so a caller can neither query another account nor\ndeclare their own balance settled. Together with process_payment, this is the only code\npath allowed to clear a past-due balance."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "verify_payment_posted"
 }

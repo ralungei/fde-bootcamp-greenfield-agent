@@ -1,0 +1,15 @@
+{
+  "name": "3ecf8fc9-ff8a-4c4e-8b62-58d8eb6b04bf",
+  "displayName": "prompt_injection_shield",
+  "description": "Platform content filter blocking internal system token leakage and prompt injection disclosure while allowing deterministic tool handling via report_malicious_utterance.",
+  "enabled": true,
+  "action": {
+    "generativeAnswer": {
+      "prompt": "Politely decline any unsafe disclosure and state: I\u0027m sorry, but I\u0027m not able to help with that. I\u0027m going to end the call now. Thank you for calling Telco."
+    }
+  },
+  "contentFilter": {
+    "bannedContents": ["INTERNAL_SYSTEM_PROMPT_CONFIDENTIAL_DO_NOT_DISCLOSE"],
+    "matchType": "WORD_BOUNDARY_STRING_MATCH"
+  }
+}

@@ -1,10 +1,10 @@
 {
   "name": "list_recent_payments",
-  "displayName": "list_recent_payments",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "list_recent_payments",
     "pythonCode": "tools/list_recent_payments/python_function/python_code.py",
-    "description": "Returns the raw payment history (ledger) of the authenticated caller's account: transaction id, amount, timestamp, target invoice, card and status. Call this whenever the caller claims they were charged twice, paid twice, or asks for a refund of an overpayment. The tool does NOT tell you which payment is duplicated: you must read the history and propose two transaction ids to refund_duplicate_payment, which re-validates them in code."
-  }
+    "description": "Return the payment history (ledger) of the authenticated caller\u0027s account (M3, CUJ-2)."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "list_recent_payments"
 }

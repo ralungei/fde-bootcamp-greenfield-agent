@@ -3,39 +3,17 @@
   "displayName": "account_management_specialist",
   "description": "Telco Voice Central account_management_specialist module",
   "instruction": "agents/account_management_specialist/instruction.txt",
-  "tools": [
-    "send_password_reset_sms",
-    "manage_mfa",
-    "cancel_or_port_service",
-    "execute_suspend_restore",
-    "verify_payment_posted",
-    "send_sms",
-    "execute_live_agent_handover",
-    "update_language",
-    "report_malicious_utterance",
-    "end_session",
-    "fetch_customer_profile",
-    "send_authentication_otp",
-    "validate_authentication_otp",
-    "validate_authentication_pin"
-  ],
-  "childAgents": [],
-  "beforeAgentCallbacks": [
-    {
-      "pythonCode": "agents/account_management_specialist/before_agent_callbacks/before_agent_callbacks_01/python_code.py",
-      "description": "Reset local_noinput_counter on module entry"
-    }
-  ],
-  "beforeModelCallbacks": [
-    {
-      "pythonCode": "agents/account_management_specialist/before_model_callbacks/before_model_callbacks_01/python_code.py",
-      "description": "Section 6 per-turn preprocessing pipeline"
-    }
-  ],
-  "afterModelCallbacks": [
-    {
-      "pythonCode": "agents/account_management_specialist/after_model_callbacks/after_model_callbacks_01/python_code.py",
-      "description": "Guarantee the verbatim handover line is spoken, then end_session in the same turn"
-    }
-  ]
+  "tools": ["cancel_or_port_service", "end_session", "execute_live_agent_handover", "execute_suspend_restore", "fetch_customer_profile", "manage_mfa", "report_malicious_utterance", "send_authentication_otp", "send_password_reset_sms", "send_sms", "update_language", "validate_authentication_otp", "validate_authentication_pin", "verify_payment_posted"],
+  "beforeAgentCallbacks": [{
+    "pythonCode": "agents/account_management_specialist/before_agent_callbacks/before_agent_callbacks_01/python_code.py",
+    "description": "Reset local_noinput_counter on module entry"
+  }],
+  "beforeModelCallbacks": [{
+    "pythonCode": "agents/account_management_specialist/before_model_callbacks/before_model_callbacks_01/python_code.py",
+    "description": "Section 6 per-turn preprocessing pipeline"
+  }],
+  "afterModelCallbacks": [{
+    "pythonCode": "agents/account_management_specialist/after_model_callbacks/after_model_callbacks_01/python_code.py",
+    "description": "Guarantee the verbatim handover line is spoken, then end_session in the same turn"
+  }]
 }

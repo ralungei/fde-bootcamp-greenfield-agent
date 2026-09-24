@@ -1,0 +1,66 @@
+version: "1.0"
+project_id: "fde-bootcamp"
+location: "us"
+
+autolabeling_rules:
+  - rule_id: "containment_resolution_status"
+    display_name: "Self-Service Containment Classifier"
+    label_key: "resolution_status"
+    label_key_type: "LABEL_KEY_TYPE_CUSTOM"
+    active: true
+    conditions:
+      - condition: "hasSessionParam(conversation, 'flag_val', 'handover_completed')"
+        value: "'escalated_to_human'"
+      - condition: "hasSessionParam(conversation, 'flag_val', 'malicious_terminated')"
+        value: "'terminated_safety_guardrail'"
+      - condition: "hasSessionParam(conversation, 'auth_status', 'Pass')"
+        value: "'contained_authenticated'"
+      - condition: ""
+        value: "'contained_self_serve'"
+
+  - rule_id: "agent_specialist_domain"
+    display_name: "Specialist Sub-Agent Domain Classifier"
+    label_key: "agent_domain"
+    label_key_type: "LABEL_KEY_TYPE_CUSTOM"
+    active: true
+    conditions:
+      - condition: "containsSubAgent(conversation, 'billing_specialist')"
+        value: "'billing_and_payments'"
+      - condition: "containsSubAgent(conversation, 'tech_support_specialist')"
+        value: "'technical_support'"
+      - condition: "containsSubAgent(conversation, 'account_management_specialist')"
+        value: "'account_and_security'"
+      - condition: "containsSubAgent(conversation, 'appointment_specialist')"
+        value: "'field_appointments'"
+      - condition: "containsSubAgent(conversation, 'sales_equipment_specialist')"
+        value: "'sales_and_warranty'"
+      - condition: ""
+        value: "'root_triage_hub'"
+
+  - rule_id: "containment_failure_driver"
+    display_name: "Containment Failure Root Cause"
+    label_key: "containment_failure_reason"
+    label_key_type: "LABEL_KEY_TYPE_CUSTOM"
+    active: true
+    conditions:
+      - condition: "hasSessionParam(conversation, 'misc_counter', '3') && hasSessionParam(conversation, 'flag_val', 'handover_completed')"
+        value: "'auth_3_strikes_exhausted'"
+      - condition: "hasSessionParam(conversation, 'business_flag', 'true')"
+        value: "'business_account_routing'"
+      - condition: "hasCallerSentiment(conversation, 'NEGATIVE') && hasSessionParam(conversation, 'flag_val', 'handover_completed')"
+        value: "'caller_frustrated_escalation'"
+      - condition: ""
+        value: "'none'"
+
+  - rule_id: "security_and_mfa_tier"
+    display_name: "Authentication & Step-Up Tier Classifier"
+    label_key: "security_verification_tier"
+    label_key_type: "LABEL_KEY_TYPE_CUSTOM"
+    active: true
+    conditions:
+      - condition: "containsSubAgent(conversation, 'account_management_specialist') && hasSessionParam(conversation, 'auth_status', 'Pass')"
+        value: "'tier2_mfa_step_up_verified'"
+      - condition: "hasSessionParam(conversation, 'auth_status', 'Pass')"
+        value: "'tier1_primary_authenticated'"
+      - condition: ""
+        value: "'unauthenticated_triage'"

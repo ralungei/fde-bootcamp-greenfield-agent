@@ -1,10 +1,10 @@
 {
   "name": "validate_authentication_pin",
-  "displayName": "validate_authentication_pin",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "validate_authentication_pin",
     "pythonCode": "tools/validate_authentication_pin/python_function/python_code.py",
-    "description": "Validates a 4-digit PIN entered via keypad (DTMF) or provided during verification. Rejects '9999' and '0000' as incorrect PINs so the caller can retry on a second attempt, and sets auth_status='Pass' on valid PIN ('4321', '1234', etc.)."
-  }
+    "description": "Validate 4-digit PIN for primary authentication (never grants step-up)."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "validate_authentication_pin"
 }

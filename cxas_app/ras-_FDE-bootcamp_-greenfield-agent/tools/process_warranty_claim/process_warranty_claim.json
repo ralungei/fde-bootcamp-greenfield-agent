@@ -1,10 +1,10 @@
 {
   "name": "process_warranty_claim",
-  "displayName": "process_warranty_claim",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "process_warranty_claim",
     "pythonCode": "tools/process_warranty_claim/python_function/python_code.py",
-    "description": "Processes equipment warranty replacements or checks warranty claim status (in-warranty defective/mic/battery vs out-of-warranty physical screen damage)."
-  }
+    "description": "Evaluate and process equipment warranty claim or check claim status."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "process_warranty_claim"
 }

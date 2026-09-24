@@ -1,0 +1,26 @@
+{
+  "name": "b4e7f3c8-2766-4adb-bf91-bfea0f134896",
+  "displayName": "model_toxicity_safety",
+  "description": "Platform model safety filter blocking hate speech, harassment, dangerous content, and sexually explicit content.",
+  "enabled": true,
+  "action": {
+    "generativeAnswer": {
+      "prompt": "Politely decline toxic or unsafe content and state: I\u0027m sorry, but I\u0027m not able to help with that. I\u0027m going to end the call now. Thank you for calling Telco."
+    }
+  },
+  "modelSafety": {
+    "safetySettings": [{
+      "category": "HARM_CATEGORY_HATE_SPEECH",
+      "threshold": "BLOCK_ONLY_HIGH"
+    }, {
+      "category": "HARM_CATEGORY_HARASSMENT",
+      "threshold": "BLOCK_ONLY_HIGH"
+    }, {
+      "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+      "threshold": "BLOCK_ONLY_HIGH"
+    }, {
+      "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+      "threshold": "BLOCK_ONLY_HIGH"
+    }]
+  }
+}

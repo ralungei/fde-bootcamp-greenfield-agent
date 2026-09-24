@@ -1,10 +1,10 @@
 {
   "name": "send_sms",
-  "displayName": "send_sms",
-  "executionType": "SYNCHRONOUS",
   "pythonFunction": {
     "name": "send_sms",
     "pythonCode": "tools/send_sms/python_function/python_code.py",
-    "description": "Sends an SMS message (troubleshooting steps >2 steps in M4, appointment confirmation in M6, order receipt in M5, or restore confirmation in M7) to the caller."
-  }
+    "description": "Send SMS payload to the caller\u0027s phone number."
+  },
+  "executionType": "SYNCHRONOUS",
+  "displayName": "send_sms"
 }
