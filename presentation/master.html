@@ -2666,15 +2666,15 @@
             <span class="ficon"><svg><use href="#i-lock"/></svg></span>
             <div>
               <h3>Datos personales y logs</h3>
-              <p>Últimos 4 dígitos, <code>enableRedaction: true</code> en <code>app.json</code> y PIN/OTP nunca repetidos.</p>
+              <p>Solo últimos 4 dígitos en voz y censura automática en grabaciones y textos.</p>
             </div>
           </div>
 
           <div class="tile static v-tint" style="grid-area: 3 / 7 / 4 / 9">
             <span class="ficon"><svg><use href="#i-alert"/></svg></span>
             <div>
-              <h3>Guardrails e inyección</h3>
-              <p><code>guardrails/</code> nativos (inyección y toxicidad) + <code>report_malicious_utterance</code>.</p>
+              <h3>Filtros e inyección</h3>
+              <p>Filtros de seguridad de la plataforma + cierre educado en código.</p>
             </div>
           </div>
 
@@ -3055,8 +3055,8 @@
           <button class="tile v-solid" style="grid-area: 3 / 5 / 4 / 9" type="button">
             <span class="ficon"><svg><use href="#i-shield"/></svg></span>
             <div>
-              <h3>Gate 6, Goldens y Scorecards</h3>
-              <p><code>gate-check</code> 6/6 PASS · Goldens 5/5 · Scorecards Insights activos.</p>
+              <h3>Controles previos y paneles</h3>
+              <p>Linter sin errores · Prueba de humo (Gate 6) superada · Paneles listos.</p>
             </div>
             <div class="detail">
               <p>Evidencia completa en el repositorio y en CXAS Labs Agent Academy (Run <code>f5b233531be74ad5bf231f67f72d7243</code>):</p>
@@ -3064,7 +3064,7 @@
                 <div class="maprow"><span class="from"><b>Agent Academy Run Oficial</b></span><span class="ar">→</span><span class="to"><b>92/100 (92% PASS)</b> en <code>692.9s</code>: <b>63/70 públicos (90%)</b> + <b>29/30 ocultos (96.7%)</b></span></div>
                 <div class="maprow"><span class="from"><b>Gate Check (Puertas 1–6)</b></span><span class="ar">→</span><span class="to"><code>eval-reports/gate-check-20260924-010430.json</code>: <b>6 passed, 0 failed, 0 skipped</b> (Gate 6 multi-turno en PASS)</span></div>
                 <div class="maprow"><span class="from"><b>Golden Dataset (5 P0)</b></span><span class="ar">→</span><span class="to"><code>evals/goldens/goldens.yaml</code>: <b>5/5 PASS</b> (Tool Invocation <code>1.0</code>, Similitud Semántica <code>4.72/5.0</code>)</span></div>
-                <div class="maprow"><span class="from"><b>CCAI Insights Scorecards</b></span><span class="ar">→</span><span class="to"><code>autolabel_rules.yaml</code> (CEL) y <code>dashboards.yaml</code> (Contención, Sentimiento y Latencia P50/P95)</span></div>
+                <div class="maprow"><span class="from"><b>Paneles post-llamada (Insights)</b></span><span class="ar">→</span><span class="to"><code>autolabel_rules.yaml</code> (etiquetas automáticas) y <code>dashboards.yaml</code> (gráficas de contención, enfado y velocidad de APIs)</span></div>
               </div>
             </div>
           </button>
