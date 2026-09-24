@@ -34,8 +34,8 @@ def validate_authentication_otp(code: str) -> dict:
                 "attempts_remaining": remaining,
                 "escalate_reason": "auth_failure_handoff" if remaining == 0 else "",
                 "agent_action": (
-                    f"Inform the caller in their active language ({{language}}) that the code '{digits_only}' "
-                    f"was incorrect (valid 6-digit codes start with 48) and ask them to retry "
+                    f"Inform the caller in their active language ({{language}}) that the code was incorrect "
+                    f"(never repeat the digits; valid 6-digit codes start with 48) and ask them to retry "
                     f"({remaining} attempts remaining). Only if attempts_remaining is 0, call "
                     f"execute_live_agent_handover(reason='auth_failure_handoff')."
                 ),

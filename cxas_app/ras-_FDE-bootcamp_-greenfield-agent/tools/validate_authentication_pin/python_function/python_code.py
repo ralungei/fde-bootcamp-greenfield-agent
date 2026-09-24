@@ -29,8 +29,8 @@ def validate_authentication_pin(pin: str, is_dtmf: bool = True) -> dict:
                 "attempts_remaining": remaining,
                 "escalate_reason": "auth_failure_handoff" if remaining == 0 else "",
                 "agent_action": (
-                    f"Inform the caller in their active language ({{language}}) that the PIN '{digits_only}' "
-                    f"is incorrect and ask them to re-enter their 4-digit PIN ({remaining} attempts remaining). "
+                    f"Inform the caller in their active language ({{language}}) that the PIN was incorrect "
+                    f"(never repeat the digits) and ask them to re-enter their 4-digit PIN ({remaining} attempts remaining). "
                     f"Only if attempts_remaining is 0, call execute_live_agent_handover(reason='auth_failure_handoff')."
                 ),
             }
