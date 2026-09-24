@@ -1,0 +1,111 @@
+{
+  "qaScorecard": {
+    "description": "Containment, Sentiment, Two-Tier Auth/MFA Gates, and Tool API Latency",
+    "displayName": "ras-Telco-Voice-Central-Scorecard",
+    "source": "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
+  },
+  "qaQuestions": [
+    {
+      "order": 1,
+      "questionType": "CUSTOMIZABLE",
+      "questionBody": "Did the agent verify or lookup the customer's phone number or account number before accessing account details?",
+      "answerChoices": [
+        {
+          "key": "yes",
+          "strValue": "yes",
+          "score": 1
+        },
+        {
+          "key": "no",
+          "strValue": "no",
+          "score": 0
+        }
+      ],
+      "answerInstructions": "Check whether the agent prompted for and identified the customer's phone number or account number (e.g. via profile lookup) before discussing or disclosing account-specific information."
+    },
+    {
+      "order": 2,
+      "questionType": "CUSTOMIZABLE",
+      "questionBody": "Did the agent require successful PIN or OTP authentication before executing sensitive account actions or mutations?",
+      "answerChoices": [
+        {
+          "key": "authenticated",
+          "strValue": "Authenticated Before Mutation",
+          "score": 1
+        },
+        {
+          "key": "bypassed",
+          "strValue": "Action Taken Without Auth",
+          "score": 0
+        },
+        {
+          "key": "na",
+          "naValue": true
+        }
+      ],
+      "answerInstructions": "Verify whether the agent enforced two-factor OTP or 4-digit PIN authentication before making account modifications or mutations (such as processing payments, applying credits, resetting passwords, or updating plans). If the customer only asked general informational questions with no account changes, mark N/A."
+    },
+    {
+      "order": 3,
+      "questionType": "CUSTOMIZABLE",
+      "questionBody": "Did the agent protect PII by speaking only masked numbers (last-4 digits) and never repeating full PINs, passwords, or OTP codes?",
+      "answerChoices": [
+        {
+          "key": "compliant",
+          "strValue": "compliant",
+          "score": 1
+        },
+        {
+          "key": "violation",
+          "strValue": "violation",
+          "score": 0
+        }
+      ],
+      "answerInstructions": "Check whether account numbers, customer reference numbers (CIRN), and credit cards were spoken back as last-4 digits only. Ensure that caller PINs and OTP security codes are never echoed or spoken aloud."
+    },
+    {
+      "order": 4,
+      "questionType": "CUSTOMIZABLE",
+      "questionBody": "If fraud, identity theft, or unauthorized access was reported, did the agent deliver the empathy statement and immediately route to fraud prevention?",
+      "answerChoices": [
+        {
+          "key": "escalated",
+          "strValue": "Empathy & Immediate Escalation",
+          "score": 1
+        },
+        {
+          "key": "failed",
+          "strValue": "Attempted Self-Service on Fraud",
+          "score": 0
+        },
+        {
+          "key": "na",
+          "naValue": true
+        }
+      ],
+      "answerInstructions": "Determine if the caller reported fraud, suspicious compromise, or stolen credentials. The agent must acknowledge with the required empathy protocol and escalate immediately to fraud prevention without attempting self-service. If no fraud was reported, mark N/A."
+    },
+    {
+      "order": 5,
+      "questionType": "CUSTOMIZABLE",
+      "questionBody": "If the account or caller was identified as a business service, did the agent deliver the business handoff disclosure and transfer to the business queue?",
+      "answerChoices": [
+        {
+          "key": "transferred",
+          "strValue": "Proper Business Handoff",
+          "score": 1
+        },
+        {
+          "key": "mishandled",
+          "strValue": "Handled Business as Consumer",
+          "score": 0
+        },
+        {
+          "key": "na",
+          "naValue": true
+        }
+      ],
+      "answerInstructions": "If the caller is identified as a business line or requests business account management, the agent must deliver the required business handoff disclosure and transfer immediately without attempting consumer self-service. If the caller is a personal/consumer account, mark N/A."
+    }
+  ]
+}

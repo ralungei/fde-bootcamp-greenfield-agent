@@ -1,6 +1,6 @@
 version: "1.0"
 project_id: "fde-bootcamp"
-location: "us"
+location: "us-central1"
 
 autolabeling_rules:
   - rule_id: "containment_resolution_status"

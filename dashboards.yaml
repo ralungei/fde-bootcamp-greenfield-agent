@@ -1,6 +1,6 @@
 version: "1.0"
 project_id: "fde-bootcamp"
-location: "us"
+location: "us-central1"
 
 dashboards:
   - dashboard_id: "telco_voice_central_executive_scorecard"
