@@ -146,7 +146,8 @@ Workflow: `uv run cxas lint` → `cxas push` → git commit/push; `cxas versions
 ## 2. Evaluation & Verification Summary
 
 ### 2.1 Static Linter (`cxas lint`)
-- **Result:** `0 errors, 0 warnings, 0 info` across all 6 agents, 32 tools, 18 callbacks, and `app.json` (`variableDeclarations`).
+- **Result:** `0 errors, 13 warnings, 0 info` across all 6 agents, 32 tools, 18 callbacks, and `app.json` (`variableDeclarations`).
+- The 13 warnings are all `[I012]`: the auth tools (`send_authentication_otp`, `validate_authentication_otp`, `validate_authentication_pin`) are attached to every specialist but only referenced in the global instruction and in tool error messages. This is intentional: any specialist can finish authentication or a step-up in place, without bouncing the caller back to `Root_agent`.
 
 ### 2.2 Golden Dataset (`evals/goldens/goldens.yaml`)
 - **7 goldens** (deterministic turn-by-turn matching), including `golden__caller_chooses_otp_or_pin` and `golden__business_account_immediate_deflection`.

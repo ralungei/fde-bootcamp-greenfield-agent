@@ -25,6 +25,9 @@
     },
     "conversationLoggingSettings": {
       "retentionWindow": "31536000s"
+    },
+    "evaluationAudioRecordingConfig": {
+      "gcsBucket": "gs://rasalungei-fde-bootcamp-audio"
     }
   },
   "guardrails": [
@@ -63,6 +66,15 @@
       }
     },
     {
+      "name": "auth_choice_turn",
+      "description": "Caller turn in which we asked 'code or PIN?' (written by send_authentication_otp).",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
       "name": "auth_status",
       "description": "Authentication verification status: Pass or Fail",
       "schema": {
@@ -86,6 +98,15 @@
       "schema": {
         "type": "STRING",
         "default": "false",
+        "required": []
+      }
+    },
+    {
+      "name": "caller_said_digits",
+      "description": "Digits the caller has said or typed during the call (written by before_model_callback). fetch_customer_profile only identifies with a number found here, never the caller ID.",
+      "schema": {
+        "type": "STRING",
+        "default": "",
         "required": []
       }
     },
@@ -130,25 +151,7 @@
       "description": "Verbatim spoken copy: greeting_main_secondary",
       "schema": {
         "type": "STRING",
-        "default": "Bienvenue chez Telco. Je peux vous aider avec la facturation, le soutien technique ou la gestion de votre compte. Pour commencer, pourriez-vous me donner le num\u00e9ro de t\u00e9l\u00e9phone ou le num\u00e9ro de compte associ\u00e9 \u00e0 votre service?",
-        "required": []
-      }
-    },
-    {
-      "name": "copy_live_agent_handoff_primary",
-      "description": "Verbatim spoken copy: live_agent_handoff_primary",
-      "schema": {
-        "type": "STRING",
-        "default": "I'll connect you to a representative who can help. Please hold.",
-        "required": []
-      }
-    },
-    {
-      "name": "copy_live_agent_handoff_secondary",
-      "description": "Verbatim spoken copy: live_agent_handoff_secondary",
-      "schema": {
-        "type": "STRING",
-        "default": "Je vais vous transf\u00e9rer \u00e0 un repr\u00e9sentant qui pourra vous aider. Veuillez patienter.",
+        "default": "Bienvenue chez Telco. Je peux vous aider avec la facturation, le soutien technique ou la gestion de votre compte. Pour commencer, pourriez-vous me donner le numéro de téléphone ou le numéro de compte associé à votre service?",
         "required": []
       }
     },
@@ -166,7 +169,7 @@
       "description": "Verbatim spoken copy: handoff_business_secondary",
       "schema": {
         "type": "STRING",
-        "default": "Pour vous offrir le meilleur soutien pour votre compte d'entreprise, je vais vous transf\u00e9rer \u00e0 un agent. Vous devrez utiliser le clavier de votre t\u00e9l\u00e9phone plut\u00f4t que de parler \u00e0 l'assistant virtuel. Un instant pendant que je vous mets en relation.",
+        "default": "Pour vous offrir le meilleur soutien pour votre compte d'entreprise, je vais vous transférer à un agent. Vous devrez utiliser le clavier de votre téléphone plutôt que de parler à l'assistant virtuel. Un instant pendant que je vous mets en relation.",
         "required": []
       }
     },
@@ -184,7 +187,7 @@
       "description": "Verbatim spoken copy: handoff_fraud_secondary",
       "schema": {
         "type": "STRING",
-        "default": "Je suis vraiment d\u00e9sol\u00e9 d'apprendre que vous rencontrez ces difficult\u00e9s. Je veillerai \u00e0 ce que votre demande soit trait\u00e9e avec le plus grand soin. Je vais vous transf\u00e9rer \u00e0 un repr\u00e9sentant qui pourra vous aider. Veuillez patienter.",
+        "default": "Je suis vraiment désolé d'apprendre que vous rencontrez ces difficultés. Je veillerai à ce que votre demande soit traitée avec le plus grand soin. Je vais vous transférer à un représentant qui pourra vous aider. Veuillez patienter.",
         "required": []
       }
     },
@@ -193,7 +196,7 @@
       "description": "Verbatim spoken copy: handoff_refund_primary",
       "schema": {
         "type": "STRING",
-        "default": "I'll connect you to a billing specialist now \u2014 they'll have everything we've already discussed.",
+        "default": "I'll connect you to a billing specialist now — they'll have everything we've already discussed.",
         "required": []
       }
     },
@@ -202,7 +205,25 @@
       "description": "Verbatim spoken copy: handoff_refund_secondary",
       "schema": {
         "type": "STRING",
-        "default": "Je vais vous transf\u00e9rer \u00e0 un sp\u00e9cialiste de la facturation maintenant \u2014 il aura tout ce dont nous avons d\u00e9j\u00e0 discut\u00e9.",
+        "default": "Je vais vous transférer à un spécialiste de la facturation maintenant — il aura tout ce dont nous avons déjà discuté.",
+        "required": []
+      }
+    },
+    {
+      "name": "copy_live_agent_handoff_primary",
+      "description": "Verbatim spoken copy: live_agent_handoff_primary",
+      "schema": {
+        "type": "STRING",
+        "default": "I'll connect you to a representative who can help. Please hold.",
+        "required": []
+      }
+    },
+    {
+      "name": "copy_live_agent_handoff_secondary",
+      "description": "Verbatim spoken copy: live_agent_handoff_secondary",
+      "schema": {
+        "type": "STRING",
+        "default": "Je vais vous transférer à un représentant qui pourra vous aider. Veuillez patienter.",
         "required": []
       }
     },
@@ -220,7 +241,7 @@
       "description": "Verbatim spoken copy: malicious_closing_secondary",
       "schema": {
         "type": "STRING",
-        "default": "Je suis d\u00e9sol\u00e9, mais je ne peux pas vous aider avec cela. Je vais mettre fin \u00e0 l'appel. Merci d'avoir appel\u00e9 Telco.",
+        "default": "Je suis désolé, mais je ne peux pas vous aider avec cela. Je vais mettre fin à l'appel. Merci d'avoir appelé Telco.",
         "required": []
       }
     },
@@ -238,7 +259,7 @@
       "description": "Verbatim spoken copy: noinput_reprompt_secondary",
       "schema": {
         "type": "STRING",
-        "default": "D\u00e9sol\u00e9, je n'ai pas bien compris. Pourriez-vous r\u00e9p\u00e9ter ce que vous avez dit?",
+        "default": "Désolé, je n'ai pas bien compris. Pourriez-vous répéter ce que vous avez dit?",
         "required": []
       }
     },
@@ -256,7 +277,7 @@
       "description": "Verbatim spoken copy: recording_notice_secondary",
       "schema": {
         "type": "STRING",
-        "default": "Cet appel peut \u00eatre enregistr\u00e9 \u00e0 des fins de qualit\u00e9 et de formation.",
+        "default": "Cet appel peut être enregistré à des fins de qualité et de formation.",
         "required": []
       }
     },
@@ -274,7 +295,7 @@
       "description": "Verbatim spoken copy: regional_advisory_secondary",
       "schema": {
         "type": "STRING",
-        "default": "Avis : nous suivons actuellement une alerte de service r\u00e9gionale dans votre secteur. ",
+        "default": "Avis : nous suivons actuellement une alerte de service régionale dans votre secteur. ",
         "required": []
       }
     },
@@ -360,42 +381,6 @@
       }
     },
     {
-      "name": "caller_said_digits",
-      "description": "Digits the caller has said or typed during the call (written by before_model_callback). fetch_customer_profile only identifies with a number found here, never the caller ID.",
-      "schema": {
-        "type": "STRING",
-        "default": "",
-        "required": []
-      }
-    },
-    {
-      "name": "user_turn",
-      "description": "Counter of caller turns (written by before_model_callback).",
-      "schema": {
-        "type": "STRING",
-        "default": "",
-        "required": []
-      }
-    },
-    {
-      "name": "last_user_text",
-      "description": "Last thing the caller said or typed (written by before_model_callback).",
-      "schema": {
-        "type": "STRING",
-        "default": "",
-        "required": []
-      }
-    },
-    {
-      "name": "auth_choice_turn",
-      "description": "Caller turn in which we asked 'code or PIN?' (written by send_authentication_otp).",
-      "schema": {
-        "type": "STRING",
-        "default": "",
-        "required": []
-      }
-    },
-    {
       "name": "handover_message",
       "description": "Verbatim line that must be spoken in full before the session is closed (handover or malicious-input close)",
       "schema": {
@@ -470,6 +455,15 @@
     {
       "name": "last_pmt_amt",
       "description": "Last payment amount recorded on the billing account",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
+      "name": "last_user_text",
+      "description": "Last thing the caller said or typed (written by before_model_callback).",
       "schema": {
         "type": "STRING",
         "default": "",
@@ -668,6 +662,15 @@
     {
       "name": "user_id",
       "description": "Internal CRM record identifier",
+      "schema": {
+        "type": "STRING",
+        "default": "",
+        "required": []
+      }
+    },
+    {
+      "name": "user_turn",
+      "description": "Counter of caller turns (written by before_model_callback).",
       "schema": {
         "type": "STRING",
         "default": "",

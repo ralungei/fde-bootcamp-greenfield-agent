@@ -60,6 +60,27 @@ def _extract_last_user_text(callback_context: CallbackContext, llm_request: LlmR
     return " ".join(texts).strip()
 
 
+# Gets all caller messages since the agent last spoke (e.g. "dtmf: 481234" + a sentence in the same turn).
+def _current_turn_user_text(llm_request: LlmRequest) -> str:
+    texts = []
+    for content in reversed(getattr(llm_request, "contents", None) or []):
+        if getattr(content, "role", "") != "user":
+            break
+        for part in reversed(getattr(content, "parts", None) or []):
+            if getattr(part, "text", None):
+                texts.insert(0, part.text)
+    return " ".join(texts).strip()
+
+
+# Gets every caller message of the whole call, to record all numbers they said or keyed.
+def _all_user_text(llm_request: LlmRequest) -> str:
+    texts = []
+    for content in getattr(llm_request, "contents", None) or []:
+        if getattr(content, "role", "") == "user":
+            texts += [p.text for p in (getattr(content, "parts", None) or []) if getattr(p, "text", None)]
+    return " ".join(texts)
+
+
 _NUM_WORDS = {
     "zero": "0", "oh": "0", "one": "1", "two": "2", "three": "3", "four": "4", "five": "5",
     "six": "6", "seven": "7", "eight": "8", "nine": "9",
@@ -101,12 +122,17 @@ def before_model_callback(
     callback_context: CallbackContext, llm_request: LlmRequest
 ) -> Optional[LlmResponse]:
     state = callback_context.state
-    user_text = _extract_last_user_text(callback_context, llm_request)
+    last_text = _extract_last_user_text(callback_context, llm_request)
+    turn_text = _current_turn_user_text(llm_request)
+    # // Todo lo que el cliente ha dicho en este turno (incluye un "dtmf: 481234" seguido de otra frase).
+    user_text = turn_text if last_text in turn_text else (turn_text + " " + last_text).strip()
     # // Registro determinista de los numeros que el cliente ha dicho o tecleado en la llamada.
     # // fetch_customer_profile solo identifica con un numero que aparezca aqui (nunca el caller ID).
-    said = _spoken_digits(user_text)
-    if said and said not in (state.get("caller_said_digits") or ""):
-        state["caller_said_digits"] = ((state.get("caller_said_digits") or "") + " " + said).strip()[-400:]
+    known = (state.get("caller_said_digits") or "").split()
+    for grp in _spoken_digits(" ".join([user_text, str(state.get("dtmf") or ""), _all_user_text(llm_request)])).split():
+        if grp not in known:
+            known.append(grp)
+    state["caller_said_digits"] = " ".join(known)[-800:]
     # // Numero de turno del cliente y su ultima frase: las tools los usan para saber si el
     # // cliente ya ha contestado (p. ej. a la pregunta codigo o PIN) sin depender del modelo.
     snap = user_text[-300:]

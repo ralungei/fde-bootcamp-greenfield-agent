@@ -6,5 +6,6 @@
   "app_dir": "cxas_app/",
   "model": "gemini-3.1-flash-live",
   "modality": "audio",
-  "default_channel": "audio"
+  "default_channel": "audio",
+  "gcs_bucket": "gs://rasalungei-fde-bootcamp-audio"
 }
