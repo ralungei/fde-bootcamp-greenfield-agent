@@ -48,9 +48,11 @@ def execute_suspend_restore(action: str, reason: str = "", cirn: str = "") -> di
                 "agent_action": (
                     f"CRITICAL: Service CANNOT be restored until the ${past_due:.2f} past-due balance is paid "
                     "or a payment arrangement is set up. If the caller claims they have already paid, call "
-                    "verify_payment_posted instead of believing them. Otherwise inform the caller in their "
-                    f"active language ({{language}}) of the ${past_due:.2f} past-due balance, and IMMEDIATELY "
-                    "transfer to Root_agent so billing_specialist can process the payment or arrangement!"
+                    "verify_payment_posted instead of believing them. Otherwise, in ONE turn and in the caller's "
+                    f"active language ({{language}}), say the ${past_due:.2f} past-due balance must be settled first "
+                    "and ASK: pay it now with the card on file, or set up a payment arrangement? Do NOT say you are "
+                    "transferring them, do NOT mention a representative, department or specialist, and do NOT ask "
+                    "them to hold: the system routes their answer to billing automatically."
                 ),
             }
 
