@@ -95,14 +95,23 @@ En vez de un guion fijo, **contratas a 100 actores (otro modelo Gemini haciendo 
 ### 🎯 2. Para qué sirve con un ejemplo
 En la vida real los clientes no hablan siguiendo nuestro guion fijo: cambian de tema a mitad de llamada, dan el PIN por teclado o se frustran. Las simulaciones prueban si el agente aguanta conversaciones abiertas de principio a fin **empezando con la memoria en blanco (`session_parameters: {}`)**.
 
-### 🛠️ 3. Qué hemos hecho nosotros
-Ejecutamos las **100 simulaciones completas (70 públicas + 30 ocultas)** sin variables pre-inyectadas (`session_parameters: {}`):
-- **Global**: **`91 / 100 PASS (91.0%)`** y **`96 / 100 Objetivos de Negocio Cumplidos (96.0%)`**.
-- **Públicas**: **`63 / 70 PASS (90.0%)`** (reporte en [eval-reports/sim_report_2026-09-24_0006.html](file:///Users/rasalungei/Documents/2026/GECX%20Bootcamp/ras-fde-bootcamp-greenfield-agent/eval-reports/sim_report_2026-09-24_0006.html)).
-- **Ocultas (Secret)**: **`28 / 30 PASS (93.3%)`** y **`30 / 30 Objetivos Cumplidos (100%)`** (borrado todo rastro del repo tras verificar).
+### 🛠️ 3. Qué hemos hecho nosotros (Run Oficial Agent Academy `f5b233531be74ad5bf231f67f72d7243`)
+Ejecutamos las **100 simulaciones completas (70 públicas + 30 ocultas)** tanto en **CXAS Labs Agent Academy** (Run `f5b233531be74ad5bf231f67f72d7243`) como en local sin variables pre-inyectadas (`session_parameters: {}`):
+- **Resultado Oficial Agent Academy**: **`92 / 100 PASS (92.0%)`** en `692.9s`.
+- **Batería Pública (`70` casos)**: **`63 / 70 PASS (90.0%)`**.
+- **Casos Ocultos (`30` Secret Cases)**: **`29 / 30 PASS (96.7%)`** — ¡Solo falló `Secret Case #7` de los 30!
+
+#### 🔍 Los 8 Fallos de la Run `f5b233531be74ad5bf231f67f72d7243` (por si el evaluador te pregunta por cualquiera de ellos):
+1. **`sim__speak_mid_call_billing_english` (`6.2s`)** y 2. **`sim__speak_frustrated_english` (`10.2s`)**: El agente detectó la petición/frustración y ejecutó correctamente `execute_live_agent_handover` + `end_session`, pero el modelo pronunció su propia frase natural de traspaso en ese primer paquete antes de que `after_model_callback` leyera la bandera.
+3. **`sim__pay_mobility_bill_card_file` (`26.2s`)**: El agente autenticó y cobró los `$45.00` con `process_payment`, pero al confirmar dijo *"paid with your card on file"* sin repetir en voz alta los últimos 4 dígitos (`4242`).
+4. **`sim__pay_bill_french_keypad` (`144.3s`)**: Timeout de latencia en el turno largo de entrada por teclado DTMF en francés (`144.3s`).
+5. **`sim__manage_mfa_disable` (`32.8s`)**: Al endurecer en Python `step_up_status` (que exige un **2º OTP fresco `48xxxx`** después de autenticar la sesión para desactivar MFA), el usuario simulado solo dio un código y no completó el segundo factor.
+6. **`sim__dispute_charge_auth_retry` (`15.3s`)**: Tras fallar el primer intento de autenticación y acertar al segundo, el agente pidió al cliente confirmar cuál de los cargos quería disputar antes de llamar a `apply_bill_adjustment`.
+7. **`sim__warranty_replacement_samsung_french` (`16.5s`)**: Ante *"mon téléphone Samsung qui ne charge plus"*, el agente ofreció un paso rápido de diagnóstico antes de tramitar el reemplazo en garantía (`process_warranty_claim`).
+8. **`Secret Case #7`**: Único caso oculto no superado de los 30 (`29/30 = 96.7% PASS`).
 
 ### 🗣️ 4. Cómo explicárselo al evaluador
-> *"Mientras que los Goldens prueban turnos fijos, nuestras 70 Simulaciones (`simulations.yaml`) enfrentan al agente contra un cliente LLM dinámico arrancando con `session_parameters: {}` vacío. Así demostramos que el agente gana la autenticación por sí mismo, navega entre sub-agentes y alcanza un 90% de aprobación en la suite pública y un 93.3% en el benchmark oculto."*
+> *"Mientras que los Goldens prueban turnos fijos, nuestras 100 Simulaciones en CXAS Labs Agent Academy (`f5b233531be74ad5bf231f67f72d7243`) enfrentan al agente contra un cliente LLM dinámico arrancando con `session_parameters: {}` vacío. Alcanzamos un **92/100 global (92%)**: **63/70 (90%)** en la suite pública y un **29/30 (96.7%)** en los casos ocultos, demostrando que el agente generaliza sin estar sobreajustado a los tests públicos."*
 
 ---
 
@@ -196,7 +205,7 @@ Creamos ambos archivos siguiendo el esquema oficial de Google Cloud CCAI Insight
 | Si el evaluador menciona... | Qué es en tu cabeza (3 palabras) | Qué archivo le enseñas | La frase ganadora para responder |
 | :--- | :--- | :--- | :--- |
 | **Gate Check / Gate 6** | La ITV de 6 puertas con llamada de 4 turnos | `eval-reports/gate-check-20260924-010430.json` | *"Tenemos las 6 puertas en `PASS` (`0 skipped`). En Gate 6 corremos una llamada real de 4 turnos que autentica con OTP `481234`, pasa de `Root_agent` a `billing_specialist` sin perder sesión y lee el saldo de `$45`."* |
-| **Golden vs. Simulations** | Guion fijo turno a turno vs. Actor IA libre | `evals/goldens/goldens.yaml` y `evals/simulations/simulations.yaml` | *"Usamos 5 Goldens deterministas (`5/5 PASS`, Tool Correctness `1.0`) para turnos exactos como avisos legales o bloqueos, y 100 Simulaciones abiertas con `session_parameters: {}` (`91/100 PASS`) para validar conversaciones completas."* |
+| **Golden vs. Simulations** | Guion fijo turno a turno vs. Actor IA libre | `evals/goldens/goldens.yaml` y Agent Academy Run `f5b233531be74ad5bf231f67f72d7243` | *"Usamos 5 Goldens deterministas (`5/5 PASS`, Tool Correctness `1.0`) para turnos exactos como avisos legales o bloqueos, y 100 Simulaciones abiertas en Agent Academy (`92/100 PASS`: `63/70` públicos y `29/30` ocultos = `96.7%`) para validar conversaciones completas."* |
 | **Hallucination Metric** | El detector de mentiras activado | `cxas_app/.../app.json` (Línea 94) | *"Está en `ENABLED` en `app.json`. Como los importes y estados salen siempre del JSON de nuestras 32 tools de Python, el agente no alucina datos."* |
 | **Guardrails & Safety** | Detector de metales de Google + Guardia de Telco | `cxas_app/.../guardrails/` y `report_malicious_utterance` | *"Tenemos doble capa: los Guardrails nativos (`prompt_injection_shield` y `model_toxicity_safety`) activos tanto en `app.json` como en los 6 agentes, más `report_malicious_utterance` y `after_model_callback` para garantizar el cierre literal."* |
 | **PII & Redaction** | Últimos 4 dígitos en voz + Censura en logs | `cxas_app/.../app.json` (`redactionConfig`) | *"En voz truncamos a los últimos 4 dígitos y prohibimos repetir PIN/OTP; y en logs tenemos `redactionConfig.enableRedaction: true` en `app.json`."* |

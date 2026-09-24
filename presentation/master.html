@@ -2994,9 +2994,9 @@
             <span class="ficon"><svg><use href="#i-check"/></svg></span>
             <div>
               <h3>Evaluación completa</h3>
-              <span class="bignum">91/100</span>
+              <span class="bignum">92/100</span>
               <p>escenarios superados: 70 públicos y 30 ocultos</p>
-              <span class="chip light">Casos ocultos 28/30 · 93%</span>
+              <span class="chip light">Casos ocultos 29/30 · 96.7%</span>
             </div>
           </div>
 
@@ -3059,12 +3059,12 @@
               <p><code>gate-check</code> 6/6 PASS · Goldens 5/5 · Scorecards Insights activos.</p>
             </div>
             <div class="detail">
-              <p>Evidencia completa en el repositorio para auditoría de producción:</p>
+              <p>Evidencia completa en el repositorio y en CXAS Labs Agent Academy (Run <code>f5b233531be74ad5bf231f67f72d7243</code>):</p>
               <div class="rows">
+                <div class="maprow"><span class="from"><b>Agent Academy Run Oficial</b></span><span class="ar">→</span><span class="to"><b>92/100 (92% PASS)</b> en <code>692.9s</code>: <b>63/70 públicos (90%)</b> + <b>29/30 ocultos (96.7%)</b></span></div>
                 <div class="maprow"><span class="from"><b>Gate Check (Puertas 1–6)</b></span><span class="ar">→</span><span class="to"><code>eval-reports/gate-check-20260924-010430.json</code>: <b>6 passed, 0 failed, 0 skipped</b> (Gate 6 multi-turno en PASS)</span></div>
                 <div class="maprow"><span class="from"><b>Golden Dataset (5 P0)</b></span><span class="ar">→</span><span class="to"><code>evals/goldens/goldens.yaml</code>: <b>5/5 PASS</b> (Tool Invocation <code>1.0</code>, Similitud Semántica <code>4.72/5.0</code>)</span></div>
                 <div class="maprow"><span class="from"><b>CCAI Insights Scorecards</b></span><span class="ar">→</span><span class="to"><code>autolabel_rules.yaml</code> (CEL) y <code>dashboards.yaml</code> (Contención, Sentimiento y Latencia P50/P95)</span></div>
-                <div class="maprow"><span class="from"><b>Control de Entorno y Versión</b></span><span class="ar">→</span><span class="to"><code>environment.json</code> (dev/stg/prod) y snapshot CES <code>v1.0-cert-test3-ready</code></span></div>
               </div>
             </div>
           </button>
@@ -3077,9 +3077,9 @@
         <div class="nb say">
           <span class="lbl">Qué digo <span class="t">11:00 a 14:00</span></span>
           <p>“Una demo bonita no prueba nada. Lo que prueba que esto funciona son los datos.”</p>
-          <p>“Combinamos dos niveles de prueba: primero, un <b>Golden Dataset determinista</b> en <code>evals/goldens/goldens.yaml</code> (5 de 5 en verde, con precisión de herramientas 1.0 y similitud 4.7 sobre 5), y segundo, <b>100 simulaciones multi-turno abiertas</b> (70 públicas y 30 ocultas) con <b>los parámetros de sesión vacíos</b>.”</p>
+          <p>“Combinamos dos niveles de prueba: primero, un <b>Golden Dataset determinista</b> en <code>evals/goldens/goldens.yaml</code> (5 de 5 en verde, con precisión de herramientas 1.0 y similitud 4.7 sobre 5), y segundo, las <b>100 simulaciones multi-turno abiertas en CXAS Labs Agent Academy</b> (Run <code>f5b233531be74ad5bf231f67f72d7243</code>) con <b>los parámetros de sesión vacíos</b>.”</p>
           <p>“Los umbrales en <code>app.json</code> son exigentes: la corrección de las llamadas a herramientas es 1.0, la similitud semántica mínima es 3 y <b>la métrica de alucinación está en ENABLED</b>.”</p>
-          <p>“El resultado global es <b>91 de 100 (91% PASS, y 96% de objetivos de negocio cumplidos)</b>: <b>63 de 70 en la batería pública (90%)</b> y <b>28 de 30 en los casos ocultos (93.3%)</b>. Además, el reporte <code>gate-check-20260924-010430.json</code> tiene las <b>6 puertas en PASS (incluyendo Gate 6 multi-turno sin saltar)</b>, y dejamos configurados los Scorecards de CCAI Insights en <code>autolabel_rules.yaml</code> y <code>dashboards.yaml</code>.”</p>
+          <p>“El resultado oficial en Agent Academy es <b>92 de 100 (92% PASS)</b>: <b>63 de 70 en la batería pública (90%)</b> y <b>29 de 30 en los casos ocultos (96.7%)</b> — solo falló el Secret Case #7 de los 30. Además, el reporte <code>gate-check-20260924-010430.json</code> tiene las <b>6 puertas en PASS (incluyendo Gate 6 multi-turno sin saltar)</b>, y dejamos configurados los Scorecards de CCAI Insights en <code>autolabel_rules.yaml</code> y <code>dashboards.yaml</code>.”</p>
           <p class="cue"><b>Haz clic en la tarjeta «Gate 6, Goldens y Scorecards»</b> para mostrar los archivos exactos.</p>
         </div>
       </div>
@@ -3088,19 +3088,18 @@
           <span class="lbl">Para entenderlo</span>
           <ul>
             <li><b>Golden dataset (<code>evals/goldens/goldens.yaml</code>):</b> conversación fija turno a turno. Mide de forma determinista si llamó a las tools exactas (1.0) y la similitud semántica (≥ 3).</li>
-            <li><b>Simulaciones (<code>evals/simulations/simulations.yaml</code>):</b> cliente LLM libre con un objetivo. Mide si el recorrido se resuelve de principio a fin.</li>
+            <li><b>Simulaciones Agent Academy (<code>92/100</code>):</b> 70 públicos (`63/70 = 90%`) + 30 ocultos (`29/30 = 96.7%`). Haber sacado 96.7% en los casos ocultos demuestra que el agente generaliza de verdad y no está sobreajustado a los casos públicos.</li>
             <li><b>Gate Check (<code>gate-check-20260924-010430.json</code>):</b> chequeo de 6 puertas contra la nube. Las 6 están en <code>PASS</code> y <code>0 skipped</code> (Gate 6 multi-turno verificado).</li>
-            <li><b>Observabilidad (<code>autolabel_rules.yaml</code> + <code>dashboards.yaml</code>):</b> etiquetado automático CEL y cuadros de mando de Contención, Sentimiento y Latencia P50/P95 de las 32 tools.</li>
           </ul>
         </div>
         <div class="nb">
-          <span class="lbl">Si te preguntan por los 9 fallos (de 100)</span>
-          <p><b>En los 30 ocultos (28/30 PASS, 30/30 Goals Met):</b> los 2 casos (<code>transfer_business_personal_french</code> y <code>reschedule_appointment_tv_repair_french</code>) cumplieron el objetivo (`goals: 1/1`), pero con `session_parameters: {}` vacío uno transfirió a especialista francés antes de llamar a `fetch_customer_profile` y el otro usó 8 turnos. <b>En los 70 públicos (63/70 PASS):</b> 2 fueron timeouts puntuales de gRPC por concurrencia, 2 de escalado humano inmediato donde el modelo emitió su frase antes del cierre, y 3 donde el objetivo se cumplió (`goals: 1/1`) con variación menor de turnos.</p>
+          <span class="lbl">Si te preguntan por los 8 fallos de la Run f5b233531be74ad5bf231f67f72d7243</span>
+          <p><b>En los 30 ocultos (29/30 PASS = 96.7%):</b> solo falló <code>Secret Case #7</code>. <b>En los 70 públicos (63/70 PASS = 90%):</b> (1 y 2) <code>speak_mid_call_billing_english</code> y <code>speak_frustrated_english</code> transfirieron a humano pero variaron ligeramente la frase literal en el mismo turno; (3) <code>pay_mobility_bill_card_file</code> cobró los 45 $ pero dijo «card on file» sin repetir `4242`; (4) <code>pay_bill_french_keypad</code> dio timeout (`144.3s`); (5) <code>manage_mfa_disable</code> exigió el 2º OTP fresco de step-up y el simulador solo dio uno; (6) <code>dispute_charge_auth_retry</code> pidió confirmar el cargo tras el reintento de auth; y (7) <code>warranty_replacement_samsung_french</code> ofreció diagnóstico antes del reemplazo.</p>
         </div>
         <div class="nb ask">
           <span class="lbl">Si te preguntan</span>
           <p class="q">“¿Qué necesitarías para el visto bueno del cliente (Customer LGTM)?”</p>
-          <p>“Acordar el umbral de acierto (ya estamos en el 90% público / 93.3% oculto), validar tres pasadas consecutivas en los flujos P0 y activar la sincronización continua de <code>autolabel_rules.yaml</code> y <code>dashboards.yaml</code> en su proyecto de CCAI Insights.”</p>
+          <p>“Acordar el umbral de acierto (ya superamos el 90% público con un 96.7% en ocultos y 92% global), validar tres pasadas consecutivas en los flujos P0 y activar la sincronización continua de <code>autolabel_rules.yaml</code> y <code>dashboards.yaml</code> en su proyecto de CCAI Insights.”</p>
         </div>
       </div>
     </div></footer>
@@ -3151,10 +3150,10 @@ without calling send_authentication_otp first.</div>
             <div>
               <h3>Evolución de resultados</h3>
             </div>
-            <div class="climb foot" aria-label="Evolución: 63 de 90, 71 de 90, 91 de 100">
+            <div class="climb foot" aria-label="Evolución: 63 de 90, 71 de 90, 92 de 100">
               <div class="cb"><span class="col"><i style="height:70%"></i></span><b>63/90</b><span>primera base</span></div>
               <div class="cb"><span class="col"><i style="height:79%"></i></span><b>71/90</b><span>multi-agente</span></div>
-              <div class="cb on"><span class="col"><i style="height:91%"></i></span><b>91/100</b><span>actual</span></div>
+              <div class="cb on"><span class="col"><i style="height:92%"></i></span><b>92/100</b><span>actual</span></div>
             </div>
           </div>
 
@@ -3196,7 +3195,7 @@ without calling send_authentication_otp first.</div>
           <p>“El arreglo tiene dos partes. En código, una guarda estricta en las siete: sin autenticación, no se ejecuta. Y en instrucciones, una regla en constraints: nunca pidas un código sin haber llamado antes a la herramienta que lo envía.”</p>
           <p>“Y lo importante: volví a lanzar la suite completa. Pagos, reembolsos y citas, sin regresiones.”</p>
           <p class="cue"><b>Señala la gráfica.</b></p>
-          <p>“Con ese ciclo, leer la traza, arreglar la causa y volver a probar todo, la nota ha ido de <b>63 sobre 90</b> a 71, y a <b>91 sobre 100</b> en la evaluación completa, ya sin estado precargado.”</p>
+          <p>“Con ese ciclo, leer la traza, arreglar la causa y volver a probar todo, la nota ha ido de <b>63 sobre 90</b> a 71, y a <b>92 sobre 100</b> en la evaluación oficial de Agent Academy (con 29 de 30 en los casos ocultos), ya sin estado precargado.”</p>
         </div>
       </div>
       <div class="col foryou">
@@ -3352,7 +3351,7 @@ without calling send_authentication_otp first.</div>
             <span class="ficon"><svg><use href="#i-check"/></svg></span>
             <div>
               <h3>Calidad verificada</h3>
-              <p>91/100 en 100 escenarios, 93% en casos ocultos y alucinación vigilada.</p>
+              <p>92/100 en Agent Academy, 96.7% (29/30) en casos ocultos y alucinación vigilada.</p>
             </div>
             <div class="art art-step" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></div>
           </div>
@@ -3376,7 +3375,7 @@ without calling send_authentication_otp first.</div>
           <p>“Resumo en tres frases.”</p>
           <p>“Uno: el agente <b>resuelve la llamada</b>, los seis motivos y en tres idiomas, pasando entre especialistas sin que el cliente repita nada.”</p>
           <p>“Dos: las decisiones que mueven dinero o tocan la seguridad <b>están en código</b>, no en el prompt.”</p>
-          <p>“Tres: la calidad <b>está medida</b>: 91 sobre 100 en cien escenarios y un 93% en casos que no había visto.”</p>
+          <p>“Tres: la calidad <b>está medida en CXAS Labs Agent Academy</b>: 92 sobre 100 en cien escenarios y un 96.7% (29 de 30) en casos ocultos que no había visto.”</p>
           <p>“Lo siguiente es conectarlo a los sistemas reales. Muchas gracias, ¿preguntas?”</p>
         </div>
       </div>
@@ -3430,7 +3429,7 @@ without calling send_authentication_otp first.</div>
           </div>
           <div class="kit-item">
             <span class="lbl">Confirma antes de presentar</span>
-            <p>Cifras de la última ejecución: 91/100, 63/70 públicos y 28/30 ocultos.</p>
+            <p>Cifras oficiales Agent Academy (Run <code>f5b233531be74ad5bf231f67f72d7243</code>): 92/100, 63/70 públicos (90%) y 29/30 ocultos (96.7%).</p>
             <p>Que existe <code>eval-reports/</code> con el <code>gate-check</code> de Gate 6 en verde.</p>
             <p>Que el agente desplegado es la última versión de GitHub.</p>
           </div>
